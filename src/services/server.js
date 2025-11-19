@@ -6,7 +6,6 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser"
 import dotenv from "dotenv"
-import axios from "axios"
 import cron from "node-cron"
 
 dotenv.config({ path: path.resolve("/home/devalex/early-trade-signals.com/early-trade-signals/.env") })
@@ -24,6 +23,7 @@ app.use(cors({
             "https://ksa.early-trade-signals.com",
             "https://iq.early-trade-signals.com",
             "https://su.early-trade-signals.com",
+            "https://de.early-trade-signals.com",
             "http://localhost:9004",
             "http://localhost:5173",
         ]
@@ -60,74 +60,265 @@ if (!JWT_SECRET) {
     process.exit(1)
 }
 
-const SYMBOLS = [
-    "AAPL","MSFT","TSLA","GOOGL","AMZN","NVDA","META","JPM","V","BAC",
-    "NFLX","ADBE","PYPL","INTC","CSCO","ORCL","IBM","CRM","QCOM","AVGO",
-    "TXN","AMD","SAP","BABA","UBER","LYFT","SNAP","SQ","SHOP",
-    "SPOT","ROKU","DOCU","ZM","PINS","BIDU","BA","GE","F",
-    "GM","KO","PEP","MCD","SBUX","DIS","NKE","LULU","WMT","TGT",
-    "CVS","COST","HD","LOW","UNH","JNJ","PFE","MRK","ABBV","AMGN"
+const ALPHA_VANTAGE_KEY = process.env.ALPHA_VANTAGE_KEY || "91N8NQTHDKGZGV23"
+
+// Stock symbols
+const STOCK_SYMBOLS = [
+    "AAPL", "MSFT", "TSLA", "GOOGL", "AMZN", "NVDA", "META", "JPM", "V", "BAC",
+    "NFLX", "ADBE", "PYPL", "INTC", "CSCO", "ORCL", "IBM", "CRM", "QCOM", "AVGO",
+    "TXN", "AMD", "SAP", "BABA", "UBER", "LYFT", "SNAP", "SQ", "SHOP",
+    "SPOT", "ROKU", "DOCU", "ZM", "PINS", "BIDU", "BA", "GE", "F",
+    "GM", "KO", "PEP", "MCD", "SBUX", "DIS", "NKE", "LULU", "WMT", "TGT",
+    "CVS", "COST", "HD", "LOW", "UNH", "JNJ", "PFE", "MRK", "ABBV", "AMGN"
 ]
 
-// Fetch one signal
-async function fetchSignal(symbol) {
+// Commodity symbols with their Alpha Vantage function names
+const COMMODITIES = [
+    { symbol: "GOLD", name: "Gold", function: "WTI" }, // Using WTI as proxy
+    { symbol: "SILVER", name: "Silver", function: "BRENT" },
+    { symbol: "CRUDE_OIL", name: "Crude Oil (WTI)", function: "WTI" },
+    { symbol: "BRENT_OIL", name: "Brent Oil", function: "BRENT" },
+    { symbol: "NATURAL_GAS", name: "Natural Gas", function: "NATURAL_GAS" },
+    { symbol: "COPPER", name: "Copper", function: "COPPER" },
+    { symbol: "WHEAT", name: "Wheat", function: "WHEAT" },
+    { symbol: "CORN", name: "Corn", function: "CORN" },
+    { symbol: "COFFEE", name: "Coffee", function: "COFFEE" },
+    { symbol: "SUGAR", name: "Sugar", function: "SUGAR" }
+]
+
+// Helper to safely parse numbers
+function toNum(v, fallback = 0) {
+    const n = parseFloat(v)
+    return Number.isFinite(n) ? n : fallback
+}
+
+// Fetch stock signal from Alpha Vantage
+async function fetchStockSignal(symbol) {
     try {
-        const res = await axios.get("https://www.alphavantage.co/query", {
-            params: {
-                function: "TIME_SERIES_DAILY",
-                symbol,
-                apikey: process.env.ALPHA_VANTAGE_KEY
-            }
-        })
+        const response = await fetch(
+            `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${ALPHA_VANTAGE_KEY}`
+        )
 
-        const series = res.data["Time Series (Daily)"]
-        if (!series) return null
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+        }
 
-        const latest = Object.keys(series)[0]
-        const close = parseFloat(series[latest]["4. close"])
+        const data = await response.json()
 
-        const recommendation = close > 0 ? "Buy" : "Sell"
+        if (data.Note || data['Error Message']) {
+            console.log(`API limit or error for ${symbol}`)
+            return null
+        }
 
-        return { symbol, recommendation, price: close }
+        const quote = data['Global Quote']
+        if (!quote || Object.keys(quote).length === 0) {
+            return null
+        }
 
+        const price = toNum(quote['05. price'])
+        const changePercent = toNum((quote['10. change percent'] || '').replace('%', ''))
+        const high = toNum(quote['03. high'], price)
+        const low = toNum(quote['04. low'], price)
+
+        const priceRange = high !== low ? ((price - low) / (high - low)) * 100 : 50
+
+        let recommendation = 'Hold'
+
+        if (changePercent > 3 && priceRange > 70) {
+            recommendation = 'Buy'
+        } else if (changePercent > 1.5) {
+            recommendation = 'Buy'
+        } else if (changePercent < -3) {
+            recommendation = 'Sell'
+        } else if (changePercent < 0 && priceRange < 30) {
+            recommendation = 'Sell'
+        }
+
+        return {
+            symbol,
+            recommendation,
+            price: price.toFixed(2),
+            type: 'stock'
+        }
     } catch (err) {
-        console.error(`Error fetching ${symbol}:`, err.message)
+        console.error(`Error fetching stock ${symbol}:`, err.message)
         return null
     }
 }
 
-// Save to DB
+// Fetch commodity signal from Alpha Vantage
+async function fetchCommoditySignal(commodity) {
+    try {
+        const response = await fetch(
+            `https://www.alphavantage.co/query?function=${commodity.function}&interval=monthly&apikey=${ALPHA_VANTAGE_KEY}`
+        )
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        if (data.Note || data['Error Message']) {
+            console.log(`API limit or error for ${commodity.symbol}`)
+            return null
+        }
+
+        // Get the data series
+        const dataKey = Object.keys(data).find(key => key.includes('data'))
+        if (!dataKey || !data[dataKey] || data[dataKey].length < 2) {
+            return null
+        }
+
+        const recentData = data[dataKey].slice(0, 2)
+        const current = toNum(recentData[0].value)
+        const previous = toNum(recentData[1].value)
+
+        if (current === 0 || previous === 0) {
+            return null
+        }
+
+        const changePercent = ((current - previous) / previous) * 100
+
+        let recommendation = 'Hold'
+
+        if (changePercent > 5) {
+            recommendation = 'Buy'
+        } else if (changePercent > 2) {
+            recommendation = 'Buy'
+        } else if (changePercent < -5) {
+            recommendation = 'Sell'
+        } else if (changePercent < -2) {
+            recommendation = 'Sell'
+        }
+
+        return {
+            symbol: commodity.symbol,
+            recommendation,
+            price: current.toFixed(2),
+            type: 'commodity',
+            name: commodity.name
+        }
+    } catch (err) {
+        console.error(`Error fetching commodity ${commodity.symbol}:`, err.message)
+        return null
+    }
+}
+
+// Save signal to database
 async function saveSignalToDB(signal) {
     if (!signal) return
 
-    await pool.execute(
-        `INSERT INTO signals (symbol, recommendation, price, updated_at)
-         VALUES (?, ?, ?, NOW())
-         ON DUPLICATE KEY UPDATE
-            recommendation = VALUES(recommendation),
-            price = VALUES(price),
-            updated_at = NOW()`,
-        [signal.symbol, signal.recommendation, signal.price]
-    )
+    try {
+        await pool.execute(
+            `INSERT INTO signals (symbol, recommendation, price, type, updated_at)
+             VALUES (?, ?, ?, ?, NOW())
+             ON DUPLICATE KEY UPDATE
+                recommendation = VALUES(recommendation),
+                price = VALUES(price),
+                type = VALUES(type),
+                updated_at = NOW()`,
+            [signal.symbol, signal.recommendation, signal.price, signal.type || 'stock']
+        )
+    } catch (err) {
+        console.error(`Error saving ${signal.symbol} to DB:`, err.message)
+    }
 }
 
-// Fetch all signals
+// Update all signals (batch processing with rate limiting)
 async function updateAllSignals() {
-    console.log("Updating all signals...")
+    console.log("🔄 Starting signal update...")
 
-    for (const symbol of SYMBOLS) {
-        const signal = await fetchSignal(symbol)
-        await saveSignalToDB(signal)
+    const batchSize = 5
+    const delayBetweenBatches = 12000 // 12 seconds
 
-        await new Promise(res => setTimeout(res, 1000)) // Avoid API rate limit
+    // Process stocks
+    for (let i = 0; i < STOCK_SYMBOLS.length; i += batchSize) {
+        const batch = STOCK_SYMBOLS.slice(i, i + batchSize)
+        console.log(`Processing stock batch: ${batch.join(', ')}`)
+
+        const results = await Promise.all(
+            batch.map(symbol => fetchStockSignal(symbol))
+        )
+
+        for (const signal of results) {
+            if (signal) {
+                await saveSignalToDB(signal)
+            }
+        }
+
+        if (i + batchSize < STOCK_SYMBOLS.length) {
+            console.log(`⏱️  Waiting ${delayBetweenBatches / 1000}s before next batch...`)
+            await new Promise(resolve => setTimeout(resolve, delayBetweenBatches))
+        }
     }
 
-    console.log("✔ All signals updated")
+    // Wait before processing commodities
+    await new Promise(resolve => setTimeout(resolve, delayBetweenBatches))
+
+    // Process commodities
+    for (let i = 0; i < COMMODITIES.length; i += batchSize) {
+        const batch = COMMODITIES.slice(i, i + batchSize)
+        console.log(`Processing commodity batch: ${batch.map(c => c.name).join(', ')}`)
+
+        const results = await Promise.all(
+            batch.map(commodity => fetchCommoditySignal(commodity))
+        )
+
+        for (const signal of results) {
+            if (signal) {
+                await saveSignalToDB(signal)
+            }
+        }
+
+        if (i + batchSize < COMMODITIES.length) {
+            console.log(`⏱️  Waiting ${delayBetweenBatches / 1000}s before next batch...`)
+            await new Promise(resolve => setTimeout(resolve, delayBetweenBatches))
+        }
+    }
+
+    console.log("✅ Signal update completed")
 }
 
-// Run every 15 minutes
-cron.schedule("*/15 * * * *", () => {
-    updateAllSignals()
+// Run cron job every minute
+cron.schedule("* * * * *", () => {
+    console.log(`[${new Date().toISOString()}] Running scheduled signal update`)
+    updateAllSignals().catch(err => {
+        console.error("Cron job error:", err)
+    })
+})
+
+// Initial update on startup
+console.log("🚀 Starting initial signal update...")
+updateAllSignals().catch(err => {
+    console.error("Initial update error:", err)
+})
+
+// ---- GET ALL SIGNALS ENDPOINT ----
+app.get("/signals", async (req, res) => {
+    try {
+        const [rows] = await pool.execute(
+            `SELECT symbol, recommendation, price, type, updated_at 
+             FROM signals 
+             ORDER BY 
+                type DESC,
+                CASE recommendation 
+                    WHEN 'Buy' THEN 1 
+                    WHEN 'Hold' THEN 2 
+                    WHEN 'Sell' THEN 3 
+                    ELSE 4 
+                END,
+                symbol ASC`
+        )
+
+        res.json({
+            signals: rows,
+            lastUpdated: rows.length > 0 ? rows[0].updated_at : null
+        })
+    } catch (err) {
+        console.error("Error fetching signals:", err)
+        res.status(500).json({ error: "Failed to fetch signals" })
+    }
 })
 
 // ---- LOGIN USER ----
@@ -152,7 +343,7 @@ app.post("/auth/login", async (req, res) => {
         }
 
         const token = jwt.sign(
-            { id: user.id, username: user.username, email: user.email },
+            { id: user.id, username: user.username, email: user.email, subscription_expires_at: user.subscription_expires_at },
             JWT_SECRET,
             { expiresIn: "2h" }
         )
@@ -219,31 +410,57 @@ app.post("/auth/register", async (req, res) => {
 
 // ---- ACTIVATE 7-DAY SUBSCRIPTION ----
 app.post("/subscription/activate", async (req, res) => {
-    const token = req.cookies.token;
-    if (!token) return res.status(401).json({ error: "Missing token" });
+    const token = req.cookies.token
+    if (!token) return res.status(401).json({ error: "Missing token" })
 
-    let user;
+    let user
     try {
-        user = jwt.verify(token, JWT_SECRET);
+        user = jwt.verify(token, JWT_SECRET)
     } catch (err) {
-        return res.status(401).json({ error: "Invalid or expired token" });
+        return res.status(401).json({ error: "Invalid or expired token" })
     }
 
     try {
+        // Update subscription in DB
         await pool.execute(
             `UPDATE users
              SET subscription_expires_at = DATE_ADD(NOW(), INTERVAL 7 DAY)
              WHERE id = ?`,
             [user.id]
-        );
+        )
 
-        res.json({ message: "Subscription activated for 7 days" });
+        // Fetch updated user data
+        const [rows] = await pool.execute("SELECT id, username, email, subscription_expires_at FROM users WHERE id = ?", [user.id])
+        const updatedUser = rows[0]
+
+        // Re-issue JWT with updated subscription info
+        const newToken = jwt.sign(
+            {
+                id: updatedUser.id,
+                username: updatedUser.username,
+                email: updatedUser.email,
+                subscription_expires_at: updatedUser.subscription_expires_at
+            },
+            JWT_SECRET,
+            { expiresIn: "2h" }
+        )
+
+        // Set new JWT cookie
+        res.cookie("token", newToken, {
+            httpOnly: true,
+            sameSite: "lax",
+            maxAge: 2 * 60 * 60 * 1000
+        })
+
+        // Return updated user info to frontend
+        res.json(updatedUser)
 
     } catch (err) {
-        console.error("SUBSCRIPTION ERROR:", err);
-        res.status(500).json({ error: "Database error" });
+        console.error("SUBSCRIPTION ERROR:", err)
+        res.status(500).json({ error: "Database error" })
     }
 })
+
 
 // ---- LOGOUT ----
 app.post("/auth/logout", (req, res) => {
@@ -254,4 +471,5 @@ app.post("/auth/logout", (req, res) => {
 // ---- START SERVER ----
 app.listen(9104, () => {
     console.log("API running on http://localhost:9104")
+    console.log("Signals endpoint: http://localhost:9104/signals")
 })

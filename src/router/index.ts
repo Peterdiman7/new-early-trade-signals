@@ -2,6 +2,7 @@ import CancelSubscriptionView from "@/views/CancelSubscriptionView.vue"
 import ContactView from "@/views/ContactView.vue"
 import HomeView from "@/views/HomeView.vue"
 import SignalsView from "@/views/SignalsView.vue"
+import MarketAnalysisView from "@/views/MarketAnalysisView.vue"
 import PricingPlansView from "@/views/PricingPlansView.vue"
 import CheckoutView from "@/views/CheckoutView.vue"
 import PrivacyPolicyView from "@/views/PrivacyPolicyView.vue"
@@ -11,6 +12,8 @@ import { createRouter as createVueRouter, createWebHistory } from "vue-router"
 import type { RouteLocationNamedRaw } from "vue-router"
 import LoginView from "@/views/LoginView.vue"
 import RegisterView from "@/views/RegisterView.vue"
+
+import { useAuthStore } from "@/stores/auth"
 
 export const rootRoute: RouteLocationNamedRaw = { name: "home" }
 const createRouter = () => {
@@ -26,12 +29,19 @@ const createRouter = () => {
 				path: "/signals",
 				name: "signals",
 				component: SignalsView,
+				// meta: { requiresAuth: true, requiresSubscription: true },
 			},
 			{
 				path: "/pricing",
 				name: "pricing",
 				component: PricingPlansView,
-				// meta: { requiresAuth: true },
+				// meta: { requiresAuth: true, requiresNotGermany: true },
+			},
+			{
+				path: "/market-analysis",
+				name: "market-analysis",
+				component: MarketAnalysisView,
+				meta: { requiresAuth: true, requiresSubscription: true },
 			},
 			{
 				path: "/checkout",
@@ -43,7 +53,6 @@ const createRouter = () => {
 				path: "/contact",
 				name: "contact",
 				component: ContactView,
-				// meta: { requiresAuth: true },
 			},
 			{
 				path: "/privacy-policy",
@@ -75,21 +84,38 @@ const createRouter = () => {
 		],
 	})
 
+
 	router.beforeEach(async (to, _from, next) => {
 		const requiresAuth = to.matched.some(r => (r.meta as any)?.requiresAuth)
 		const requiresGuest = to.matched.some(r => (r.meta as any)?.requiresGuest)
+		const requiresNotGermany = to.matched.some(r => (r.meta as any)?.requiresNotGermany)
+		const requiresSubscription = to.matched.some(r => (r.meta as any)?.requiresSubscription)
 
-		let loggedIn = false
-		try {
-			const res = await fetch("https://back.early-trade-signals.com/auth/me", {
-				credentials: "include"
-			})
-			loggedIn = res.ok
-		} catch (_) { }
+		const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
+		const isGermany = subdomain === 'de'
 
-		if (requiresAuth && !loggedIn) next({ name: "login" })
-		else if (requiresGuest && loggedIn) next({ name: "home" })
-		else next()
+		const authStore = useAuthStore()
+		await authStore.checkLogin()
+
+		const loggedIn = authStore.loggedIn
+		const subscriptionActive = authStore.subscriptionActive
+
+		if (requiresAuth && !loggedIn) {
+			next({ name: "login" })
+		}
+		else if (requiresSubscription && !subscriptionActive) {
+			if (isGermany) next({ name: "home" })
+			else next({ name: "pricing" })
+		}
+		else if (requiresNotGermany && isGermany) {
+			next({ name: "home" })
+		}
+		else if (requiresGuest && loggedIn) {
+			next({ name: "home" })
+		}
+		else {
+			next()
+		}
 	})
 
 	return router

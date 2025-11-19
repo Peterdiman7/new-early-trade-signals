@@ -9,7 +9,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -19,7 +19,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -29,7 +29,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -39,7 +39,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -49,7 +49,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -59,7 +59,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -69,7 +69,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -79,7 +79,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -89,7 +89,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -99,7 +99,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -109,7 +109,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -119,7 +119,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -129,7 +129,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -139,7 +139,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -149,7 +149,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -159,7 +159,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -169,7 +169,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -179,7 +179,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -189,7 +189,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -199,7 +199,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -209,7 +209,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -219,7 +219,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -229,7 +229,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -239,7 +239,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -249,7 +249,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -259,7 +259,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -269,7 +269,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -279,7 +279,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -289,7 +289,6 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -299,7 +298,6 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -309,7 +307,6 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -319,7 +316,6 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -329,7 +325,6 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -339,7 +334,6 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -349,7 +343,6 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
 							</div>
 						</div>
 					</li>
@@ -359,7 +352,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -369,7 +362,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>#US30</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -379,7 +372,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>Gold</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -389,7 +382,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>BTCUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -399,7 +392,7 @@
 								<div class="icon-box"><i class="icon-24"></i></div>
 								<h6>USDJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -409,7 +402,7 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPJPY</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
@@ -419,27 +412,14 @@
 								<div class="icon-box"><i class="icon-25"></i></div>
 								<h6>GBPUSD</h6>
 								<span>3125.71 / 3117.68</span>
-								<a href="account-details.html" class="theme-btn btn-one">Trade</a>
+
 							</div>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</section>
-		<section class="phone-number-container">
-			<h2>Subscribe for 7 Days</h2>
-			<p>Enter your phone number below to start your free 7-day subscription trial.</p>
-
-			<div class="phone-form">
-				<label for="phone">Phone Number</label>
-				<input type="tel" id="phone" name="phone" v-model="phone" placeholder="e.g. +1 555 123 4567" required />
-
-				<button type="button" @click="activateSubscription">
-					Subscribe
-				</button>
-			</div>
-		</section>
-
+		<MobileSubscription v-if="isGermany && !subscriptionActive && loggedIn" />
 		<section class="banner-style-five p_relative">
 			<div class="large-container">
 				<div class="banner-carousel owl-theme owl-carousel owl-nav-none owl-dots-none">
@@ -455,7 +435,7 @@
 										<p>Our management team brings a wealth of experience to the day-to-day
 											operations at Fortradex</p>
 										<div class="btn-box">
-											<a href="account-details.html" class="theme-btn btn-one mr_15">Start Trading
+											<a href="/login" class="theme-btn btn-one mr_15">Start Trading
 												Now</a>
 											<a href="/login" class="theme-btn btn-two">Try Demo Trading</a>
 										</div>
@@ -485,7 +465,7 @@
 										<p>Our management team brings a wealth of experience to the day-to-day
 											operations at Fortradex</p>
 										<div class="btn-box">
-											<a href="account-details.html" class="theme-btn btn-one mr_15">Start Trading
+											<a href="/login" class="theme-btn btn-one mr_15">Start Trading
 												Now</a>
 											<a href="/login" class="theme-btn btn-two">Try Demo Trading</a>
 										</div>
@@ -515,7 +495,7 @@
 										<p>Our management team brings a wealth of experience to the day-to-day
 											operations at Fortradex</p>
 										<div class="btn-box">
-											<a href="account-details.html" class="theme-btn btn-one mr_15">Start Trading
+											<a href="/login" class="theme-btn btn-one mr_15">Start Trading
 												Now</a>
 											<a href="/login" class="theme-btn btn-two">Try Demo Trading</a>
 										</div>
@@ -634,7 +614,6 @@
 							</div>
 						</div>
 					</section>
-
 				</div>
 			</div>
 		</section>
@@ -645,15 +624,6 @@
 					<h2>Market Spreads and Swaps</h2>
 				</div>
 				<div class="tabs-box">
-					<ul class="tab-btns tab-buttons mb_20 clearfix">
-						<li class="tab-btn active-btn" data-tab="#tab-1">Forex</li>
-						<li class="tab-btn" data-tab="#tab-2">Crypto CFDs</li>
-						<li class="tab-btn" data-tab="#tab-3">Share CFDs</li>
-						<li class="tab-btn" data-tab="#tab-4">Commodities</li>
-						<li class="tab-btn" data-tab="#tab-5">Spot Metals</li>
-						<li class="tab-btn" data-tab="#tab-6">Energies</li>
-						<li class="tab-btn" data-tab="#tab-7">Indices</li>
-					</ul>
 					<div class="tabs-content">
 						<div class="tab active-tab" id="tab-1">
 							<div class="table-outer">
@@ -679,7 +649,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -698,7 +668,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -717,7 +687,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -736,7 +706,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -755,7 +725,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -785,7 +755,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -804,7 +774,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -823,7 +793,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -842,7 +812,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -861,7 +831,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -891,7 +861,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -910,7 +880,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -929,7 +899,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -948,7 +918,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -967,7 +937,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -997,7 +967,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1016,7 +986,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1035,7 +1005,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1054,7 +1024,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1073,7 +1043,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -1103,7 +1073,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1122,7 +1092,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1141,7 +1111,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1160,7 +1130,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1179,7 +1149,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -1209,7 +1179,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1228,7 +1198,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1247,7 +1217,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1266,7 +1236,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1285,7 +1255,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -1315,7 +1285,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1334,7 +1304,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1353,7 +1323,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1372,7 +1342,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -1391,7 +1361,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="account-details.html">Trade</a>
+											<a href="/signals">Trade</a>
 										</div>
 									</li>
 								</ul>
@@ -1413,9 +1383,9 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-16"></i></div>
-								<h3><a href="account-details.html">Professional Account</a></h3>
+								<h3><a href="/login">Professional Account</a></h3>
 								<p>Traders with professional accounts gain access to a wide</p>
-								<div class="btn-box"><a href="account-details.html" class="theme-btn btn-one">Create
+								<div class="btn-box"><a href="/register" class="theme-btn btn-one">Create
 										Account</a></div>
 							</div>
 						</div>
@@ -1425,9 +1395,9 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-17"></i></div>
-								<h3><a href="account-details.html">Overview Account</a></h3>
+								<h3><a href="/login">Overview Account</a></h3>
 								<p>The primary feature of a trading overview account is its ability to</p>
-								<div class="btn-box"><a href="account-details.html" class="theme-btn btn-one">Create
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">Create
 										Account</a></div>
 							</div>
 						</div>
@@ -1437,9 +1407,9 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-18"></i></div>
-								<h3><a href="account-details.html">Demo Account</a></h3>
+								<h3><a href="/login">Demo Account</a></h3>
 								<p>Trading demo accounts are particularly valuable for novice</p>
-								<div class="btn-box"><a href="account-details.html" class="theme-btn btn-one">Create
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">Create
 										Account</a></div>
 							</div>
 						</div>
@@ -1449,9 +1419,9 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-19"></i></div>
-								<h3><a href="account-details.html">Islamic Account</a></h3>
+								<h3><a href="/login">Islamic Account</a></h3>
 								<p>Islamic accounts also adhere to ethical guidelines that prohibit</p>
-								<div class="btn-box"><a href="account-details.html" class="theme-btn btn-one">Create
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">Create
 										Account</a></div>
 							</div>
 						</div>
@@ -1474,21 +1444,8 @@
 						<div class="content_block_four">
 							<div class="content-box ml_80">
 								<div class="sec-title light pb_40">
-									<h2>Download Trading App</h2>
-									<p>We use cookies to understand how you use our website and to give you the best
-										possible experience.</p>
-								</div>
-								<div class="btn-box">
-									<a href="about.html" class="apple-store">
-										<img src="/images/icons/icon-7.png" alt="">
-										<span>Download on</span>
-										App Store
-									</a>
-									<a href="about.html" class="play-store">
-										<img src="/images/icons/icon-8.png" alt="">
-										<span>Get it on</span>
-										Google Play
-									</a>
+									<h2>We use cookies to understand how you use our website and to give you the best
+										possible experience.</h2>
 								</div>
 							</div>
 						</div>
@@ -1586,7 +1543,7 @@
 								<div class="text-box">
 									<p>We use cookies to understand how you use our website and to give you the best
 										possible</p>
-									<a href="/login" class="theme-btn btn-one">Start Trading Now</a>
+									<a v-if="!loggedIn" href="/login" class="theme-btn btn-one">Start Trading Now</a>
 								</div>
 							</div>
 						</div>
@@ -1632,8 +1589,6 @@
 					<div class="col-lg-4 col-md-6 col-sm-12 testimonial-block">
 						<div class="testimonial-block-one">
 							<div class="inner-box">
-								<figure class="clients-logo"><a href="index-5.html"><img
-											src="/images/clients/clients-14.png" alt=""></a></figure>
 								<ul class="rating">
 									<li><i class="icon-37"></i></li>
 									<li><i class="icon-37"></i></li>
@@ -1657,8 +1612,6 @@
 					<div class="col-lg-4 col-md-6 col-sm-12 testimonial-block">
 						<div class="testimonial-block-one">
 							<div class="inner-box">
-								<figure class="clients-logo"><a href="index-5.html"><img
-											src="/images/clients/clients-15.png" alt=""></a></figure>
 								<ul class="rating">
 									<li><i class="icon-37"></i></li>
 									<li><i class="icon-37"></i></li>
@@ -1682,8 +1635,6 @@
 					<div class="col-lg-4 col-md-6 col-sm-12 testimonial-block">
 						<div class="testimonial-block-one">
 							<div class="inner-box">
-								<figure class="clients-logo"><a href="index-5.html"><img
-											src="/images/clients/clients-16.png" alt=""></a></figure>
 								<ul class="rating">
 									<li><i class="icon-37"></i></li>
 									<li><i class="icon-37"></i></li>
@@ -1740,7 +1691,17 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, nextTick, ref } from 'vue'
 
-const phone = ref('')
+import { useRouter } from 'vue-router'
+
+import { storeToRefs } from 'pinia'
+
+import MobileSubscription from '@/components/MobileSubscription.vue'
+import { useAuthStore } from '@/stores/auth'
+import { computed } from 'vue'
+
+const router = useRouter()
+const auth = useAuthStore()
+const { loggedIn, subscriptionActive } = storeToRefs(auth)
 
 declare global {
 	interface Window {
@@ -1749,12 +1710,14 @@ declare global {
 	}
 }
 
+const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
+const isGermany = computed(() => subdomain === 'de')
+
 let carouselInstances: any[] = []
 
 onMounted(async () => {
 	await nextTick()
 
-	// Add delay to ensure jQuery plugins are loaded
 	setTimeout(() => {
 		initializeComponents()
 	}, 150)
@@ -1773,22 +1736,6 @@ onBeforeUnmount(() => {
 	})
 	carouselInstances = []
 })
-
-const activateSubscription = async () => {
-	try {
-		const response = await fetch("https://back.early-trade-signals.com/subscription/activate", {
-			method: "POST",
-			credentials: "include",
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-		const text = await response.text()
-		const data = JSON.parse(text)
-	} catch (err) {
-		console.error("Activation error:", err);
-	}
-}
 
 function initializeComponents() {
 	const $ = window.$ || window.jQuery
@@ -1910,68 +1857,4 @@ function initScrollToTop($: any) {
 }
 </script>
 
-<style scoped>
-.phone-number-container {
-	max-width: 800px;
-	margin: 2rem auto;
-	padding: 1.5rem;
-	background: #ffffff;
-	border-radius: 1rem;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-	font-family: sans-serif;
-}
-
-.phone-number-container h2 {
-	font-size: 1.5rem;
-	margin-bottom: 0.5rem;
-	font-weight: 600;
-	text-align: center;
-}
-
-
-.phone-number-container p {
-	font-size: 0.95rem;
-	margin-bottom: 1.25rem;
-	text-align: center;
-	color: #555;
-}
-
-
-.phone-form {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-}
-
-
-.phone-form label {
-	font-size: 0.9rem;
-	color: #333;
-	font-weight: 500;
-}
-
-
-.phone-form input[type="tel"] {
-	padding: 0.65rem 0.75rem;
-	border: 1px solid #ccc;
-	border-radius: 0.5rem;
-	font-size: 1rem;
-}
-
-
-.phone-form button {
-	padding: 0.75rem;
-	border: none;
-	background: #22823A;
-	color: white;
-	font-size: 1rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	transition: background 0.2s ease;
-}
-
-
-.phone-form button:hover {
-	background: #2da64b;
-}
-</style>
+<style scoped></style>

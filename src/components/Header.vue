@@ -8,7 +8,7 @@
                             <div class="icon-box"><i class="icon-07"></i></div>
                             <a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a>
                         </div>
-                        <div class="option-block">
+                        <div v-if="!loggedIn" class="option-block">
                             <a href="/register" class="theme-btn btn-one mr_10">Open Account</a>
                             <a href="/login" class="theme-btn btn-two">Login</a>
                         </div>
@@ -32,7 +32,7 @@
                                     <ul class="navigation clearfix">
                                         <li><a href="/">Home</a></li>
                                         <li><a href="/signals">Signals</a></li>
-                                        <li class="dropdown"><a href="index.html">Support</a>
+                                        <li class="dropdown"><a href="/contact">Support</a>
                                             <ul>
                                                 <li><a href="/contact">Contact Us</a></li>
                                                 <li><a href="/cancel-subscription">Cancel Subscription</a></li>
@@ -45,8 +45,9 @@
                                             </ul>
                                         </li>
                                         <li><a href="/market-analysis">Market Analysis</a></li>
-                                        <li><a href="/pricing">Pricing</a></li>
-                                        <li><a href="/login">Login</a></li>
+                                        <li><a v-if="subdomain !== 'de'" href="/pricing">Pricing</a></li>
+                                        <li v-if="!loggedIn"><a href="/login">Login</a></li>
+                                        <li v-else @click.prevent="handleLogout"><a href="#">Logout</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -100,8 +101,9 @@
                             </div>
                         </li>
                         <li><a href="/market-analysis">Market Analysis</a></li>
-                        <li><a href="/pricing">Pricing</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a v-if="subdomain !== 'de'" href="/pricing">Pricing</a></li>
+                        <li v-if="!loggedIn"><a href="/login">Login</a></li>
+                        <li v-else @click.prevent="handleLogout"><a href="#">Logout</a></li>
                     </ul>
                 </div>
                 <div class="contact-info">
@@ -128,13 +130,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+
+import { useRouter } from 'vue-router'
+
+import { storeToRefs } from 'pinia'
+
+import { useAuthStore } from '@/stores/auth'
+
+const router = useRouter()
+const auth = useAuthStore()
+const { loggedIn } = storeToRefs(auth)
 
 const isMobileMenuOpen = ref(false)
 const openDropdowns = ref({
     about: false,
     legal: false,
 })
+
+const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
 
 const toggleMobileMenu = () => {
     isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -158,6 +172,18 @@ watch(isMobileMenuOpen, (isOpen) => {
     } else {
         document.body.classList.remove('mobile-menu-visible')
     }
+})
+
+const logout = async () => {
+    await auth.logout()
+    router.push("/")
+}
+
+const handleLogout = async () => {
+    await logout()
+}
+onMounted(() => {
+    auth.checkLogin()
 })
 
 onUnmounted(() => {

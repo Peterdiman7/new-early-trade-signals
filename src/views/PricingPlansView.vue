@@ -8,10 +8,6 @@
                     class="toggle-btn">
                     Monthly
                 </button>
-                <button :class="{ active: billingCycle === 'annual' }" @click="billingCycle = 'annual'"
-                    class="toggle-btn">
-                    Annual
-                </button>
             </div>
         </div>
         <div class="pricing-grid">

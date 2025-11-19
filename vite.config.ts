@@ -19,10 +19,7 @@ export default defineConfig({
 			"ksa.early-trade-signals.com",
 			"iq.early-trade-signals.com",
 			"su.early-trade-signals.com",
-
-			// TODO:
-			"de.localhost:9104",
-			"de.localhost:9004"
+			"de.early-trade-signals.com",
 		],
 	},
 	preview: {
@@ -33,10 +30,7 @@ export default defineConfig({
 			"ksa.early-trade-signals.com",
 			"iq.early-trade-signals.com",
 			"su.early-trade-signals.com",
-
-			// TODO:
-			"de.localhost:9104",
-			"de.localhost:9004"
+			"de.early-trade-signals.com",
 		],
 	},
 })
