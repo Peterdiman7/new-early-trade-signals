@@ -5,7 +5,14 @@
                 <div class="large-container">
                     <div class="top-inner">
                         <div class="support-box">
-                            <div class="icon-box"><i class="icon-07"></i></div>
+                            <div class="icon-box language-switcher">
+                                <img src="/images/en.webp" alt="English" class="flag" @click="setLocale('en')"
+                                    :class="{ active: locale === 'en' }" />
+
+                                <img src="/images/de.webp" alt="Deutsch" class="flag" @click="setLocale('de')"
+                                    :class="{ active: locale === 'de' }" />
+                            </div>
+
                             <a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a>
                         </div>
                         <div v-if="!loggedIn" class="option-block">
@@ -130,9 +137,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 import { storeToRefs } from 'pinia'
 
@@ -164,6 +172,17 @@ const closeMobileMenu = () => {
 
 const toggleDropdown = (name: string) => {
     openDropdowns.value[name] = !openDropdowns.value[name]
+}
+
+const { locale } = useI18n()
+
+const setLocale = (lang: string) => {
+    locale.value = lang
+    localStorage.setItem("locale", lang) // optional persistence
+}
+
+const switchLanguage = () => {
+    locale.value === 'en' ? setLocale('de') : setLocale('en')
 }
 
 watch(isMobileMenuOpen, (isOpen) => {
@@ -246,5 +265,28 @@ onUnmounted(() => {
 
 .dropdown.open .dropdown-btn {
     transform: rotate(180deg);
+}
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.flag {
+    width: 26px;
+    height: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.flag:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.flag.active {
+    opacity: 1;
 }
 </style>

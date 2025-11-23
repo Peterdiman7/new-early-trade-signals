@@ -549,6 +549,7 @@
 											<div class="sec-title pb_30">
 												<span class="sub-title mb_14">Account</span>
 												<h2>Trading Accounts</h2>
+												<h2>{{formatTranslation(t, 'home.trading_accounts')}}</h2>
 											</div>
 											<ul class="accordion-box">
 												<li class="accordion block active-block">
@@ -1689,16 +1690,19 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, nextTick, ref } from 'vue'
+import { onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { computed } from 'vue'
 
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 import { storeToRefs } from 'pinia'
 
 import MobileSubscription from '@/components/MobileSubscription.vue'
 import { useAuthStore } from '@/stores/auth'
-import { computed } from 'vue'
+import { formatTranslation } from '@/utils/i18'
 
+const { t } = useI18n()
 const router = useRouter()
 const auth = useAuthStore()
 const { loggedIn, subscriptionActive } = storeToRefs(auth)
