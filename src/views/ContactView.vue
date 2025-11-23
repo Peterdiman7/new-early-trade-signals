@@ -4,10 +4,10 @@
             <div class="pattern-layer rotate-me" style="background-image: url(/images/shape/shape-34.png);"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h1>Contact Us</h1>
+                    <h1>{{ formatTranslation(t, 'header.contact_us') }}</h1>
                     <ul class="bread-crumb clearfix">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Contact Us</li>
+                        <li><a href="/">Home</a></li>
+                        <li>{{ formatTranslation(t, 'header.contact_us') }}</li>
                     </ul>
                 </div>
             </div>
@@ -15,18 +15,18 @@
         <section class="contact-section pt_90 pb_100">
             <div class="auto-container">
                 <div class="info-inner pb_25">
-                    <div class="row clearfix">
+                    <div v-if="subdomain !== 'de'" class="row clearfix">
                         <div class="col-lg-3 col-md-6 col-sm-12 info-column">
                             <div class="single-info">
                                 <div class="icon-box"><i class="icon-45"></i></div>
-                                <h4>Corporate Office</h4>
+                                <h4>{{ formatTranslation(t, 'header.contact_us') }}</h4>
                                 <p>Pulse Entertainment Services LTD</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-12 info-column">
                             <div class="single-info">
                                 <div class="icon-box"><i class="icon-45"></i></div>
-                                <h4>Main Warehouse</h4>
+                                <h4>{{ formatTranslation(t, 'contacts.main_warehouse') }}</h4>
                                 <p>1125 E BROADWAY BLVD #14, GLENDALE, CA 91205</p>
                             </div>
                         </div>
@@ -46,20 +46,50 @@
                             </div>
                         </div>
                     </div>
+                    <div v-else class="row clearfix">
+                        <div class="col-lg-3 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="icon-box"><i class="icon-45"></i></div>
+                                <h4>{{ formatTranslation(t, 'contacts.corporate_office') }}</h4>
+                                <p>MBX Productive ltd.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="icon-box"><i class="icon-45"></i></div>
+                                <h4>{{ formatTranslation(t, 'contacts.main_warehouse') }}</h4>
+                                <p> Pimen Zogravski Nr. 14, 1000 Sofia, Bulgaria</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="icon-box"><i class="icon-46"></i></div>
+                                <h4>Email Address</h4>
+                                <li><strong>E-Mail:</strong> ets.de@silverlines.info</li>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 info-column">
+                            <div class="single-info">
+                                <div class="icon-box"><i class="icon-47"></i></div>
+                                <h4>{{ formatTranslation(t, 'contacts.phone') }}</h4>
+                                <p><a href="tel:0800 589 5405">0800 589 5405</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-inner pb_70">
                     <form method="post" action="sendemail.php" id="contact-form">
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <label>Your Name <span>*</span></label>
+                                <label>{{ formatTranslation(t, 'contacts.your_name') }}<span>*</span></label>
                                 <input type="text" name="username" placeholder="" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                <label>Phone <span>*</span></label>
+                                <label>{{ formatTranslation(t, 'contacts.phone') }}<span>*</span></label>
                                 <input type="text" name="phone" placeholder="" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <label>Email Address <span>*</span></label>
+                                <label>{{ formatTranslation(t, 'contacts.email_address') }}<span>*</span></label>
                                 <input type="email" name="email" placeholder="" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
@@ -67,11 +97,12 @@
                                 <input type="text" name="subject" placeholder="" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                <label>Write Message <span>*</span></label>
+                                <label>{{ formatTranslation(t, 'contacts.write_message') }}<span>*</span></label>
                                 <textarea name="message" placeholder=""></textarea>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn pt_18">
-                                <button type="submit" class="theme-btn btn-one" name="submit-form">Send Message</button>
+                                <button type="submit" class="theme-btn btn-one" name="submit-form">{{
+                                    formatTranslation(t, 'contacts.write_message') }}</button>
                             </div>
                         </div>
                     </form>
@@ -93,16 +124,16 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-12 col-sm-12 text-column">
                             <div class="text-box">
-                                <h2>Subscribe for latest update</h2>
+                                <h2>{{ formatTranslation(t, 'home.subscribe_latest_news') }}</h2>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12 form-column">
                             <div class="form-inner">
-                                <form method="post" action="contact.html">
+                                <form method="post" action="/contact">
                                     <div class="form-group">
                                         <input type="email" name="email" placeholder="Email Address" required>
-                                        <button type="submit" class="theme-btn btn-one">Subscribe<i
-                                                class="icon-26"></i></button>
+                                        <button type="submit" class="theme-btn btn-one">{{ formatTranslation(t,
+                                            'home.subscribe') }}<i class="icon-26"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -112,116 +143,10 @@
             </div>
         </section>
         <footer class="main-footer">
-            <div class="widget-section p_relative pt_70 pb_80">
-                <div class="auto-container">
-                    <div class="row clearfix">
-                        <div class="col-lg-8 col-md-12 col-sm-12 big-column">
-                            <div class="row clearfix">
-                                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-title mb_11">
-                                            <h3>About Us</h3>
-                                        </div>
-                                        <div class="widget-content">
-                                            <ul class="links-list clearfix">
-                                                <li><a href="index.html">Who we are</a></li>
-                                                <li><a href="index.html">Awards</a></li>
-                                                <li><a href="index.html">Principals</a></li>
-                                                <li><a href="index.html">Partnership</a></li>
-                                                <li><a href="contact.html">Contact us</a></li>
-                                                <li><a href="index.html">Careers</a></li>
-                                                <li><a href="index.html">Management</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-title mb_11">
-                                            <h3>Platforms</h3>
-                                        </div>
-                                        <div class="widget-content">
-                                            <ul class="links-list clearfix">
-                                                <li><a href="index.html">Forex</a></li>
-                                                <li><a href="index.html">Crypto CFDs</a></li>
-                                                <li><a href="index.html">Share CFDs</a></li>
-                                                <li><a href="index.html">Commodities</a></li>
-                                                <li><a href="index.html">Spot Metals</a></li>
-                                                <li><a href="index.html">Energies</a></li>
-                                                <li><a href="index.html">MetaTrader 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-title mb_11">
-                                            <h3>Trading Tools</h3>
-                                        </div>
-                                        <div class="widget-content">
-                                            <ul class="links-list clearfix">
-                                                <li><a href="index.html">FXT Navigator</a></li>
-                                                <li><a href="index.html">Trading Central</a></li>
-                                                <li><a href="index.html">Economic Calendar</a></li>
-                                                <li><a href="index.html">Market Sentiment</a></li>
-                                                <li><a href="index.html">API Trading</a></li>
-                                                <li><a href="index.html">VPS</a></li>
-                                                <li><a href="index.html">CDF Rollover</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                                    <div class="footer-widget links-widget">
-                                        <div class="widget-title mb_25">
-                                            <h3>Support</h3>
-                                        </div>
-                                        <div class="widget-content">
-                                            <ul class="links-list clearfix">
-                                                <li><a href="index.html">Legal Information</a></li>
-                                                <li><a href="index.html">Privacy Policy</a></li>
-                                                <li><a href="index.html">Regulations</a></li>
-                                                <li><a href="index.html">Risk Disclaimer</a></li>
-                                                <li><a href="index.html">Complaints Procedure</a></li>
-                                                <li><a href="index.html">Company News</a></li>
-                                                <li><a href="index.html">Trading Videos</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="footer-lower">
-                                <figure class="footer-logo"><a href="index.html"><img src="/images/logo.png" alt=""></a>
-                                </figure>
-                                <ul class="footer-card clearfix">
-                                    <li>
-                                        <h4>We Accept:</h4>
-                                    </li>
-                                    <li><a href="#"><img src="/images/icons/card-1.png" alt="card-1"></a></li>
-                                    <li><a href="#"><img src="/images/icons/card-2.png" alt="card-2"></a></li>
-                                    <li><a href="#"><img src="/images/icons/card-3.png" alt="card-3"></a></li>
-                                    <li><a href="#"><img src="/images/icons/card-4.png" alt="card-4"></a></li>
-                                    <li><a href="#"><img src="/images/icons/card-5.png" alt="card-5"></a></li>
-                                    <li><a href="#"><img src="/images/icons/card-6.png" alt="card-6"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="footer-bottom">
                 <div class="auto-container">
                     <div class="bottom-inner">
-                        <p>Copyright &copy; 2007-2024 <a href="index.html">ForTradex</a>. All rights reserved.</p>
-                        <ul class="social-links">
-                            <li>
-                                <h5>Follow Us On:</h5>
-                            </li>
-                            <li><a href="#"><i class="icon-12"></i></a></li>
-                            <li><a href="#"><i class="icon-13"></i></a></li>
-                            <li><a href="#"><i class="icon-14"></i></a></li>
-                            <li><a href="#"><i class="icon-15"></i></a></li>
-                        </ul>
+                        <p>Copyright &copy; 2007-2025 <a href="/">Early Trade Signals</a>. All rights reserved.</p>
                     </div>
                 </div>
             </div>
@@ -230,7 +155,13 @@
 </template>
 
 <script setup lang="ts">
+import { formatTranslation } from '@/utils/i18'
 
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
 </script>
 
 <style scoped></style>

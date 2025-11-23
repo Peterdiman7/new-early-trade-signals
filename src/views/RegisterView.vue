@@ -1,27 +1,29 @@
 <template>
     <div class="register-page">
         <div class="register-card">
-            <h1>Register</h1>
+            <h1>{{ formatTranslation(t, 'register.title') }}</h1>
             <form @submit.prevent="register">
                 <div class="form-group">
-                    <label style="color: black;">Username</label>
+                    <label style="color: black;">{{ formatTranslation(t, 'register.username') }}</label>
                     <input type="text" v-model="username" required />
                 </div>
                 <div class="form-group">
-                    <label style="color: black;">Email</label>
+                    <label style="color: black;">{{ formatTranslation(t, 'register.email') }}</label>
                     <input type="email" v-model="email" required />
                 </div>
                 <div class="form-group">
-                    <label style="color: black;">Password</label>
+                    <label style="color: black;">{{ formatTranslation(t, 'register.password') }}</label>
                     <input type="password" v-model="password" required />
                 </div>
-                <button class="btn" type="submit">Register</button>
+                <button class="btn" type="submit">{{ formatTranslation(t, 'register.button') }}</button>
             </form>
+
             <p v-if="success" class="success">{{ success }}</p>
             <p v-if="error" class="error">{{ error }}</p>
+
             <p class="login-link">
-                Already have an account?
-                <router-link to="/login">Login here</router-link>
+                {{ formatTranslation(t, 'register.already_account') }}
+                <router-link to="/login">{{ formatTranslation(t, 'register.login_here') }}</router-link>
             </p>
         </div>
     </div>
@@ -29,7 +31,13 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
+
 import { useRouter } from "vue-router"
+import { useI18n } from 'vue-i18n'
+
+import { formatTranslation } from '@/utils/i18'
+
+const { t } = useI18n()
 
 const API_URL = "https://back.early-trade-signals.com"
 

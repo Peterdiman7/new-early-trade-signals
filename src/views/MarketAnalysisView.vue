@@ -1,58 +1,44 @@
 <template>
     <div class="market-analysis-view">
         <div class="glass-header">
-            <h1>Market Analysis</h1>
-            <p>Deep insights and trends across global markets</p>
+            <h1>{{ pageTitle }}</h1>
+            <p>{{ pageSubtitle }}</p>
         </div>
 
         <div class="analysis-grid">
             <div class="glass-card market-overview">
-                <h2>Market Overview</h2>
+                <h2>{{ formatTranslation(t, 'market_analysis.overview.title') }}</h2>
                 <div class="overview-stats">
-                    <div class="stat-item">
-                        <span class="stat-label">S&P 500</span>
-                        <span class="stat-value positive">+1.24%</span>
-                        <span class="stat-price">4,567.89</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">NASDAQ</span>
-                        <span class="stat-value positive">+2.15%</span>
-                        <span class="stat-price">14,234.56</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Bitcoin</span>
-                        <span class="stat-value negative">-0.85%</span>
-                        <span class="stat-price">$45,123</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Gold</span>
-                        <span class="stat-value positive">+0.45%</span>
-                        <span class="stat-price">$2,045</span>
+                    <div v-for="stat in marketStats" :key="stat.label" class="stat-item">
+                        <span class="stat-label">{{ stat.label }}</span>
+                        <span class="stat-value" :class="stat.trend">{{ stat.value }}</span>
+                        <span class="stat-price">{{ stat.price }}</span>
                     </div>
                 </div>
             </div>
 
             <div class="glass-card sentiment-card">
-                <h2>Market Sentiment</h2>
+                <h2>{{ formatTranslation(t, 'market_analysis.sentiment.title') }}</h2>
                 <div class="sentiment-indicator">
                     <div class="sentiment-bar">
-                        <div class="sentiment-fill bullish" style="width: 68%"></div>
+                        <div class="sentiment-fill bullish" :style="{ width: marketSentiment.value + '%' }"></div>
                     </div>
                     <div class="sentiment-labels">
-                        <span class="bearish-label">Bearish</span>
-                        <span class="neutral-label">Neutral</span>
-                        <span class="bullish-label">Bullish</span>
+                        <span class="bearish-label">{{ formatTranslation(t, 'market_analysis.sentiment.labels.bearish')
+                            }}</span>
+                        <span class="neutral-label">{{ formatTranslation(t, 'market_analysis.sentiment.labels.neutral')
+                            }}</span>
+                        <span class="bullish-label">{{ formatTranslation(t, 'market_analysis.sentiment.labels.bullish')
+                            }}</span>
                     </div>
-                    <div class="sentiment-value">68% Bullish</div>
+                    <div class="sentiment-value">{{ marketSentiment.value }}% {{ marketSentiment.label }}</div>
                 </div>
-                <p class="sentiment-description">
-                    Overall market sentiment remains positive with strong institutional buying across major indices.
-                </p>
+                <p class="sentiment-description">{{ marketSentiment.description }}</p>
             </div>
         </div>
 
         <div class="glass-card trending-assets">
-            <h2>Trending Assets</h2>
+            <h2>{{ formatTranslation(t, 'market_analysis.trending_assets.title') }}</h2>
             <div class="assets-list">
                 <div v-for="asset in trendingAssets" :key="asset.id" class="asset-item">
                     <div class="asset-info">
@@ -73,35 +59,17 @@
         </div>
 
         <div class="analysis-grid">
-            <div class="glass-card analysis-card">
-                <h3>Technical Analysis</h3>
-                <p class="analysis-text">
-                    Major support levels holding strong across equity indices. RSI indicators suggest healthy momentum
-                    without overbought conditions. Watch for resistance at 4,600 on S&P 500.
-                </p>
+            <div v-for="analysis in analyses" :key="analysis.id" class="glass-card analysis-card">
+                <h3>{{ analysis.title }}</h3>
+                <p class="analysis-text">{{ analysis.text }}</p>
                 <div class="analysis-tags">
-                    <span class="tag">Support Strong</span>
-                    <span class="tag">Momentum Positive</span>
-                    <span class="tag">Volume Healthy</span>
-                </div>
-            </div>
-
-            <div class="glass-card analysis-card">
-                <h3>Fundamental Outlook</h3>
-                <p class="analysis-text">
-                    Q4 earnings season showing resilience despite macro headwinds. Tech sector leading with strong
-                    revenue growth. Federal Reserve policy remaining accommodative supporting risk assets.
-                </p>
-                <div class="analysis-tags">
-                    <span class="tag">Earnings Strong</span>
-                    <span class="tag">Fed Dovish</span>
-                    <span class="tag">Growth Positive</span>
+                    <span v-for="tag in analysis.tags" :key="tag" class="tag">{{ tag }}</span>
                 </div>
             </div>
         </div>
 
         <div class="glass-card news-section">
-            <h2>Latest Market News</h2>
+            <h2>{{ formatTranslation(t, 'market_analysis.news.title') }}</h2>
             <div class="news-list">
                 <div v-for="news in marketNews" :key="news.id" class="news-item">
                     <div class="news-content">
@@ -109,9 +77,7 @@
                         <p>{{ news.description }}</p>
                         <span class="news-time">{{ news.time }}</span>
                     </div>
-                    <div class="news-impact" :class="news.impact">
-                        {{ news.impact }}
-                    </div>
+                    <div class="news-impact" :class="news.impact">{{ news.impact }}</div>
                 </div>
             </div>
         </div>
@@ -119,9 +85,35 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { formatTranslation } from '@/utils/i18'
 
-const trendingAssets = ref([
+const { t } = useI18n()
+
+const pageTitle = computed(() => formatTranslation(t, 'market_analysis.title'))
+const pageSubtitle = computed(() => formatTranslation(t, 'market_analysis.subtitle'))
+
+const marketStats = computed(() => [
+    { label: formatTranslation(t, 'SP500'), value: '+1.24%', price: '4,567.89', trend: 'positive' },
+    { label: formatTranslation(t, 'NASDAQ'), value: '+2.15%', price: '14,234.56', trend: 'positive' },
+    { label: formatTranslation(t, 'Bitcoin'), value: '-0.85%', price: '$45,123', trend: 'negative' },
+    { label: formatTranslation(t, 'Gold'), value: '+0.45%', price: '$2,045', trend: 'positive' }
+])
+
+const marketSentiment = computed(() => ({
+    value: 68,
+    label: marketSentimentLabel(68),
+    description: formatTranslation(t, 'market_analysis.sentiment.description')
+}))
+
+function marketSentimentLabel(value) {
+    if (value > 50) return formatTranslation(t, 'market_analysis.sentiment.labels.bullish')
+    if (value < 50) return formatTranslation(t, 'market_analysis.sentiment.labels.bearish')
+    return formatTranslation(t, 'market_analysis.sentiment.labels.neutral')
+}
+
+const trendingAssets = computed(() => [
     { id: 1, name: 'Tesla Inc.', symbol: 'TSLA', price: '245.75', change: 5.2 },
     { id: 2, name: 'Apple Inc.', symbol: 'AAPL', price: '178.50', change: 2.8 },
     { id: 3, name: 'Bitcoin', symbol: 'BTC', price: '45,123', change: -1.5 },
@@ -129,37 +121,61 @@ const trendingAssets = ref([
     { id: 5, name: 'NVIDIA', symbol: 'NVDA', price: '512.30', change: 4.1 },
 ])
 
-const marketNews = ref([
+const marketNews = computed(() => [
     {
         id: 1,
-        title: 'Fed Holds Rates Steady, Signals Cautious Approach',
-        description: 'Federal Reserve maintains current interest rate policy, citing balanced economic conditions.',
+        title: formatTranslation(t, 'market_analysis.news.fed_rate.title'),
+        description: formatTranslation(t, 'market_analysis.news.fed_rate.description'),
         time: '2 hours ago',
         impact: 'high'
     },
     {
         id: 2,
-        title: 'Tech Sector Leads Market Rally on Strong Earnings',
-        description: 'Major tech companies report better-than-expected Q4 results, driving broader market gains.',
+        title: formatTranslation(t, 'market_analysis.news.tech_sector.title'),
+        description: formatTranslation(t, 'market_analysis.news.tech_sector.description'),
         time: '5 hours ago',
         impact: 'high'
     },
     {
         id: 3,
-        title: 'Crypto Markets Show Renewed Institutional Interest',
-        description: 'Large-scale institutional investments signal growing confidence in digital assets.',
+        title: formatTranslation(t, 'market_analysis.news.crypto_interest.title'),
+        description: formatTranslation(t, 'market_analysis.news.crypto_interest.description'),
         time: '8 hours ago',
         impact: 'medium'
     },
     {
         id: 4,
-        title: 'Oil Prices Stabilize Amid Production Adjustments',
-        description: 'Global oil markets find equilibrium as OPEC+ implements new production quotas.',
+        title: formatTranslation(t, 'market_analysis.news.oil_prices.title'),
+        description: formatTranslation(t, 'market_analysis.news.oil_prices.description'),
         time: '12 hours ago',
         impact: 'medium'
     }
 ])
+
+const analyses = computed(() => [
+    {
+        id: 'technical',
+        title: formatTranslation(t, 'market_analysis.technical.title'),
+        text: formatTranslation(t, 'market_analysis.technical.text'),
+        tags: [
+            formatTranslation(t, 'market_analysis.technical.tags.support_strong'),
+            formatTranslation(t, 'market_analysis.technical.tags.momentum_positive'),
+            formatTranslation(t, 'market_analysis.technical.tags.volume_healthy')
+        ]
+    },
+    {
+        id: 'fundamental',
+        title: formatTranslation(t, 'market_analysis.fundamental.title'),
+        text: formatTranslation(t, 'market_analysis.fundamental.text'),
+        tags: [
+            formatTranslation(t, 'market_analysis.fundamental.tags.earnings_strong'),
+            formatTranslation(t, 'market_analysis.fundamental.tags.fed_dovish'),
+            formatTranslation(t, 'market_analysis.fundamental.tags.growth_positive')
+        ]
+    }
+])
 </script>
+
 
 <style scoped>
 .market-analysis-view {

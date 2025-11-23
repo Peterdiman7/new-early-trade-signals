@@ -1,61 +1,86 @@
 <template>
     <div>
-        <!-- Page Title -->
         <section class="page-title centred pt_90 pb_0">
             <div class="pattern-layer rotate-me" style="background-image: url(/images/shape/shape-34.png);"></div>
             <div class="auto-container">
                 <div class="content-box">
-                    <h1>Cancel Subscription</h1>
+                    <h1>{{ formatTranslation(t, 'cancel_subscription.page_title') }}</h1>
                     <ul class="bread-crumb clearfix">
-                        <li><a href="/">Home</a></li>
-                        <li>Cancel Subscription</li>
+                        <li><a href="/">{{ formatTranslation(t, 'cancel_subscription.breadcrumb_home') }}</a></li>
+                        <li>{{ formatTranslation(t, 'cancel_subscription.breadcrumb_cancel') }}</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Cancellation Section -->
         <section class="privacy-section pt_90 pb_100">
             <div class="auto-container">
                 <div class="content-box">
-
-                    <h2>We're Sorry to See You Go</h2>
-                    <p>Please fill out the form below to confirm your subscription cancellation.</p>
+                    <h2>{{ formatTranslation(t, 'cancel_subscription.sorry_to_see_you_go') }}</h2>
+                    <p>{{ formatTranslation(t, 'cancel_subscription.description') }}</p>
 
                     <form class="cancel-form" @submit.prevent="submitCancellation">
 
+                        <!-- REASON -->
                         <div class="form-group">
-                            <label for="reason">Reason for cancellation</label>
+                            <label for="reason">{{ formatTranslation(t, 'cancel_subscription.form.reason_label')
+                            }}</label>
                             <select id="reason" v-model="form.reason" required>
-                                <option disabled value="">-- Select a reason --</option>
-                                <option>Too expensive</option>
-                                <option>Not enough content</option>
-                                <option>Found a better alternative</option>
-                                <option>Technical issues</option>
-                                <option>Other</option>
+                                <option disabled value="">
+                                    {{ formatTranslation(t, 'cancel_subscription.form.reason_placeholder') }}
+                                </option>
+                                <option value="too_expensive">
+                                    {{ formatTranslation(t, 'cancel_subscription.form.reason_options.too_expensive') }}
+                                </option>
+                                <option value="not_enough_content">
+                                    {{ formatTranslation(t,
+                                        'cancel_subscription.form.reason_options.not_enough_content')
+                                    }}
+                                </option>
+                                <option value="better_alternative">
+                                    {{ formatTranslation(t,
+                                        'cancel_subscription.form.reason_options.better_alternative')
+                                    }}
+                                </option>
+                                <option value="technical_issues">
+                                    {{ formatTranslation(t, 'cancel_subscription.form.reason_options.technical_issues')
+                                    }}
+                                </option>
+                                <option value="other">
+                                    {{ formatTranslation(t, 'cancel_subscription.form.reason_options.other') }}
+                                </option>
                             </select>
                         </div>
 
+                        <!-- FULL NAME -->
                         <div class="form-group">
-                            <label for="fullName">Full name</label>
-                            <input type="text" id="fullName" v-model="form.fullName" placeholder="Enter your full name"
+                            <label for="fullName">{{ formatTranslation(t, 'cancel_subscription.form.full_name_label')
+                                }}</label>
+                            <input type="text" id="fullName" v-model="form.fullName"
+                                :placeholder="formatTranslation(t, 'cancel_subscription.form.full_name_placeholder')"
                                 required />
                         </div>
 
+                        <!-- EMAIL -->
                         <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" id="email" v-model="form.email" placeholder="Enter your email"
+                            <label for="email">{{ formatTranslation(t, 'cancel_subscription.form.email_label')
+                                }}</label>
+                            <input type="email" id="email" v-model="form.email"
+                                :placeholder="formatTranslation(t, 'cancel_subscription.form.email_placeholder')"
                                 required />
                         </div>
 
+                        <!-- COMMENTS -->
                         <div class="form-group">
-                            <label for="comments">Additional comments (optional)</label>
+                            <label for="comments">{{ formatTranslation(t, 'cancel_subscription.form.comments_label')
+                                }}</label>
                             <textarea id="comments" v-model="form.comments" rows="4"
-                                placeholder="Tell us more..."></textarea>
+                                :placeholder="formatTranslation(t, 'cancel_subscription.form.comments_placeholder')"></textarea>
                         </div>
 
+                        <!-- BUTTON -->
                         <button style="background-color: #22823A;" type="submit" class="theme-btn btn-style-one">
-                            <span>Submit & Cancel</span>
+                            <span>{{ formatTranslation(t, 'cancel_subscription.form.submit_btn') }}</span>
                         </button>
 
                     </form>
@@ -66,8 +91,13 @@
     </div>
 </template>
 
+
 <script setup lang="ts">
+import { formatTranslation } from '@/utils/i18'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const form = ref({
     reason: '',

@@ -1,23 +1,26 @@
 <template>
     <div class="login-page">
         <div class="login-card">
-            <h1>Login</h1>
+            <h1>{{ formatTranslation(t, 'login.title') }}</h1>
             <form @submit.prevent="login">
                 <div class="form-group">
-                    <label style="color: black;">Username</label>
+                    <label style="color: black;">{{ formatTranslation(t, 'login.username') }}</label>
                     <input type="text" v-model="username" required />
                 </div>
                 <div class="form-group">
-                    <label style="color: black;">Password</label>
+                    <label style="color: black;">{{ formatTranslation(t, 'login.password') }}</label>
                     <input type="password" v-model="password" required />
                 </div>
-                <button class="btn" type="submit">Login</button>
+                <button class="btn" type="submit">{{ formatTranslation(t, 'login.button') }}</button>
             </form>
+
             <p v-if="error" class="error">{{ error }}</p>
             <p v-if="success" class="success">{{ success }}</p>
+
             <p class="register-link">
-                No account?
-                <router-link to="/register">Register here</router-link>
+                {{ formatTranslation(t, 'login.no_account') }}
+                <a style="color: green; cursor: pointer;" v-if="subdomain === 'de'" href="https://delp1.early-trade-signals.com/">{{ formatTranslation(t, 'login.register_here') }}</a>
+                <router-link v-else to="/register">{{ formatTranslation(t, 'login.register_here') }}</router-link>
             </p>
         </div>
     </div>
@@ -25,8 +28,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue"
+
 import { useRouter } from "vue-router"
+import { useI18n } from 'vue-i18n'
+
 import { useAuthStore } from "@/stores/auth"
+import { formatTranslation } from '@/utils/i18'
+
+const { t } = useI18n()
 
 const username = ref("")
 const password = ref("")
@@ -35,12 +44,14 @@ const success = ref("")
 const router = useRouter()
 const authStore = useAuthStore()
 
+const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
+
 const login = async () => {
     error.value = ""
     success.value = ""
 
     try {
-        const response = await fetch("http://localhost:9104/auth/login", {
+        const response = await fetch("https://back.early-trade-signals.com/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include", // important to send/receive cookies

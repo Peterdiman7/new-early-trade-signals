@@ -7,30 +7,34 @@
                         <img src="/images/logo.png" alt="MindSoulHub Logo" class="logo" />
                     </RouterLink>
                 </div>
-                <h1>Complete Your Purchase</h1>
+                <h1>{{ formatTranslation(t, 'checkout.complete_purchase') }}</h1>
                 <div class="security-badge">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                    <span>Secure Checkout</span>
+                    <span>{{ formatTranslation(t, 'checkout.secure_checkout') }}</span>
                 </div>
             </div>
+
             <div class="checkout-grid">
                 <div class="payment-section">
+                    <!-- Payment Method -->
                     <div class="glass-card">
-                        <h2>Payment Method</h2>
+                        <h2>{{ formatTranslation(t, 'checkout.payment_method') }}</h2>
                         <div class="payment-methods">
                             <button v-for="method in paymentMethods" :key="method.id"
                                 :class="['payment-method-btn', { active: selectedPayment === method.id }]"
                                 @click="selectedPayment = method.id" type="button">
                                 <span class="method-icon">{{ method.icon }}</span>
-                                <span>{{ method.name }}</span>
+                                <span>{{ formatTranslation(t, `checkout.payment.${method.id}`) }}</span>
                             </button>
                         </div>
+
+                        <!-- Card Details -->
                         <div v-if="selectedPayment === 'card'" class="card-details">
                             <div class="form-group">
-                                <label>Card Number</label>
+                                <label>{{ formatTranslation(t, 'checkout.card_number') }}</label>
                                 <div class="card-input">
                                     <input type="text" v-model="cardNumber" placeholder="1234 5678 9012 3456"
                                         maxlength="19" @input="formatCardNumber" />
@@ -42,105 +46,122 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Expiry Date</label>
+                                    <label>{{ formatTranslation(t, 'checkout.expiry_date') }}</label>
                                     <input type="text" v-model="expiryDate" placeholder="MM/YY" maxlength="5"
                                         @input="formatExpiry" />
                                 </div>
                                 <div class="form-group">
-                                    <label>CVV</label>
+                                    <label>{{ formatTranslation(t, 'checkout.cvv') }}</label>
                                     <input type="text" v-model="cvv" placeholder="123" maxlength="4" />
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label>Cardholder Name</label>
+                                <label>{{ formatTranslation(t, 'checkout.cardholder_name') }}</label>
                                 <input type="text" v-model="cardholderName" placeholder="John Doe" />
                             </div>
                         </div>
+
+                        <!-- PayPal Info -->
                         <div v-if="selectedPayment === 'paypal'" class="paypal-info">
-                            <p>You will be redirected to PayPal to complete your payment securely.</p>
+                            <p>{{ formatTranslation(t, 'checkout.paypal_redirect') }}</p>
                         </div>
                     </div>
+
+                    <!-- Billing Info -->
                     <div class="glass-card">
-                        <h2>Billing Information</h2>
+                        <h2>{{ formatTranslation(t, 'checkout.billing_info') }}</h2>
                         <div class="form-group">
-                            <label>Email Address</label>
+                            <label>{{ formatTranslation(t, 'checkout.email_address') }}</label>
                             <input type="email" v-model="billingInfo.email" placeholder="john@example.com" />
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label>First Name</label>
+                                <label>{{ formatTranslation(t, 'checkout.first_name') }}</label>
                                 <input type="text" v-model="billingInfo.firstName" placeholder="John" />
                             </div>
                             <div class="form-group">
-                                <label>Last Name</label>
+                                <label>{{ formatTranslation(t, 'checkout.last_name') }}</label>
                                 <input type="text" v-model="billingInfo.lastName" placeholder="Doe" />
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label>Address</label>
+                            <label>{{ formatTranslation(t, 'checkout.address') }}</label>
                             <input type="text" v-model="billingInfo.address" placeholder="123 Main Street" />
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label>City</label>
+                                <label>{{ formatTranslation(t, 'checkout.city') }}</label>
                                 <input type="text" v-model="billingInfo.city" placeholder="New York" />
                             </div>
                             <div class="form-group">
-                                <label>Postal Code</label>
+                                <label>{{ formatTranslation(t, 'checkout.postal_code') }}</label>
                                 <input type="text" v-model="billingInfo.postalCode" placeholder="10001" />
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Country</label>
+                                <label>{{ formatTranslation(t, 'checkout.country') }}</label>
                                 <select v-model="billingInfo.country">
-                                    <option value="">Select Country</option>
+                                    <option value="">{{ formatTranslation(t, 'checkout.select_country') }}</option>
                                     <option value="US">United States</option>
                                     <option value="UK">United Kingdom</option>
                                     <option value="CA">Canada</option>
                                     <option value="AU">Australia</option>
                                     <option value="DE">Germany</option>
                                     <option value="FR">France</option>
-                                    <option value="other">Other</option>
+                                    <option value="other">{{ formatTranslation(t, 'checkout.other') }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>State/Province</label>
+                                <label>{{ formatTranslation(t, 'checkout.state') }}</label>
                                 <input type="text" v-model="billingInfo.state" placeholder="NY" />
                             </div>
                         </div>
                     </div>
+
+                    <!-- Terms & Submit -->
                     <div class="glass-card submit-section">
                         <label class="checkbox-label">
                             <input type="checkbox" v-model="agreedToTerms" />
                             <span>
-                                I agree to the
-                                <a href="/terms-conditions" target="_blank">Terms & Conditions</a>
-                                and
-                                <a href="#" @click.prevent>Privacy Policy</a>
+                                {{ formatTranslation(t, 'checkout.agree_terms') }}
+                                <a href="/terms-conditions" target="_blank">{{ formatTranslation(t,
+                                    'footer.terms_conditions') }}</a>
+                                {{ formatTranslation(t, 'checkout.and') }}
+                                <a href="#" @click.prevent>{{ formatTranslation(t, 'footer.privacy_policy') }}</a>
                             </span>
                         </label>
+
                         <button class="submit-btn" :disabled="!canSubmit" @click="handleSubmit">
-                            <span v-if="!processing">Complete Purchase</span>
+                            <span v-if="!processing">{{ formatTranslation(t, 'checkout.complete_purchase') }}</span>
                             <span v-else class="processing">
                                 <span class="spinner" />
-                                Processing...
+                                {{ formatTranslation(t, 'checkout.processing') }}
                             </span>
                         </button>
+
                         <div class="security-info">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <span>Your payment information is encrypted and secure</span>
+                            <span>{{ formatTranslation(t, 'checkout.payment_secure') }}</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Summary Section -->
                 <div class="summary-section">
                     <div class="glass-card summary-card sticky">
-                        <h2>Order Summary</h2>
+                        <h2>{{ formatTranslation(t, 'checkout.order_summary') }}</h2>
                         <div class="plan-details">
                             <div class="plan-header">
                                 <div :class="['plan-badge', selectedPlan.featured ? 'featured' : '']">
@@ -154,7 +175,7 @@
                             </div>
                             <p class="plan-description">{{ selectedPlan.description }}</p>
                             <div class="plan-features-list">
-                                <h4>Included Features:</h4>
+                                <h4>{{ formatTranslation(t, 'checkout.included_features') }}:</h4>
                                 <div v-for="(feature, index) in selectedPlan.features" :key="index"
                                     class="feature-item">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -165,28 +186,31 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="price-breakdown">
                             <div class="breakdown-item">
-                                <span>Subtotal</span>
+                                <span>{{ formatTranslation(t, 'checkout.subtotal') }}</span>
                                 <span>{{ formatCurrency(basePrice) }}</span>
                             </div>
                             <div class="breakdown-item" v-if="discount > 0">
-                                <span>Discount ({{ discountPercent }}%)</span>
-                                <span class="discount">-{{ selectedCurrency.display }}{{
-                                    formatCurrency(discount) }}</span>
+                                <span>{{ formatTranslation(t, 'checkout.discount', { percent: discountPercent })
+                                    }}</span>
+                                <span class="discount">-{{ selectedCurrency.display }}{{ formatCurrency(discount)
+                                    }}</span>
                             </div>
                             <div class="breakdown-divider" />
                             <div class="breakdown-item total">
-                                <span>Total</span>
+                                <span>{{ formatTranslation(t, 'checkout.total') }}</span>
                                 <span>{{ formatCurrency(total) }}</span>
                             </div>
                         </div>
+
                         <div class="money-back">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                                 <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
                                 <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                             </svg>
-                            <span>30-day money-back guarantee</span>
+                            <span>{{ formatTranslation(t, 'checkout.money_back_guarantee') }}</span>
                         </div>
                     </div>
                 </div>
@@ -199,6 +223,11 @@
 import { ref, computed } from 'vue'
 
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+import { formatTranslation } from '@/utils/i18'
+
+const { t } = useI18n()
 
 const route = useRoute()
 const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
@@ -229,7 +258,6 @@ const billingInfo = ref({
 
 const paymentMethods = [
     { id: 'card', name: 'Credit Card', icon: '💳' },
-    { id: 'paypal', name: 'PayPal', icon: '🅿️' }
 ]
 
 const pricingPlans = ref([

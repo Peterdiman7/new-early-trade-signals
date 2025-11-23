@@ -1,19 +1,20 @@
 <template>
     <div class="pricing-view">
         <div class="glass-header">
-            <h1>Choose Your Plan</h1>
-            <p>Start trading smarter with our flexible pricing options</p>
+            <h1>{{ formatTranslation(t, 'pricing.choose_plan') }}</h1>
+            <p>{{ formatTranslation(t, 'pricing.subheader') }}</p>
             <div v-if="!isLocalPricing" class="billing-toggle">
                 <button :class="{ active: billingCycle === 'monthly' }" @click="billingCycle = 'monthly'"
                     class="toggle-btn">
-                    Monthly
+                    {{ formatTranslation(t, 'pricing.billing_monthly') }}
                 </button>
             </div>
         </div>
         <div class="pricing-grid">
             <div v-for="plan in pricingPlans" :key="plan.id" class="pricing-card glass-card"
                 :class="{ featured: plan.featured }">
-                <div v-if="plan.featured" class="featured-badge">Most Popular</div>
+                <div v-if="plan.featured" class="featured-badge">{{ formatTranslation(t, 'pricing.most_popular') }}
+                </div>
                 <div class="plan-header">
                     <h3>{{ plan.name }}</h3>
                     <p class="plan-description">{{ plan.description }}</p>
@@ -31,12 +32,12 @@
                 </div>
                 <button type="button" @click="selectPlan(plan)" class="plan-btn"
                     :class="plan.featured ? 'featured-btn' : ''">
-                    {{ plan.buttonText }}
+                    {{ formatTranslation(t, 'pricing.choose_this_plan') }}
                 </button>
             </div>
         </div>
         <div class="glass-card faq-section">
-            <h2>Frequently Asked Questions</h2>
+            <h2>{{ formatTranslation(t, 'pricing.faq') }}</h2>
             <div class="faq-list">
                 <div v-for="faq in faqs" :key="faq.id" class="faq-item" @click="toggleFaq(faq.id)">
                     <div class="faq-question">
@@ -50,15 +51,15 @@
             </div>
         </div>
         <div v-if="!isLocalPricing" class="glass-card comparison-table">
-            <h2>Feature Comparison</h2>
+            <h2>{{ formatTranslation(t, 'pricing.feature_comparison') }}</h2>
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>Feature</th>
-                            <th>Starter</th>
-                            <th>Pro</th>
-                            <th>Enterprise</th>
+                            <th>{{ formatTranslation(t, 'pricing.feature') }}</th>
+                            <th>{{ formatTranslation(t, 'pricing.starter') }}</th>
+                            <th>{{ formatTranslation(t, 'pricing.pro') }}</th>
+                            <th>{{ formatTranslation(t, 'pricing.enterprise') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,7 +78,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+
+import { formatTranslation } from '@/utils/i18'
+const { t } = useI18n()
 
 const router = useRouter()
 const billingCycle = ref('monthly')
@@ -86,186 +93,218 @@ const subdomain = window.location.hostname.split('.')[0]
 const supportedCountries = ['ku', 'ksa', 'iq', 'su']
 const userCountry = supportedCountries.includes(subdomain) ? subdomain : null
 
-const localPricing = {
+const localPricing = computed(() => ({
     ku: [
         {
             id: 101,
-            name: "Daily Access",
+            name: formatTranslation(t, 'pricing.plans.ku.daily_access.name'),
             price: "0.100",
             period: "day",
-            description: "Perfect for trying out our platform",
-            features: ["Full library access", "HD streaming", "Works on mobile & web"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.ku.daily_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.ku.daily_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.ku.daily_access.features.hd_streaming'),
+                formatTranslation(t, 'pricing.plans.ku.daily_access.features.mobile_web')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: false
         },
         {
             id: 102,
-            name: "Weekly Access",
+            name: formatTranslation(t, 'pricing.plans.ku.weekly_access.name'),
             price: "0.700",
             period: "week",
-            description: "Best value for regular users",
-            features: ["Full library access", "Offline access", "Priority support"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.ku.weekly_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.ku.weekly_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.ku.weekly_access.features.offline_access'),
+                formatTranslation(t, 'pricing.plans.ku.weekly_access.features.priority_support')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: true
         },
     ],
     ksa: [
         {
             id: 201,
-            name: "Daily Access",
+            name: formatTranslation(t, 'pricing.plans.ksa.daily_access.name'),
             price: "1.50",
             period: "day",
-            description: "Perfect for trying out our platform",
-            features: ["Full library access", "HD streaming", "Works on all devices"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.ksa.daily_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.ksa.daily_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.ksa.daily_access.features.hd_streaming'),
+                formatTranslation(t, 'pricing.plans.ksa.daily_access.features.all_devices')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: false
         },
     ],
     iq: [
         {
             id: 301,
-            name: "Daily Access",
+            name: formatTranslation(t, 'pricing.plans.iq.daily_access.name'),
             price: "0.240",
             period: "day",
-            description: "Perfect for trying out our platform",
-            features: ["Full library access", "HD streaming", "Cancel anytime"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.iq.daily_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.iq.daily_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.iq.daily_access.features.hd_streaming'),
+                formatTranslation(t, 'pricing.plans.iq.daily_access.features.cancel_anytime')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: false
         },
         {
             id: 302,
-            name: "Weekly Access",
+            name: formatTranslation(t, 'pricing.plans.iq.weekly_access.name'),
             price: "0.700",
             period: "week",
-            description: "Best value for regular users",
-            features: ["Full library access", "Offline access", "Priority support"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.iq.weekly_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.iq.weekly_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.iq.weekly_access.features.offline_access'),
+                formatTranslation(t, 'pricing.plans.iq.weekly_access.features.priority_support')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: true
         },
     ],
     su: [
         {
             id: 401,
-            name: "Daily Access",
+            name: formatTranslation(t, 'pricing.plans.su.daily_access.name'),
             price: "600",
             period: "day",
-            description: "Perfect for trying out our platform",
-            features: ["Full library access", "HD streaming", "Basic support"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.su.daily_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.su.daily_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.su.daily_access.features.hd_streaming'),
+                formatTranslation(t, 'pricing.plans.su.daily_access.features.basic_support')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: false
         },
         {
             id: 402,
-            name: "Weekly Access",
+            name: formatTranslation(t, 'pricing.plans.su.weekly_access.name'),
             price: "1500",
             period: "week",
-            description: "Best value for regular users",
-            features: ["Full library access", "Offline access", "Priority support"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.su.weekly_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.su.weekly_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.su.weekly_access.features.offline_access'),
+                formatTranslation(t, 'pricing.plans.su.weekly_access.features.priority_support')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: true
         },
         {
             id: 403,
-            name: "Monthly Access",
+            name: formatTranslation(t, 'pricing.plans.su.monthly_access.name'),
             price: "3600",
             period: "month",
-            description: "Ultimate access for power users",
-            features: ["Full library access", "Offline access", "VIP support", "Multi-device"],
-            buttonText: 'Choose This Plan',
+            description: formatTranslation(t, 'pricing.plans.su.monthly_access.description'),
+            features: [
+                formatTranslation(t, 'pricing.plans.su.monthly_access.features.full_library'),
+                formatTranslation(t, 'pricing.plans.su.monthly_access.features.offline_access'),
+                formatTranslation(t, 'pricing.plans.su.monthly_access.features.vip_support'),
+                formatTranslation(t, 'pricing.plans.su.monthly_access.features.multi_device')
+            ],
+            buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
             featured: false
         },
     ],
-}
+}))
 
-// Default pricing plans
-const defaultPlans = [
+const defaultPlans = computed(() => [
     {
         id: 1,
-        name: 'Basic',
-        description: 'Entry-level access for casual traders',
+        name: formatTranslation(t, 'pricing.plans.default.basic.name'),
+        description: formatTranslation(t, 'pricing.plans.default.basic.description'),
         priceMonthly: 9,
         priceAnnual: 89,
         features: [
-            '3 signals per day',
-            'Basic chart insights',
-            'Community forum access'
+            formatTranslation(t, 'pricing.plans.default.basic.features.signals'),
+            formatTranslation(t, 'pricing.plans.default.basic.features.chart'),
+            formatTranslation(t, 'pricing.plans.default.basic.features.community')
         ],
-        buttonText: 'Choose This Plan',
+        buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
         featured: false
     },
     {
         id: 2,
-        name: 'Starter',
-        description: 'Perfect for beginners exploring trading signals',
+        name: formatTranslation(t, 'pricing.plans.default.starter.name'),
+        description: formatTranslation(t, 'pricing.plans.default.starter.description'),
         priceMonthly: 29,
         priceAnnual: 279,
         features: [
-            'Up to 10 signals per day',
-            'Basic market analysis',
-            'Email notifications',
-            'Community access',
-            'Mobile app access'
+            formatTranslation(t, 'pricing.plans.default.starter.features.signals'),
+            formatTranslation(t, 'pricing.plans.default.starter.features.analysis'),
+            formatTranslation(t, 'pricing.plans.default.starter.features.email'),
+            formatTranslation(t, 'pricing.plans.default.starter.features.community'),
+            formatTranslation(t, 'pricing.plans.default.starter.features.mobile')
         ],
-        buttonText: 'Choose This Plan',
+        buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
         featured: false
     },
     {
         id: 3,
-        name: 'Pro',
-        description: 'For serious traders who need advanced tools',
+        name: formatTranslation(t, 'pricing.plans.default.pro.name'),
+        description: formatTranslation(t, 'pricing.plans.default.pro.description'),
         priceMonthly: 79,
         priceAnnual: 759,
         features: [
-            'Unlimited signals',
-            'Advanced market analysis',
-            'Real-time push notifications',
-            'Priority support',
-            'Custom alerts',
-            'Portfolio tracking',
-            'Technical indicators',
-            'All community features'
+            formatTranslation(t, 'pricing.plans.default.pro.features.unlimited_signals'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.advanced_analysis'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.notifications'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.priority_support'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.custom_alerts'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.portfolio_tracking'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.indicators'),
+            formatTranslation(t, 'pricing.plans.default.pro.features.community')
         ],
-        buttonText: 'Choose This Plan',
+        buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
         featured: true
     },
     {
         id: 4,
-        name: 'Enterprise',
-        description: 'Custom solutions for professional teams',
+        name: formatTranslation(t, 'pricing.plans.default.enterprise.name'),
+        description: formatTranslation(t, 'pricing.plans.default.enterprise.description'),
         priceMonthly: 199,
         priceAnnual: 1909,
         features: [
-            'Everything in Pro',
-            'Dedicated account manager',
-            'API access',
-            'Custom integrations',
-            'Advanced analytics',
-            'Team collaboration tools',
-            'White-label options',
-            'Priority signal delivery'
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.all_pro'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.manager'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.api'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.integrations'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.analytics'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.team_tools'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.white_label'),
+            formatTranslation(t, 'pricing.plans.default.enterprise.features.priority_delivery')
         ],
-        buttonText: 'Choose This Plan',
+        buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
         featured: false
     },
     {
         id: 5,
-        name: 'Ultimate',
-        description: 'All-in-one solution for institutions and hedge funds',
+        name: formatTranslation(t, 'pricing.plans.default.ultimate.name'),
+        description: formatTranslation(t, 'pricing.plans.default.ultimate.description'),
         priceMonthly: 499,
         priceAnnual: 4799,
         features: [
-            'Everything in Enterprise',
-            'Institutional-grade analytics',
-            'Unlimited team members',
-            '24/7 dedicated support',
-            'On-site consulting',
-            'Custom AI-driven strategies',
-            'Private community access'
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.all_enterprise'),
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.analytics'),
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.unlimited_team'),
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.support'),
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.consulting'),
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.custom_ai'),
+            formatTranslation(t, 'pricing.plans.default.ultimate.features.private_community')
         ],
-        buttonText: 'Choose This Plan',
+        buttonText: formatTranslation(t, 'pricing.choose_this_plan'),
         featured: false
     }
-]
+])
 
 const isLocalPricing = computed(() => userCountry && localPricing[userCountry])
 const pricingPlans = ref(isLocalPricing.value ? localPricing[userCountry] : defaultPlans)

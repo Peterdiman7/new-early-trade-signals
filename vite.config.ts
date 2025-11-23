@@ -5,6 +5,9 @@ import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
 	plugins: [vue()],
+	build: {
+		sourcemap: true
+	},
 	resolve: {
 		alias: {
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -13,8 +16,8 @@ export default defineConfig({
 	server: {
 		port: 9004,
 		allowedHosts: [
-			"early-trade-signals.com",
-			"www.early-trade-signals.com",
+			"https://early-trade-signals.com",
+			"https://www.early-trade-signals.com",
 			"ku.early-trade-signals.com",
 			"ksa.early-trade-signals.com",
 			"iq.early-trade-signals.com",
@@ -24,8 +27,8 @@ export default defineConfig({
 	},
 	preview: {
 		allowedHosts: [
-			"early-trade-signals.com",
-			"www.early-trade-signals.com",
+			"https://early-trade-signals.com",
+			"https://www.early-trade-signals.com",
 			"ku.early-trade-signals.com",
 			"ksa.early-trade-signals.com",
 			"iq.early-trade-signals.com",

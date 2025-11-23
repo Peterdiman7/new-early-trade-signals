@@ -1,418 +1,19 @@
 <template>
 	<div class="boxed_wrapper home_5 ltr">
-		<section class="trading-style-three pt_20 pb_20 alternat-2">
+		<section class="trading-style-three pt_20 pb_20">
 			<div class="outer-container">
 				<ul class="trading-list">
-					<li class="upper">
+					<img src="https://tracking.telefuture.com/pixel?event=lead&order_id=12345" width="1" height="1" />
+					<li v-for="item in tickerItems" :key="item.symbol">
 						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
+							<div style="display: flex; height: 40px; width: auto;">
+								<img style="padding: 0 20px; max-width: 140px !important;" :src="item.img_url" :alt="item.symbol">
+								<div style="position: relative; padding: 0 20px;">
+									<h6>{{ item.symbol }}</h6>
+									<span>
+										{{ item.price }} / {{ item.recommendation }}
+									</span>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -431,13 +32,13 @@
 							<div class="row align-items-center">
 								<div class="col-lg-6 col-md-12 col-sm-12 content-column">
 									<div class="content-box">
-										<h2>The A-Z of Forex Trading Proficiency</h2>
-										<p>Our management team brings a wealth of experience to the day-to-day
-											operations at Fortradex</p>
+										<h2>{{ formatTranslation(t, 'home.a_z') }}</h2>
+										<p>{{ formatTranslation(t, 'home.day_to_day') }}</p>
 										<div class="btn-box">
-											<a href="/login" class="theme-btn btn-one mr_15">Start Trading
-												Now</a>
-											<a href="/login" class="theme-btn btn-two">Try Demo Trading</a>
+											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t,
+												'home.start_trading') }}</a>
+											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t,
+												'home.try_demo_trading') }}</a>
 										</div>
 									</div>
 								</div>
@@ -461,13 +62,13 @@
 							<div class="row align-items-center">
 								<div class="col-lg-6 col-md-12 col-sm-12 content-column">
 									<div class="content-box">
-										<h2>The A-Z of Forex Trading Proficiency</h2>
-										<p>Our management team brings a wealth of experience to the day-to-day
-											operations at Fortradex</p>
+										<h2>{{ formatTranslation(t, 'home.a_z') }}</h2>
+										<p>{{ formatTranslation(t, 'home.day_to_day') }}</p>
 										<div class="btn-box">
-											<a href="/login" class="theme-btn btn-one mr_15">Start Trading
-												Now</a>
-											<a href="/login" class="theme-btn btn-two">Try Demo Trading</a>
+											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t,
+												'home.start_trading') }}</a>
+											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t,
+												'home.try_demo_trading') }}</a>
 										</div>
 									</div>
 								</div>
@@ -491,13 +92,13 @@
 							<div class="row align-items-center">
 								<div class="col-lg-6 col-md-12 col-sm-12 content-column">
 									<div class="content-box">
-										<h2>The A-Z of Forex Trading Proficiency</h2>
-										<p>Our management team brings a wealth of experience to the day-to-day
-											operations at Fortradex</p>
+										<h2>{{ formatTranslation(t, 'home.a_z') }}</h2>
+										<p>{{ formatTranslation(t, 'home.day_to_day') }}</p>
 										<div class="btn-box">
-											<a href="/login" class="theme-btn btn-one mr_15">Start Trading
-												Now</a>
-											<a href="/login" class="theme-btn btn-two">Try Demo Trading</a>
+											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t,
+												'home.start_trading') }}</a>
+											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t,
+												'home.try_demo_trading') }}</a>
 										</div>
 									</div>
 								</div>
@@ -547,54 +148,42 @@
 									<div class="content_block_one">
 										<div class="content-box mr_80">
 											<div class="sec-title pb_30">
-												<span class="sub-title mb_14">Account</span>
-												<h2>Trading Accounts</h2>
+												<span class="sub-title mb_14">{{ formatTranslation(t, 'home.account')
+												}}</span>
+												<h2>{{ formatTranslation(t, 'home.trading_accounts') }}</h2>
 											</div>
 											<ul class="accordion-box">
 												<li class="accordion block active-block">
 													<div class="acc-btn active">
 														<div class="icon-box"><i class="icon-29"></i></div>
-														<h3>Who we are</h3>
+														<h3>{{ formatTranslation(t, 'home.who') }}</h3>
 													</div>
 													<div class="acc-content current">
 														<div class="content">
-															<p>Early Trade Signals provides curated market insights,
-																real-time trading alerts, and educational resources to
-																empower traders. All content is for informational
-																purposes only and not financial advice. Contact us at
-																info@early-trade-signals.com. </p>
+															<p>{{ formatTranslation(t, 'home.early_trade_signals') }}
+															</p>
 														</div>
 													</div>
 												</li>
 												<li class="accordion block">
 													<div class="acc-btn">
 														<div class="icon-box"><i class="icon-29"></i></div>
-														<h3>What we do</h3>
+														<h3>{{ formatTranslation(t, 'home.what_we_do') }}</h3>
 													</div>
 													<div class="acc-content">
 														<div class="content">
-															<p>We deliver early market insight signals by analyzing
-																price movements, market trends, and key indicators
-																across different asset classes.</p>
+															<p>{{ formatTranslation(t, 'home.what_we_deliver') }}</p>
 														</div>
 													</div>
 												</li>
 												<li class="accordion block">
 													<div class="acc-btn">
 														<div class="icon-box"><i class="icon-29"></i></div>
-														<h3>How it works</h3>
+														<h3>{{ formatTranslation(t, 'home.how_it_works') }}</h3>
 													</div>
 													<div class="acc-content">
 														<div class="content">
-															<p>We receive market data and early-trend signals from
-																verified, reputable providers specializing in stocks,
-																crypto, and global market indicators.
-																Incoming data goes through our internal filtering layer,
-																where we: validate accuracy, remove noise, identify
-																meaningful price movements or trend shifts. The system
-																refreshes throughout the day to reflect changing market
-																conditions, ensuring users receive signals as early and
-																as accurately as possible.</p>
+															<p>{{ formatTranslation(t, 'home.market_data') }}</p>
 														</div>
 													</div>
 												</li>
@@ -620,8 +209,8 @@
 		<section class="trading-style-six pb_100">
 			<div class="auto-container">
 				<div class="sec-title centred pb_60">
-					<span class="sub-title mb_14">Trade Now</span>
-					<h2>Market Spreads and Swaps</h2>
+					<span class="sub-title mb_14">{{ formatTranslation(t, 'home.trade_now') }}</span>
+					<h2>{{ formatTranslation(t, 'home.spreads') }}</h2>
 				</div>
 				<div class="tabs-box">
 					<div class="tabs-content">
@@ -630,7 +219,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -668,7 +258,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -706,7 +296,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -725,7 +315,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 								</ul>
@@ -736,7 +326,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -755,7 +346,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -774,7 +365,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -793,7 +384,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -812,7 +403,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 									<li class="table-data">
@@ -831,7 +422,7 @@
 											</div>
 										</div>
 										<div class="btn-box">
-											<a href="/signals">Trade</a>
+											<a href="/signals">{{ formatTranslation(t, 'home.trade') }}</a>
 										</div>
 									</li>
 								</ul>
@@ -842,7 +433,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -948,7 +540,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1054,7 +647,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1160,7 +754,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1266,7 +861,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">sellers</span><span>Buyers</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1374,8 +970,8 @@
 		<section class="account-style-two clear-bg centred pt_80 pb_70">
 			<div class="auto-container">
 				<div class="sec-title pb_50">
-					<span class="sub-title mb_14">Accounts</span>
-					<h2>Trading Account</h2>
+					<span class="sub-title mb_14">{{ formatTranslation(t, 'home.account') }}</span>
+					<h2>{{ formatTranslation(t, 'home.trading_account') }}</h2>
 				</div>
 				<div class="row clearfix">
 					<div class="col-lg-3 col-md-6 col-sm-12 account-block">
@@ -1383,10 +979,10 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-16"></i></div>
-								<h3><a href="/login">Professional Account</a></h3>
-								<p>Traders with professional accounts gain access to a wide</p>
-								<div class="btn-box"><a href="/register" class="theme-btn btn-one">Create
-										Account</a></div>
+								<h3><a href="/login">{{ formatTranslation(t, 'home.professional_account') }}</a></h3>
+								<p>{{ formatTranslation(t, 'home.professional_account') }}</p>
+								<div class="btn-box"><a href="/register" class="theme-btn btn-one">{{
+									formatTranslation(t, 'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1395,10 +991,10 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-17"></i></div>
-								<h3><a href="/login">Overview Account</a></h3>
-								<p>The primary feature of a trading overview account is its ability to</p>
-								<div class="btn-box"><a href="/login" class="theme-btn btn-one">Create
-										Account</a></div>
+								<h3><a href="/login">{{ formatTranslation(t, 'home.overview_account') }}</a></h3>
+								<p>{{ formatTranslation(t, 'home.overview_account_info') }}</p>
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+									'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1407,10 +1003,10 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-18"></i></div>
-								<h3><a href="/login">Demo Account</a></h3>
-								<p>Trading demo accounts are particularly valuable for novice</p>
-								<div class="btn-box"><a href="/login" class="theme-btn btn-one">Create
-										Account</a></div>
+								<h3><a href="/login">{{ formatTranslation(t, 'home.demo_account') }}</a></h3>
+								<p>{{ formatTranslation(t, 'home.demo_account_info') }}</p>
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+									'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1419,10 +1015,10 @@
 							data-wow-duration="1500ms">
 							<div class="inner-box">
 								<div class="icon-box"><i class="icon-19"></i></div>
-								<h3><a href="/login">Islamic Account</a></h3>
-								<p>Islamic accounts also adhere to ethical guidelines that prohibit</p>
-								<div class="btn-box"><a href="/login" class="theme-btn btn-one">Create
-										Account</a></div>
+								<h3><a href="/login">{{ formatTranslation(t, 'home.islamic_account') }}</a></h3>
+								<p>{{ formatTranslation(t, 'home.islamic_account_info') }}</p>
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+									'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1444,8 +1040,7 @@
 						<div class="content_block_four">
 							<div class="content-box ml_80">
 								<div class="sec-title light pb_40">
-									<h2>We use cookies to understand how you use our website and to give you the best
-										possible experience.</h2>
+									<h2>{{ formatTranslation(t, 'home.cookies') }}</h2>
 								</div>
 							</div>
 						</div>
@@ -1456,8 +1051,8 @@
 		<section class="award-section pt_100 pb_100">
 			<div class="auto-container">
 				<div class="sec-title centred pb_60">
-					<span class="sub-title mb_14">AWARDED BY THE BEST</span>
-					<h2>Globally Awarded</h2>
+					<span class="sub-title mb_14">{{ formatTranslation(t, 'home.awarded') }}</span>
+					<h2>{{ formatTranslation(t, 'home.globally_awarded') }}</h2>
 				</div>
 				<div class="table-outer">
 					<table class="award-table">
@@ -1465,11 +1060,11 @@
 							<tr>
 								<td>01</td>
 								<td>
-									<h3><a href="index.html">The Best Trading Platform, UK</a></h3>
+									<h3><a href="/">{{ formatTranslation(t, 'home.best_trading_platform') }}</a></h3>
 								</td>
 								<td><span>x1</span></td>
 								<td>
-									<figure class="image-box"><a href="index.html"><img src="/images/icons/award-1.png"
+									<figure class="image-box"><a href="/"><img src="/images/icons/award-1.png"
 												alt=""></a></figure>
 								</td>
 								<td>2023</td>
@@ -1477,11 +1072,11 @@
 							<tr>
 								<td>02</td>
 								<td>
-									<h3><a href="index.html">Awards Interior Excellence</a></h3>
+									<h3><a href="/">{{ formatTranslation(t, 'home.excellence') }}</a></h3>
 								</td>
 								<td><span>x3</span></td>
 								<td>
-									<figure class="image-box"><a href="index.html"><img src="/images/icons/award-2.png"
+									<figure class="image-box"><a href="/"><img src="/images/icons/award-2.png"
 												alt=""></a></figure>
 								</td>
 								<td>2017</td>
@@ -1489,11 +1084,11 @@
 							<tr>
 								<td>03</td>
 								<td>
-									<h3><a href="index.html">The Best Trading Platform, UK</a></h3>
+									<h3><a href="/">{{ formatTranslation(t, 'home.best_trading_platform') }}</a></h3>
 								</td>
 								<td><span>x4</span></td>
 								<td>
-									<figure class="image-box"><a href="index.html"><img src="/images/icons/award-3.png"
+									<figure class="image-box"><a href="/"><img src="/images/icons/award-3.png"
 												alt=""></a></figure>
 								</td>
 								<td>2022</td>
@@ -1501,11 +1096,11 @@
 							<tr>
 								<td>04</td>
 								<td>
-									<h3><a href="index.html">Advance HighTechnology Trade</a></h3>
+									<h3><a href="/">{{ formatTranslation(t, 'home.technology_trade') }}</a></h3>
 								</td>
 								<td><span>x3</span></td>
 								<td>
-									<figure class="image-box"><a href="index.html"><img src="/images/icons/award-4.png"
+									<figure class="image-box"><a href="/"><img src="/images/icons/award-4.png"
 												alt=""></a></figure>
 								</td>
 								<td>2014</td>
@@ -1513,11 +1108,11 @@
 							<tr>
 								<td>05</td>
 								<td>
-									<h3><a href="index.html">The Best Trading Platform, London</a></h3>
+									<h3><a href="/">{{ formatTranslation(t, 'home.best_trading_platform') }}</a></h3>
 								</td>
 								<td><span>x4</span></td>
 								<td>
-									<figure class="image-box"><a href="index.html"><img src="/images/icons/award-5.png"
+									<figure class="image-box"><a href="/"><img src="/images/icons/award-5.png"
 												alt=""></a></figure>
 								</td>
 								<td>2018</td>
@@ -1535,15 +1130,15 @@
 						<div class="row align-items-center">
 							<div class="col-lg-6 col-md-12 col-sm-12 title-column">
 								<div class="sec-title">
-									<span class="sub-title mb_14">Experience</span>
-									<h2>Your trades in the right place</h2>
+									<span class="sub-title mb_14">{{ formatTranslation(t, 'home.experience') }}</span>
+									<h2>{{ formatTranslation(t, 'home.right_place') }}</h2>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-12 col-sm-12 text-column">
 								<div class="text-box">
-									<p>We use cookies to understand how you use our website and to give you the best
-										possible</p>
-									<a v-if="!loggedIn" href="/login" class="theme-btn btn-one">Start Trading Now</a>
+									<p>{{ formatTranslation(t, 'home.cookies') }}</p>
+									<a v-if="!loggedIn" href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+										'home.start_trading') }}</a>
 								</div>
 							</div>
 						</div>
@@ -1553,25 +1148,25 @@
 							<div class="col-lg-3 col-md-6 col-sm-12 single-column">
 								<div class="single-item">
 									<h2>1 milion+</h2>
-									<p>XTB Group Clients</p>
+									<p>{{ formatTranslation(t, 'home.clients') }}</p>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-6 col-sm-12 single-column">
 								<div class="single-item">
 									<h2>5 milion+</h2>
-									<p>Users</p>
+									<p>{{ formatTranslation(t, 'home.users') }}</p>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-6 col-sm-12 single-column">
 								<div class="single-item">
 									<h2>18+</h2>
-									<p>Years on the market</p>
+									<p>{{ formatTranslation(t, 'home.years_on_market') }}</p>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-6 col-sm-12 single-column">
 								<div class="single-item">
 									<h2>FSC</h2>
-									<p>Regulated by authorities</p>
+									<p>{{ formatTranslation(t, 'home.regulated') }}</p>
 								</div>
 							</div>
 						</div>
@@ -1582,8 +1177,8 @@
 		<section class="testimonial-style-two pt_100 pb_70">
 			<div class="auto-container">
 				<div class="sec-title centred pb_60">
-					<span class="sub-title mb_14">Testimonials</span>
-					<h2>Love from Users</h2>
+					<span class="sub-title mb_14">{{ formatTranslation(t, 'home.regulated') }}</span>
+					<h2>{{ formatTranslation(t, 'home.love_from_users') }}</h2>
 				</div>
 				<div class="row clearfix">
 					<div class="col-lg-4 col-md-6 col-sm-12 testimonial-block">
@@ -1596,15 +1191,15 @@
 									<li><i class="icon-37"></i></li>
 									<li><i class="icon-37"></i></li>
 								</ul>
-								<p>The real-time alerts are incredibly accurate and have seriously improved my entry and
-									exit points. I feel much more confident in my trades now</p>
+								<p>{{ formatTranslation(t, 'home.real_time_alerts') }}</p>
 								<div class="author-box">
 									<figure class="author-thumb"><img
 											src="https://media.istockphoto.com/id/1979951980/photo/my-cat-is-my-best-painting-friend.webp?s=1024x1024&w=is&k=20&c=RiwDpG48f5Wn54-XxwZk5wxDthGej6JCPDW5iUYAt3Q="
 											alt="">
 									</figure>
 									<h4>Brooklyn Simmons</h4>
-									<span class="designation">Nursing Assistant</span>
+									<span class="designation">{{ formatTranslation(t, 'home.nursing_assistant')
+									}}</span>
 								</div>
 							</div>
 						</div>
@@ -1619,15 +1214,14 @@
 									<li><i class="icon-37"></i></li>
 									<li><i class="icon-37"></i></li>
 								</ul>
-								<p>I love the educational resources. As a new trader, the guides broke down complex
-									topics into easy-to-understand steps. This service is worth every penny!</p>
+								<p>{{ formatTranslation(t, 'home.educational_resources') }}</p>
 								<div class="author-box">
 									<figure class="author-thumb"><img
 											src="https://media.istockphoto.com/id/1644238002/photo/business-confidence-and-portrait-black-man-with-smile-in-office-startup-ceo-or-owner-at-hr.jpg?s=612x612&w=0&k=20&c=qv73OrrnOSfjzQuJiLOywdO2Ly7jsEmG6JhDXY1Qjc4="
 											alt="">
 									</figure>
 									<h4>Guy Hawkins</h4>
-									<span class="designation">Web Designer</span>
+									<span class="designation">{{ formatTranslation(t, 'home.web_designer') }}</span>
 								</div>
 							</div>
 						</div>
@@ -1642,16 +1236,14 @@
 									<li><i class="icon-37"></i></li>
 									<li><i class="icon-37"></i></li>
 								</ul>
-								<p>I signed up primarily for the market insights, and they are truly top-tier. They cut
-									through the noise and deliver actionable information. A must-have tool for any
-									active trader.</p>
+								<p>{{ formatTranslation(t, 'home.signed') }}</p>
 								<div class="author-box">
 									<figure class="author-thumb"><img
 											src="https://media.istockphoto.com/id/1450340623/photo/portrait-of-successful-mature-boss-senior-businessman-in-glasses-asian-looking-at-camera-and.jpg?s=612x612&w=0&k=20&c=f0EqWiUuID5VB_NxBUEDn92W2HLENR15CFFPzr-I4XE="
 											alt="">
 									</figure>
 									<h4>Esther Ho</h4>
-									<span class="designation">President of Sales</span>
+									<span class="designation">{{ formatTranslation(t, 'home.president') }}</span>
 								</div>
 							</div>
 						</div>
@@ -1667,16 +1259,16 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-md-12 col-sm-12 text-column">
 							<div class="text-box">
-								<h2>Subscribe for latest update</h2>
+								<h2>{{ formatTranslation(t, 'home.subscribe_latest_news') }}</h2>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-12 col-sm-12 form-column">
 							<div class="form-inner">
-								<form method="post" action="contact.html">
+								<form method="post" action="/contact">
 									<div class="form-group">
 										<input type="email" name="email" placeholder="Email Address" required>
-										<button type="submit" class="theme-btn btn-one">Subscribe<i
-												class="icon-26"></i></button>
+										<button type="submit" class="theme-btn btn-one">{{ formatTranslation(t,
+											'home.subscribe_latest_news') }}<i class="icon-26"></i></button>
 									</div>
 								</form>
 							</div>
@@ -1689,19 +1281,38 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, nextTick, ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { computed } from 'vue'
 
-import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 import { storeToRefs } from 'pinia'
 
 import MobileSubscription from '@/components/MobileSubscription.vue'
 import { useAuthStore } from '@/stores/auth'
-import { computed } from 'vue'
+import { formatTranslation } from '@/utils/i18'
 
-const router = useRouter()
+const { t } = useI18n()
 const auth = useAuthStore()
 const { loggedIn, subscriptionActive } = storeToRefs(auth)
+
+const API_URL = 'https://back.early-trade-signals.com'
+const tickerItems = ref([])
+
+async function loadTicker() {
+	try {
+		const response = await fetch(`${API_URL}/signals`, {
+			credentials: 'include'
+		})
+
+		if (!response.ok) throw new Error('Failed to fetch ticker')
+
+		const data = await response.json()
+		tickerItems.value = data.signals || []
+	} catch (err) {
+		console.error('Ticker fetch failed:', err)
+	}
+}
 
 declare global {
 	interface Window {
@@ -1721,6 +1332,8 @@ onMounted(async () => {
 	setTimeout(() => {
 		initializeComponents()
 	}, 150)
+
+	loadTicker()
 })
 
 onBeforeUnmount(() => {
@@ -1757,27 +1370,9 @@ function initializeComponents() {
 		animateIn: 'fadeIn'
 	})
 
-	initCarousel('.five-item-carousel', {
-		loop: true,
-		margin: 30,
-		nav: false,
-		dots: true,
-		autoplay: true,
-		responsive: {
-			0: { items: 1 },
-			600: { items: 2 },
-			768: { items: 3 },
-			992: { items: 4 },
-			1200: { items: 5 }
-		}
-	})
-
 	// Initialize other plugins
 	initAccordion($)
-	initTabs($)
-	initOdometer($)
 	initNiceSelect($)
-	initScrollToTop($)
 }
 
 function initCarousel(selector: string, options: any) {
@@ -1811,49 +1406,10 @@ function initAccordion($: any) {
 	}
 }
 
-function initTabs($: any) {
-	$('.p-tab-btn').on('click', function (e: Event) {
-		e.preventDefault()
-		const target = $(this).attr('data-tab')
-
-		$('.p-tab-btn').removeClass('active-btn')
-		$(this).addClass('active-btn')
-
-		$('.p-tab').removeClass('active-tab')
-		$(target).addClass('active-tab')
-	})
-}
-
-function initOdometer($: any) {
-	if ($('.odometer').length && $.fn.appear) {
-		$('.odometer').each(function () {
-			$(this).appear(function () {
-				const count = $(this).attr('data-count')
-				$(this).html(count)
-			})
-		})
-	}
-}
-
 function initNiceSelect($: any) {
 	if ($.fn.niceSelect && $('select:not(.ignore)').length) {
 		$('select:not(.ignore)').niceSelect()
 	}
-}
-
-function initScrollToTop($: any) {
-	$(window).on('scroll', function () {
-		if ($(this).scrollTop() > 200) {
-			$('.scroll-to-top').fadeIn()
-		} else {
-			$('.scroll-to-top').fadeOut()
-		}
-	})
-
-	$('.scroll-to-top').on('click', function () {
-		$('html, body').animate({ scrollTop: 0 }, 600)
-		return false
-	})
 }
 </script>
 

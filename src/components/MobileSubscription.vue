@@ -1,13 +1,12 @@
 <template>
     <section class="phone-number-container">
-        <h2>Subscribe for 7 Days</h2>
-        <p>Enter your phone number below to start your free 7-day subscription trial.</p>
+        <h2>{{ formatTranslation(t, 'home.subscribe_days') }}</h2>
         <div class="phone-form">
-            <label for="phone">Phone Number</label>
+            <label for="phone">{{ formatTranslation(t, 'home.phone_number') }}</label>
             <input type="tel" id="phone" name="phone" v-model="phone" placeholder="e.g. +1 555 123 4567" required
                 @input="onInput" />
             <button type="button" @click="activateSubscription" :disabled="!isValidPhone">
-                Subscribe
+                {{ formatTranslation(t, 'home.subscribe') }}
             </button>
         </div>
     </section>
@@ -16,7 +15,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useAuthStore } from "@/stores/auth"
+import { formatTranslation } from '@/utils/i18'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const authStore = useAuthStore()
 const phone = ref('')
 

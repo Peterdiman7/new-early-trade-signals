@@ -1,0 +1,875 @@
+{
+  "en": {
+    "cancel_subscription": {
+      "page_title": "Cancel Subscription",
+      "breadcrumb_home": "Home",
+      "breadcrumb_cancel": "Cancel Subscription",
+      "sorry_to_see_you_go": "We're Sorry to See You Go",
+      "description": "Please fill out the form below to confirm your subscription cancellation.",
+      "form": {
+        "reason_label": "Reason for cancellation",
+        "reason_placeholder": "-- Select a reason --",
+        "reason_options": {
+          "too_expensive": "Too expensive",
+          "not_enough_content": "Not enough content",
+          "better_alternative": "Found a better alternative",
+          "technical_issues": "Technical issues",
+          "other": "Other"
+        },
+        "full_name_label": "Full name",
+        "full_name_placeholder": "Enter your full name",
+        "email_label": "Email address",
+        "email_placeholder": "Enter your email",
+        "comments_label": "Additional comments (optional)",
+        "comments_placeholder": "Tell us more...",
+        "submit_btn": "Submit & Cancel",
+        "success_message": "Your cancellation request has been submitted. Thank you, {{name}}."
+      }
+    },
+    "checkout": {
+      "complete_purchase": "Complete Your Purchase",
+      "payment_method": "Payment Method",
+      "billing_info": "Billing Information",
+      "card_number": "Card Number",
+      "expiry_date": "Expiry Date",
+      "cvv": "CVV",
+      "cardholder_name": "Cardholder Name",
+      "paypal_redirect": "You will be redirected to PayPal to complete your payment securely.",
+      "agree_terms": "I agree to the",
+      "and": "and",
+      "terms_conditions": "Terms & Conditions",
+      "privacy_policy": "Privacy Policy",
+      "complete_purchase_btn": "Complete Purchase",
+      "processing": "Processing...",
+      "payment_secure": "Your payment information is encrypted and secure",
+      "order_summary": "Order Summary",
+      "included_features": "Included Features",
+      "subtotal": "Subtotal",
+      "discount": "Discount ({{percent}}%)",
+      "total": "Total",
+      "money_back_guarantee": "30-day money-back guarantee",
+      "email_address": "Email Address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "address": "Address",
+      "city": "City",
+      "postal_code": "Postal Code",
+      "secure_checkout": "Secure Checkout",
+      "country": "Country",
+      "select_country": "Select Country",
+      "state": "State/Province",
+      "payment": {
+        "card": "Credit/Debit Card",
+        "paypal": "PayPal"
+      }
+    },
+    "contacts": {
+      "corporate_office": "Corporate Office",
+      "main_warehouse": "Main Warehouse",
+      "your_name": "Your Name ",
+      "phone": "Phone ",
+      "email_address": "Email Address ",
+      "write_message": "Write Message ",
+      "about_us": "About Us",
+      "awards": "Awards",
+      "principals": "Principals",
+      "partnership": "Partnership",
+      "careers": "Careers",
+      "management": "Management",
+      "all_rights_reserved": "All rights reserved"
+    },
+    "footer": {
+      "home": "Home",
+      "signals": "Signals",
+      "market_analysis": "Market Analysis",
+      "pricing": "Pricing",
+      "terms_conditions": "Terms & Conditions",
+      "support": "Support",
+      "contact_us": "Contact Us",
+      "cancel_subscription": "Cancel Subsciption",
+      "we_accept": "We Accept:",
+      "privacy_policy": "Privacy Policy"
+    },
+    "header": {
+      "account_open": "Open Account",
+      "login": "Login",
+      "home": "Home",
+      "signals": "Signals",
+      "support": "Support",
+      "contact_us": "Contact Us",
+      "cancel_subscription": "Cancel Subsciption",
+      "legal": "Legal",
+      "terms_conditions": "Terms & Conditions",
+      "privacy_policy": "Privacy Policy",
+      "market_analysis": "Market Analysis",
+      "pricing": "Pricing",
+      "logout": "Logout",
+      "contact_info": "Contact Info"
+    },
+    "home": {
+      "a_z": "The A-Z of Forex Trading Proficiency",
+      "day_to_day": "Our management team brings a wealth of experience to the day-to-day operations at Fortradex",
+      "start_trading": "Start Trading Now",
+      "try_demo_trading": "Try Demo Trading",
+      "account": "Account",
+      "trading_accounts": "Trading Accounts",
+      "who": "Who we are",
+      "early_trade_signals": "Early Trade Signals provides curated market insights, real-time trading alerts, and educational resources to empower traders. All content is for informational purposes only and not financial advice.",
+      "what_we_do": "What we do",
+      "what_we_deliver": "We deliver early market insight signals by analyzing price movements, market trends, and key indicators across different asset classes.",
+      "how_it_works": "How it works",
+      "market_data": "We receive market data and early-trend signals from verified, reputable providers specializing in stocks, crypto, and global market indicators. Incoming data goes through our internal filtering layer, where we: validate accuracy, remove noise, identify meaningful price movements or trend shifts. The system refreshes throughout the day to reflect changing market conditions, ensuring users receive signals as early and as accurately as possible.",
+      "trade_now": "Trade Now",
+      "spreads": "Market Spreads and Swaps",
+      "trade": "Trade",
+      "sellers": "Sellers",
+      "buyers": "Buyers",
+      "trading_account": "Trading Account",
+      "professional_account": "Professional Account",
+      "professional_account_info": "Traders with professional accounts gain access to a wide",
+      "create_account": "Create Account",
+      "overview_account": "Overview Account",
+      "overview_account_info": "The primary feature of a trading overview account is its ability to",
+      "demo_account": "Demo Account",
+      "demo_account_info": "Trading demo accounts are particularly valuable for novice",
+      "islamic_account": "Islamic Account",
+      "islamic_account_info": "Islamic accounts also adhere to ethical guidelines that prohibit",
+      "cookies": "We use cookies to understand how you use our website and to give you the best possible experience.",
+      "experience": "Experience",
+      "right_place": "Your trades in the right place",
+      "clients": "XTB Group Clients",
+      "users": "users",
+      "years_on_market": "Years on the market",
+      "regulated": "Regulated by authorities",
+      "testimonials": "Testimonials",
+      "love_from_users": "Love from Users",
+      "real_time_alerts": "The real-time alerts are incredibly accurate and have seriously improved my entry and exit points. I feel much more confident in my trades now",
+      "nursing_assistant": "Nursing Assistant",
+      "educational_resources": "I love the educational resources. As a new trader, the guides broke down complex topics into easy-to-understand steps. This service is worth every penny!",
+      "web_designer": "Web Designer",
+      "signed": "I signed up primarily for the market insights, and they are truly top-tier. They cut through the noise and deliver actionable information. A must-have tool for any active trader.",
+      "president": "President of Sales",
+      "subscribe_latest_news": "Subscribe for latest update",
+      "subscribe": "Subscribe",
+      "awarded": "AWARDED BY THE BEST",
+      "globally_awarded": "Globally Awarded",
+      "best_trading_platform": "The Best Trading Platform, UK",
+      "excellence": "Awards Interior Excellence",
+      "technology_trade": "Advance HighTechnology Trade",
+      "subscribe_days": "Subscribe for 7 Days",
+      "phone_number": "Phone Number"
+    },
+    "login": {
+      "title": "Login",
+      "username": "Username",
+      "password": "Password",
+      "button": "Login",
+      "no_account": "No account?",
+      "register_here": "Register here",
+      "success": "Logged in successfully!",
+      "error": "Please enter both username and password."
+    },
+    "market_analysis": {
+      "title": "Market Analysis",
+      "subtitle": "Deep insights and trends across global markets",
+      "overview": {
+        "title": "Market Overview",
+        "stats": {
+          "sp500": "S&P 500",
+          "nasdaq": "NASDAQ",
+          "bitcoin": "Bitcoin",
+          "gold": "Gold"
+        }
+      },
+      "sentiment": {
+        "title": "Market Sentiment",
+        "label": "Bullish",
+        "description": "Overall market sentiment remains positive with strong institutional buying across major indices.",
+        "labels": {
+          "bearish": "Bearish",
+          "neutral": "Neutral",
+          "bullish": "Bullish"
+        }
+      },
+      "trending_assets": {
+        "title": "Trending Assets"
+      },
+      "technical": {
+        "title": "Technical Analysis",
+        "text": "Major support levels holding strong across equity indices. RSI indicators suggest healthy momentum without overbought conditions. Watch for resistance at 4,600 on S&P 500.",
+        "tags": {
+          "support_strong": "Support Strong",
+          "momentum_positive": "Momentum Positive",
+          "volume_healthy": "Volume Healthy"
+        }
+      },
+      "fundamental": {
+        "title": "Fundamental Outlook",
+        "text": "Q4 earnings season showing resilience despite macro headwinds. Tech sector leading with strong revenue growth. Federal Reserve policy remaining accommodative supporting risk assets.",
+        "tags": {
+          "earnings_strong": "Earnings Strong",
+          "fed_dovish": "Fed Dovish",
+          "growth_positive": "Growth Positive"
+        }
+      },
+      "news": {
+        "title": "Latest Market News",
+        "fed_rate": {
+          "title": "Fed Holds Rates Steady, Signals Cautious Approach",
+          "description": "Federal Reserve maintains current interest rate policy, citing balanced economic conditions."
+        },
+        "tech_sector": {
+          "title": "Tech Sector Leads Market Rally on Strong Earnings",
+          "description": "Major tech companies report better-than-expected Q4 results, driving broader market gains."
+        },
+        "crypto_interest": {
+          "title": "Crypto Markets Show Renewed Institutional Interest",
+          "description": "Large-scale institutional investments signal growing confidence in digital assets."
+        },
+        "oil_prices": {
+          "title": "Oil Prices Stabilize Amid Production Adjustments",
+          "description": "Global oil markets find equilibrium as OPEC+ implements new production quotas."
+        }
+      }
+    },
+    "pricing": {
+      "choose_plan": "Choose Your Plan",
+      "subheader": "Start trading smarter with our flexible pricing options",
+      "billing_monthly": "Monthly",
+      "most_popular": "Most Popular",
+      "choose_this_plan": "Choose This Plan",
+      "faq": "Frequently Asked Questions",
+      "feature_comparison": "Feature Comparison",
+      "feature": "Feature",
+      "starter": "Starter",
+      "pro": "Pro",
+      "enterprise": "Enterprise",
+      "plans": {
+        "ku": {
+          "daily_access": {
+            "name": "Daily Access",
+            "description": "Perfect for trying out our platform",
+            "features": {
+              "full_library": "Full library access",
+              "hd_streaming": "HD streaming",
+              "mobile_web": "Works on mobile & web"
+            }
+          },
+          "weekly_access": {
+            "name": "Weekly Access",
+            "description": "Best value for regular users",
+            "features": {
+              "full_library": "Full library access",
+              "offline_access": "Offline access",
+              "priority_support": "Priority support"
+            }
+          }
+        },
+        "ksa": {
+          "daily_access": {
+            "name": "Daily Access",
+            "description": "Perfect for trying out our platform",
+            "features": {
+              "full_library": "Full library access",
+              "hd_streaming": "HD streaming",
+              "all_devices": "Works on all devices"
+            }
+          }
+        },
+        "iq": {
+          "daily_access": {
+            "name": "Daily Access",
+            "description": "Perfect for trying out our platform",
+            "features": {
+              "full_library": "Full library access",
+              "hd_streaming": "HD streaming",
+              "cancel_anytime": "Cancel anytime"
+            }
+          },
+          "weekly_access": {
+            "name": "Weekly Access",
+            "description": "Best value for regular users",
+            "features": {
+              "full_library": "Full library access",
+              "offline_access": "Offline access",
+              "priority_support": "Priority support"
+            }
+          }
+        },
+        "su": {
+          "daily_access": {
+            "name": "Daily Access",
+            "description": "Perfect for trying out our platform",
+            "features": {
+              "full_library": "Full library access",
+              "hd_streaming": "HD streaming",
+              "basic_support": "Basic support"
+            }
+          },
+          "weekly_access": {
+            "name": "Weekly Access",
+            "description": "Best value for regular users",
+            "features": {
+              "full_library": "Full library access",
+              "offline_access": "Offline access",
+              "priority_support": "Priority support"
+            }
+          },
+          "monthly_access": {
+            "name": "Monthly Access",
+            "description": "Ultimate access for power users",
+            "features": {
+              "full_library": "Full library access",
+              "offline_access": "Offline access",
+              "vip_support": "VIP support",
+              "multi_device": "Multi-device"
+            }
+          }
+        },
+        "default": {
+          "basic": {
+            "name": "Basic",
+            "description": "Entry-level access for casual traders",
+            "features": {
+              "signals": "3 signals per day",
+              "chart": "Basic chart insights",
+              "community": "Community forum access"
+            }
+          },
+          "starter": {
+            "name": "Starter",
+            "description": "Perfect for beginners exploring trading signals",
+            "features": {
+              "signals": "Up to 10 signals per day",
+              "analysis": "Basic market analysis",
+              "email": "Email notifications",
+              "community": "Community access",
+              "mobile": "Mobile app access"
+            }
+          },
+          "pro": {
+            "name": "Pro",
+            "description": "For serious traders who need advanced tools",
+            "features": {
+              "unlimited_signals": "Unlimited signals",
+              "advanced_analysis": "Advanced market analysis",
+              "notifications": "Real-time push notifications",
+              "priority_support": "Priority support",
+              "custom_alerts": "Custom alerts",
+              "portfolio_tracking": "Portfolio tracking",
+              "indicators": "Technical indicators",
+              "community": "All community features"
+            }
+          },
+          "enterprise": {
+            "name": "Enterprise",
+            "description": "Custom solutions for professional teams",
+            "features": {
+              "all_pro": "Everything in Pro",
+              "manager": "Dedicated account manager",
+              "api": "API access",
+              "integrations": "Custom integrations",
+              "analytics": "Advanced analytics",
+              "team_tools": "Team collaboration tools",
+              "white_label": "White-label options",
+              "priority_delivery": "Priority signal delivery"
+            }
+          },
+          "ultimate": {
+            "name": "Ultimate",
+            "description": "All-in-one solution for institutions and hedge funds",
+            "features": {
+              "all_enterprise": "Everything in Enterprise",
+              "analytics": "Institutional-grade analytics",
+              "unlimited_team": "Unlimited team members",
+              "support": "24/7 dedicated support",
+              "consulting": "On-site consulting",
+              "custom_ai": "Custom AI-driven strategies",
+              "private_community": "Private community access"
+            }
+          }
+        }
+      }
+    },
+    "register": {
+      "title": "Register",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "button": "Register",
+      "already_account": "Already have an account?",
+      "login_here": "Login here",
+      "success": "Registered successfully!",
+      "error": "Please fill out all fields correctly."
+    },
+    "signals": {
+      "title": "Live Trading Signals",
+      "subtitle": "Real-time trading recommendations powered by market data analysis",
+      "last_updated": "Last updated",
+      "auto_refresh": "• Auto-refreshes every 30s",
+      "loading": "Loading latest signals...",
+      "error_title": "Unable to Load Signals",
+      "retry": "Retry",
+      "stats": {
+        "buy": "Buy Signals",
+        "hold": "Hold Signals",
+        "sell": "Sell Signals",
+        "total": "Total Tracked"
+      },
+      "metrics": {
+        "current_price": "Current Price",
+        "signal_strength": "Signal Strength"
+      },
+      "about_title": "About These Signals",
+      "about_description": "Trading signals are automatically updated every minute using real-time market data from Alpha Vantage API. Recommendations are based on:",
+      "about_list": {
+        "momentum": "Price momentum and trends",
+        "intraday": "Intraday price range analysis",
+        "technical": "Technical indicators and market sentiment"
+      },
+      "legend": {
+        "buy": "Buy - Strong upward momentum (>3% gain + trading near highs)",
+        "hold": "Hold - Stable or moderate movement",
+        "sell": "Sell - Downward momentum (<-3% loss or trading near lows)"
+      },
+      "disclaimer": "Risk Disclaimer: Trading financial instruments involves significant risk. These signals are for informational purposes only and should not be considered as financial advice. Always conduct your own research and consult with a financial advisor before making investment decisions."
+    }
+  },
+  "de": {
+    "cancel_subscription": {
+      "page_title": "Abonnement kündigen",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_cancel": "Abonnement kündigen",
+      "sorry_to_see_you_go": "Es tut uns leid, dass Sie gehen",
+      "description": "Bitte füllen Sie das folgende Formular aus, um Ihre Kündigung zu bestätigen.",
+      "form": {
+        "reason_label": "Grund für die Kündigung",
+        "reason_placeholder": "-- Grund auswählen --",
+        "reason_options": {
+          "too_expensive": "Zu teuer",
+          "not_enough_content": "Nicht genug Inhalte",
+          "better_alternative": "Bessere Alternative gefunden",
+          "technical_issues": "Technische Probleme",
+          "other": "Sonstiges"
+        },
+        "full_name_label": "Vollständiger Name",
+        "full_name_placeholder": "Geben Sie Ihren vollständigen Namen ein",
+        "email_label": "E-Mail-Adresse",
+        "email_placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+        "comments_label": "Weitere Kommentare (optional)",
+        "comments_placeholder": "Erzählen Sie uns mehr...",
+        "submit_btn": "Absenden & kündigen",
+        "success_message": "Ihre Kündigungsanfrage wurde eingereicht. Vielen Dank, {{name}}."
+      }
+    },
+    "checkout": {
+      "complete_purchase": "Kauf abschließen",
+      "payment_method": "Zahlungsmethode",
+      "billing_info": "Rechnungsinformationen",
+      "card_number": "Kartennummer",
+      "expiry_date": "Gültig bis",
+      "cvv": "CVV",
+      "cardholder_name": "Karteninhaber",
+      "paypal_redirect": "Sie werden zu PayPal weitergeleitet, um Ihre Zahlung sicher abzuschließen.",
+      "agree_terms": "Ich stimme den",
+      "and": "und",
+      "terms_conditions": "Allgemeinen Geschäftsbedingungen",
+      "privacy_policy": "Datenschutzbestimmungen",
+      "complete_purchase_btn": "Kauf abschließen",
+      "processing": "Verarbeitung...",
+      "payment_secure": "Ihre Zahlungsinformationen sind verschlüsselt und sicher",
+      "order_summary": "Bestellübersicht",
+      "included_features": "Enthaltene Funktionen",
+      "subtotal": "Zwischensumme",
+      "discount": "Rabatt ({{percent}}%)",
+      "total": "Gesamt",
+      "money_back_guarantee": "30-Tage-Geld-zurück-Garantie",
+      "email_address": "E-Mail-Adresse",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "secure_checkout": "Secure Checkout",
+      "address": "Adresse",
+      "city": "Stadt",
+      "postal_code": "Postleitzahl",
+      "country": "Land",
+      "select_country": "Land auswählen",
+      "state": "Bundesland/Provinz",
+      "payment": {
+        "card": "Kredit-/Debitkarte",
+        "paypal": "PayPal"
+      }
+    },
+    "contacts": {
+      "corporate_office": "Zentrale",
+      "main_warehouse": "Hauptlager",
+      "your_name": "Ihr Name",
+      "phone": "Telefon ",
+      "email_address": "Email Address ",
+      "write_message": "Nachricht schreiben ",
+      "about_us": "Über uns",
+      "awards": "Auszeichnungen",
+      "principals": "Autraggebern",
+      "partnership": "Partnerschaft",
+      "careers": "Karriere",
+      "management": "Management",
+      "all_rights_reserved": "Alle Rechte vorbehalten"
+    },
+    "footer": {
+      "home": "Home",
+      "signals": "Signale",
+      "market_analysis": "Marktanalyse",
+      "pricing": "Preise",
+      "terms_conditions": "Allgemeine Geschäftsbedingungen",
+      "support": "Unterstützung",
+      "contact_us": "Kontaktieren Sie uns",
+      "cancel_subscription": "Abonnement kündigen",
+      "we_accept": "Wir akzeptieren:",
+      "privacy_policy": "Datenschutzrichtlinie"
+    },
+    "header": {
+      "account_open": "Konto eröffnen",
+      "login": "Einloggen",
+      "home": "Home",
+      "signals": "Signale",
+      "support": "Unterstützung",
+      "contact_us": "Kontaktieren Sie uns",
+      "cancel_subscription": "Abonnement kündigen",
+      "legal": "Legal",
+      "terms_conditions": "Allgemeine Geschäftsbedingungen",
+      "privacy_policy": "Datenschutzrichtlinie",
+      "market_analysis": "Marktanalyse",
+      "pricing": "Preise",
+      "logout": "Abmelden",
+      "contact_info": "Kontaktinformationen"
+    },
+    "home": {
+      "a_z": "Das A-Z der Forex-Handelskompetenz",
+      "day_to_day": "Unser Managementteam bringt einen großen Erfahrungsschatz in das Tagesgeschäft von Fortradex ein.",
+      "start_trading": "Beginnen Sie jetzt mit dem Handel",
+      "try_demo_trading": "Probieren Sie Demo-Handel aus",
+      "account": "Konto",
+      "trading_accounts": "Handelskonten",
+      "who": "Wer wir sind",
+      "early_trade_signals": "Early Trade Signals bietet kuratierte Marktanalysen, Echtzeit-Handelssignale und Schulungsmaterialien, um Händler zu unterstützen. Alle Inhalte dienen ausschließlich Informationszwecken und stellen keine Finanzberatung dar.",
+      "what_we_do": "Was wir tun",
+      "what_we_deliver": "Wir liefern frühzeitige Markteinblicke durch die Analyse von Preisbewegungen, Markttrends und wichtigen Indikatoren über verschiedene Anlageklassen hinweg.",
+      "how_it_works": "Wie es funktioniert",
+      "market_data": "Wir beziehen Marktdaten und Frühindikatoren von verifizierten, renommierten Anbietern, die auf Aktien, Kryptowährungen und globale Marktindikatoren spezialisiert sind. Die eingehenden Daten durchlaufen unsere interne Filterung, in der wir ihre Genauigkeit überprüfen, Störfaktoren entfernen und aussagekräftige Kursbewegungen oder Trendwechsel identifizieren. Das System aktualisiert sich fortlaufend, um die sich ändernden Marktbedingungen widerzuspiegeln und sicherzustellen, dass Nutzer die Signale so früh und präzise wie möglich erhalten.",
+      "trade_now": "Jetzt handeln",
+      "spreads": "Marktspreads und Swaps",
+      "trade": "Handel",
+      "sellers": "Verkäufer",
+      "buyers": "Käufer",
+      "trading_account": "Handelskonto",
+      "professional_account": "Professionelles Konto",
+      "professional_account_info": "Händler mit professionellen Konten erhalten Zugang zu einem breiten Spektrum an",
+      "create_account": "Benutzerkonto erstellen",
+      "overview_account": "Übersichtskonto",
+      "overview_account_info": "Das Hauptmerkmal eines Handelsübersichtskontos ist seine Fähigkeit,",
+      "demo_account": "Demo Konto",
+      "demo_account_info": "Demokonten sind besonders wertvoll für Anfänger.",
+      "islamic_account": "Islamisches Konto",
+      "islamic_account_info": "Islamische Accounts halten sich auch an ethische Richtlinien, die verbieten",
+      "cookies": "Wir verwenden Cookies, um zu verstehen, wie Sie unsere Website nutzen und um Ihnen das bestmögliche Erlebnis zu bieten.",
+      "experience": "Erfahrung",
+      "right_place": "Ihre Transaktionen am richtigen Ort",
+      "clients": "XTB Group Clients",
+      "users": "Benutzer",
+      "years_on_market": "Jahre auf dem Markt",
+      "regulated": "Von den Behörden reguliert",
+      "testimonials": "Erfahrungsberichte",
+      "love_from_users": "Liebe von Nutzern",
+      "real_time_alerts": "Die Echtzeit-Benachrichtigungen sind unglaublich präzise und haben meine Ein- und Ausstiegspunkte deutlich verbessert. Ich fühle mich jetzt viel sicherer bei meinen Trades.",
+      "nursing_assistant": "Pflegeassistent",
+      "educational_resources": "Ich bin begeistert von den Schulungsmaterialien. Als Trading-Neuling haben mir die Anleitungen sehr geholfen, komplexe Themen in leicht verständliche Schritte zu unterteilen. Dieser Service ist jeden Cent wert!",
+      "web_designer": "Webdesigner",
+      "signed": "Ich habe mich hauptsächlich wegen der Marktanalysen angemeldet, und die sind wirklich erstklassig. Sie filtern die irrelevanten Informationen heraus und liefern konkrete Handlungsempfehlungen. Ein unverzichtbares Tool für jeden aktiven Trader.",
+      "president": "Präsident für Vertrieb",
+      "subscribe_latest_news": "Abonnieren Sie das neueste Update",
+      "subscribe": "Abonnieren Sie",
+      "awarded": "AUSGEZEICHNET VON DEN BESTEN",
+      "globally_awarded": "Weltweit ausgezeichnet",
+      "best_trading_platform": "Die beste Handelsplattform Großbritanniens",
+      "excellence": "Auszeichnungen für herausragende Innenausstattung",
+      "technology_trade": "Fortschrittlicher Hightech-Handel",
+      "subscribe_days": "Abonnieren Sie für 7 Tage",
+      "phone_number": "Telefonnummer",
+      "enter_phone_number": "Geben Sie unten Ihre Telefonnummer ein, um Ihre kostenlose 7-tägige Testphase zu starten."
+    },
+    "login": {
+      "title": "Anmelden",
+      "username": "Benutzername",
+      "password": "Passwort",
+      "button": "Anmelden",
+      "no_account": "Kein Konto?",
+      "register_here": "Hier registrieren",
+      "success": "Erfolgreich angemeldet!",
+      "error": "Bitte Benutzername und Passwort eingeben."
+    },
+    "market_analysis": {
+      "title": "Marktanalyse",
+      "subtitle": "Tiefe Einblicke und Trends auf den globalen Märkten",
+      "overview": {
+        "title": "Marktübersicht",
+        "stats": {
+          "sp500": "S&P 500",
+          "nasdaq": "NASDAQ",
+          "bitcoin": "Bitcoin",
+          "gold": "Gold"
+        }
+      },
+      "sentiment": {
+        "title": "Marktstimmung",
+        "labels": {
+          "bearish": "Bärisch",
+          "neutral": "Neutral",
+          "bullish": "Bullisch"
+        },
+        "value": "68% Bullisch",
+        "description": "Die allgemeine Marktstimmung bleibt positiv mit starken institutionellen Käufen in den wichtigsten Indizes."
+      },
+      "trending_assets": {
+        "title": "Trendende Vermögenswerte"
+      },
+      "technical": {
+        "title": "Technische Analyse",
+        "text": "Wichtige Unterstützungsniveaus halten stark über den Aktienindizes. RSI-Indikatoren zeigen gesunde Dynamik ohne überkaufte Bedingungen. Achten Sie auf Widerstand bei 4.600 im S&P 500.",
+        "tags": {
+          "support_strong": "Starke Unterstützung",
+          "momentum_positive": "Positive Dynamik",
+          "volume_healthy": "Gesundes Volumen"
+        }
+      },
+      "fundamental": {
+        "title": "Fundamentale Aussichten",
+        "text": "Die Ergebnisse des vierten Quartals zeigen trotz makroökonomischer Gegenwinde Resilienz. Der Technologiesektor führt mit starkem Umsatzwachstum. Die Politik der Federal Reserve bleibt unterstützend für Risikoanlagen.",
+        "tags": {
+          "earnings_strong": "Starke Gewinne",
+          "fed_dovish": "Fed zurückhaltend",
+          "growth_positive": "Positives Wachstum"
+        }
+      },
+      "news": {
+        "title": "Neueste Markt-Nachrichten",
+        "fed_rate": {
+          "title": "Fed hält Zinsen stabil und signalisiert vorsichtigen Ansatz",
+          "description": "Die Federal Reserve behält die aktuelle Zinspolitik bei und verweist auf ausgewogene wirtschaftliche Bedingungen."
+        },
+        "tech_sector": {
+          "title": "Technologiesektor führt Marktrallye dank starker Gewinne an",
+          "description": "Große Technologieunternehmen melden bessere als erwartete Q4-Ergebnisse, was den breiteren Markt antreibt."
+        },
+        "crypto_interest": {
+          "title": "Kryptomärkte zeigen erneutes institutionelles Interesse",
+          "description": "Großangelegte institutionelle Investitionen signalisieren wachsende Zuversicht in digitale Vermögenswerte."
+        },
+        "oil_prices": {
+          "title": "Ölpreise stabilisieren sich nach Produktionsanpassungen",
+          "description": "Die globalen Ölmärkte finden ein Gleichgewicht, da OPEC+ neue Produktionsquoten implementiert."
+        }
+      }
+    },
+    "pricing": {
+      "choose_plan": "Wählen Sie Ihren Plan",
+      "subheader": "Handeln Sie smarter mit unseren flexiblen Preismodellen",
+      "billing_monthly": "Monatlich",
+      "most_popular": "Am beliebtesten",
+      "choose_this_plan": "Diesen Plan wählen",
+      "faq": "Häufig gestellte Fragen",
+      "feature_comparison": "Funktionsvergleich",
+      "feature": "Funktion",
+      "starter": "Starter",
+      "pro": "Pro",
+      "enterprise": "Enterprise",
+      "plans": {
+        "ku": {
+          "daily_access": {
+            "name": "Tageszugang",
+            "description": "Perfekt, um unsere Plattform auszuprobieren",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "hd_streaming": "HD-Streaming",
+              "mobile_web": "Funktioniert auf Mobilgeräten & Web"
+            }
+          },
+          "weekly_access": {
+            "name": "Wochenzugang",
+            "description": "Bester Wert für regelmäßige Nutzer",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "offline_access": "Offline-Zugriff",
+              "priority_support": "Priorisierter Support"
+            }
+          }
+        },
+        "ksa": {
+          "daily_access": {
+            "name": "Tageszugang",
+            "description": "Perfekt, um unsere Plattform auszuprobieren",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "hd_streaming": "HD-Streaming",
+              "all_devices": "Funktioniert auf allen Geräten"
+            }
+          }
+        },
+        "iq": {
+          "daily_access": {
+            "name": "Tageszugang",
+            "description": "Perfekt, um unsere Plattform auszuprobieren",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "hd_streaming": "HD-Streaming",
+              "cancel_anytime": "Jederzeit kündbar"
+            }
+          },
+          "weekly_access": {
+            "name": "Wochenzugang",
+            "description": "Bester Wert für regelmäßige Nutzer",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "offline_access": "Offline-Zugriff",
+              "priority_support": "Priorisierter Support"
+            }
+          }
+        },
+        "su": {
+          "daily_access": {
+            "name": "Tageszugang",
+            "description": "Perfekt, um unsere Plattform auszuprobieren",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "hd_streaming": "HD-Streaming",
+              "basic_support": "Basis-Support"
+            }
+          },
+          "weekly_access": {
+            "name": "Wochenzugang",
+            "description": "Bester Wert für regelmäßige Nutzer",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "offline_access": "Offline-Zugriff",
+              "priority_support": "Priorisierter Support"
+            }
+          },
+          "monthly_access": {
+            "name": "Monatszugang",
+            "description": "Ultimativer Zugang für Power-User",
+            "features": {
+              "full_library": "Voller Bibliothekszugang",
+              "offline_access": "Offline-Zugriff",
+              "vip_support": "VIP-Support",
+              "multi_device": "Mehrere Geräte"
+            }
+          }
+        },
+        "default": {
+          "basic": {
+            "name": "Basic",
+            "description": "Einsteigerzugang für gelegentliche Trader",
+            "features": {
+              "signals": "3 Signale pro Tag",
+              "chart": "Grundlegende Chart-Analysen",
+              "community": "Zugang zum Community-Forum"
+            }
+          },
+          "starter": {
+            "name": "Starter",
+            "description": "Perfekt für Anfänger, die Trading-Signale erkunden",
+            "features": {
+              "signals": "Bis zu 10 Signale pro Tag",
+              "analysis": "Grundlegende Marktanalyse",
+              "email": "E-Mail-Benachrichtigungen",
+              "community": "Community-Zugang",
+              "mobile": "Zugang zur mobilen App"
+            }
+          },
+          "pro": {
+            "name": "Pro",
+            "description": "Für ernsthafte Trader, die fortgeschrittene Tools benötigen",
+            "features": {
+              "unlimited_signals": "Unbegrenzte Signale",
+              "advanced_analysis": "Fortgeschrittene Marktanalyse",
+              "notifications": "Echtzeit-Push-Benachrichtigungen",
+              "priority_support": "Priorisierter Support",
+              "custom_alerts": "Benutzerdefinierte Alerts",
+              "portfolio_tracking": "Portfolio-Verfolgung",
+              "indicators": "Technische Indikatoren",
+              "community": "Alle Community-Funktionen"
+            }
+          },
+          "enterprise": {
+            "name": "Enterprise",
+            "description": "Individuelle Lösungen für professionelle Teams",
+            "features": {
+              "all_pro": "Alles in Pro enthalten",
+              "manager": "Dedizierter Account Manager",
+              "api": "API-Zugriff",
+              "integrations": "Individuelle Integrationen",
+              "analytics": "Erweiterte Analysen",
+              "team_tools": "Team-Kollaborationstools",
+              "white_label": "White-Label-Optionen",
+              "priority_delivery": "Priorisierte Signalzustellung"
+            }
+          },
+          "ultimate": {
+            "name": "Ultimate",
+            "description": "All-in-One-Lösung für Institutionen und Hedgefonds",
+            "features": {
+              "all_enterprise": "Alles in Enterprise enthalten",
+              "analytics": "Institutionelle Analysen",
+              "unlimited_team": "Unbegrenzte Teammitglieder",
+              "support": "24/7 dedizierter Support",
+              "consulting": "Vor-Ort-Beratung",
+              "custom_ai": "Individuelle KI-Strategien",
+              "private_community": "Zugang zur privaten Community"
+            }
+          }
+        }
+      }
+    },
+    "register": {
+      "title": "Registrieren",
+      "username": "Benutzername",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "button": "Registrieren",
+      "already_account": "Hast du bereits ein Konto?",
+      "login_here": "Hier einloggen",
+      "success": "Registrierung erfolgreich!",
+      "error": "Bitte füllen Sie alle Felder aus."
+    },
+    "signals": {
+      "title": "Live-Handelssignale",
+      "subtitle": "Echtzeit-Handelsempfehlungen basierend auf Marktdatenanalysen",
+      "last_updated": "Zuletzt aktualisiert",
+      "auto_refresh": "• Aktualisiert sich automatisch alle 30 Sekunden",
+      "loading": "Lade die neuesten Signale...",
+      "error_title": "Signale konnten nicht geladen werden",
+      "retry": "Erneut versuchen",
+      "stats": {
+        "buy": "Kauf-Signale",
+        "hold": "Halte-Signale",
+        "sell": "Verkauf-Signale",
+        "total": "Insgesamt verfolgt"
+      },
+      "metrics": {
+        "current_price": "Aktueller Preis",
+        "signal_strength": "Signalstärke"
+      },
+      "about_title": "Über diese Signale",
+      "about_description": "Handelssignale werden automatisch jede Minute mit Echtzeit-Marktdaten von Alpha Vantage API aktualisiert. Empfehlungen basieren auf:",
+      "about_list": {
+        "momentum": "Preismomentum und Trends",
+        "intraday": "Intraday-Preisspannenanalyse",
+        "technical": "Technische Indikatoren und Marktstimmung"
+      },
+      "legend": {
+        "buy": "Kaufen - Starkes Aufwärtsmomentum (>3% Gewinn + Handel nahe Hochs)",
+        "hold": "Halten - Stabile oder moderate Bewegung",
+        "sell": "Verkaufen - Abwärtsmomentum (<-3% Verlust oder Handel nahe Tiefs)"
+      },
+      "disclaimer": "Risikohinweis: Der Handel mit Finanzinstrumenten birgt erhebliche Risiken. Diese Signale dienen nur zu Informationszwecken und sollten nicht als Finanzberatung betrachtet werden. Führen Sie immer Ihre eigene Recherche durch und konsultieren Sie einen Finanzberater, bevor Sie Anlageentscheidungen treffen."
+    }
+  }
+}

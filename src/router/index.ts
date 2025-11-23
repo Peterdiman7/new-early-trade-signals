@@ -14,6 +14,7 @@ import LoginView from "@/views/LoginView.vue"
 import RegisterView from "@/views/RegisterView.vue"
 
 import { useAuthStore } from "@/stores/auth"
+import LandingPageView from "@/views/LandingPageView.vue"
 
 export const rootRoute: RouteLocationNamedRaw = { name: "home" }
 const createRouter = () => {
@@ -29,7 +30,7 @@ const createRouter = () => {
 				path: "/signals",
 				name: "signals",
 				component: SignalsView,
-				// meta: { requiresAuth: true, requiresSubscription: true },
+				meta: { requiresAuth: true, requiresSubscription: true },
 			},
 			{
 				path: "/pricing",
@@ -47,7 +48,7 @@ const createRouter = () => {
 				path: "/checkout",
 				name: "checkout",
 				component: CheckoutView,
-				// meta: { requiresAuth: true },
+				meta: { requiresAuth: true },
 			},
 			{
 				path: "/contact",
@@ -76,10 +77,15 @@ const createRouter = () => {
 				meta: { requiresGuest: true },
 			},
 			{
+				path: "/landing",
+				name: "landing",
+				component: LandingPageView,
+			},
+			{
 				path: "/register",
 				name: "register",
 				component: RegisterView,
-				meta: { requiresGuest: true },
+				meta: { requiresGuest: true, requiresNotGermany: true },
 			},
 		],
 	})
@@ -101,17 +107,17 @@ const createRouter = () => {
 		const subscriptionActive = authStore.subscriptionActive
 
 		if (requiresAuth && !loggedIn) {
-			next({ name: "login" })
+			next({ path: "/login" })
 		}
 		else if (requiresSubscription && !subscriptionActive) {
-			if (isGermany) next({ name: "home" })
-			else next({ name: "pricing" })
+			if (isGermany) next({ path: "/" })
+			else next({ path: "/pricing" })
 		}
 		else if (requiresNotGermany && isGermany) {
-			next({ name: "home" })
+			next({ path: "/" })
 		}
 		else if (requiresGuest && loggedIn) {
-			next({ name: "home" })
+			next({ path: "/" })
 		}
 		else {
 			next()
