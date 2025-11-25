@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- Page Title -->
         <section class="page-title centred pt_90 pb_0">
             <div class="pattern-layer rotate-me" style="background-image: url(/images/shape/shape-34.png);"></div>
             <div class="auto-container">
@@ -13,17 +12,12 @@
                 </div>
             </div>
         </section>
-
-        <!-- Cancellation Section -->
         <section class="privacy-section pt_90 pb_100">
             <div class="auto-container">
                 <div class="content-box">
-
                     <h2>We're Sorry to See You Go</h2>
                     <p>Please fill out the form below to confirm your subscription cancellation.</p>
-
                     <form class="cancel-form" @submit.prevent="submitCancellation">
-
                         <div class="form-group">
                             <label for="reason">Reason for cancellation</label>
                             <select id="reason" v-model="form.reason" required>
@@ -35,19 +29,15 @@
                                 <option>Other</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="fullName">Full name</label>
-                            <input type="text" id="fullName" v-model="form.fullName" placeholder="Enter your full name"
-                                required />
+                            <input type="text" id="fullName" v-model="form.fullName" placeholder="Enter your full name" required />
                         </div>
-
                         <div class="form-group">
                             <label for="email">Email address</label>
                             <input type="email" id="email" v-model="form.email" placeholder="Enter your email"
                                 required />
                         </div>
-
                         <div class="form-group">
                             <label for="comments">Additional comments (optional)</label>
                             <textarea id="comments" v-model="form.comments" rows="4"

@@ -16,8 +16,9 @@
                             <a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a>
                         </div>
                         <div v-if="!loggedIn" class="option-block">
-                            <a href="/register" class="theme-btn btn-one mr_10">Open Account</a>
-                            <a href="/login" class="theme-btn btn-two">Login</a>
+                            <a href="/register" class="theme-btn btn-one mr_10">{{
+                                formatTranslation(t, 'header.account_open') }}</a>
+                            <a href="/login" class="theme-btn btn-two">{{ formatTranslation(t, 'header.login') }}</a>
                         </div>
                     </div>
                 </div>
@@ -37,24 +38,35 @@
                             <nav class="main-menu navbar-expand-md navbar-light clearfix">
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
-                                        <li><a href="/">Home</a></li>
-                                        <li><a href="/signals">Signals</a></li>
-                                        <li class="dropdown"><a href="/contact">Support</a>
+                                        <li><a href="/">{{ formatTranslation(t, 'header.home') }}</a></li>
+                                        <li><a href="/signals">{{ formatTranslation(t, 'header.signals') }}</a></li>
+                                        <li class="dropdown"><a href="/contact">{{ formatTranslation(t,
+                                            'header.support')
+                                                }}</a>
                                             <ul>
-                                                <li><a href="/contact">Contact Us</a></li>
-                                                <li><a href="/cancel-subscription">Cancel Subscription</a></li>
+                                                <li><a href="/contact">{{ formatTranslation(t, 'header.contact_us')
+                                                        }}</a></li>
+                                                <li><a href="/cancel-subscription">{{
+                                                    formatTranslation(t, 'header.cancel_subscription') }}</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown"><a href="/terms-conditions">Legal</a>
+                                        <li class="dropdown"><a href="/terms-conditions">{{
+                                            formatTranslation(t, 'header.legal') }}</a>
                                             <ul>
-                                                <li><a href="/terms-conditions">Terms & Conditions</a></li>
-                                                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                                <li><a href="/terms-conditions">{{
+                                                    formatTranslation(t, 'header.terms_conditions') }}</a></li>
+                                                <li><a href="/privacy-policy">{{
+                                                    formatTranslation(t, 'header.privacy_policy') }}</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="/market-analysis">Market Analysis</a></li>
-                                        <li><a v-if="subdomain !== 'de'" href="/pricing">Pricing</a></li>
-                                        <li v-if="!loggedIn"><a href="/login">Login</a></li>
-                                        <li v-else @click.prevent="handleLogout"><a href="#">Logout</a></li>
+                                        <li><a href="/market-analysis">{{ formatTranslation(t, 'header.market_analysis')
+                                                }}</a></li>
+                                        <li><a v-if="subdomain !== 'de'" href="/pricing">{{
+                                            formatTranslation(t, 'header.pricing') }}</a></li>
+                                        <li v-if="!loggedIn"><a href="/login">{{ formatTranslation(t, 'header.login')
+                                                }}</a></li>
+                                        <li v-else @click.prevent="handleLogout"><a href="#">{{
+                                            formatTranslation(t, 'header.logout') }}</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -81,54 +93,61 @@
             <div class="close-btn" @click="closeMobileMenu"><i class="fas fa-times"></i></div>
             <nav class="menu-box">
                 <div class="nav-logo">
-                    <a href="index.html"><img src="/images/logo-2.png" alt="" title=""></a>
+                    <a href="/"><img src="/images/logo-2.png" alt="" title=""></a>
                 </div>
                 <div class="menu-outer">
                     <ul class="navigation clearfix">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/signals">Signals</a></li>
+                        <li><a href="/">{{ formatTranslation(t, 'header.home') }}</a></li>
+                        <li><a href="/signals">{{ formatTranslation(t, 'header.signals') }}</a></li>
                         <li class="dropdown" :class="{ 'open': openDropdowns.about }">
-                            <a href="javascript:void(0)" @click="toggleDropdown('about')">Support</a>
+                            <a href="javascript:void(0)" @click="toggleDropdown('about')">{{
+                                formatTranslation(t,'header.support') }}</a>
                             <ul>
-                                <li><a href="/contact">Contact Us</a></li>
-                                <li><a href="/cancel-subscription">Cancel Subscription</a></li>
+                                <li><a href="/contact">{{ formatTranslation(t, 'header.contact_us') }}</a></li>
+                                <li><a href="/cancel-subscription">{{ formatTranslation(t, 'header.cancel_subscription')
+                                        }}</a></li>
                             </ul>
                             <div class="dropdown-btn" @click.stop="toggleDropdown('about')">
                                 <span class="fas fa-angle-down"></span>
                             </div>
                         </li>
                         <li class="dropdown" :class="{ 'open': openDropdowns.legal }">
-                            <a href="javascript:void(0)" @click="toggleDropdown('legal')">Legal</a>
+                            <a href="javascript:void(0)" @click="toggleDropdown('legal')">{{ formatTranslation(t,
+                                'header.legal') }}</a>
                             <ul>
-                                <li><a href="/terms-conditions">Terms & Conditions</a></li>
-                                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                <li><a href="/terms-conditions">{{ formatTranslation(t, 'header.terms_conditions')
+                                        }}</a>
+                                </li>
+                                <li><a href="/privacy-policy">{{ formatTranslation(t, 'header.privacy_policy') }}</a>
+                                </li>
                             </ul>
                             <div class="dropdown-btn" @click.stop="toggleDropdown('legal')">
                                 <span class="fas fa-angle-down"></span>
                             </div>
                         </li>
-                        <li><a href="/market-analysis">Market Analysis</a></li>
-                        <li><a v-if="subdomain !== 'de'" href="/pricing">Pricing</a></li>
-                        <li v-if="!loggedIn"><a href="/login">Login</a></li>
-                        <li v-else @click.prevent="handleLogout"><a href="#">Logout</a></li>
+                        <li><a href="/market-analysis">{{ formatTranslation(t, 'header.market_analysis') }}</a></li>
+                        <li><a v-if="subdomain !== 'de'" href="/pricing">{{ formatTranslation(t, 'header.pricing')
+                        }}</a>
+                        </li>
+                        <li v-if="!loggedIn"><a href="/login">{{ formatTranslation(t, 'header.login') }}</a></li>
+                        <li v-else @click.prevent="handleLogout"><a href="#">{{ formatTranslation(t, 'header.logout')
+                                }}</a></li>
                     </ul>
                 </div>
                 <div class="contact-info">
-                    <h4>Contact Info</h4>
-                    <ul>
+                    <h4>{{ formatTranslation(t, 'header.contact_info') }}</h4>
+                    <ul v-if="subdomain !== 'de'">
                         <li>1125 E BROADWAY BLVD #14, GLENDALE, CA 91205</li>
-                        <li><a href="tel:+8801682648101">+1-747-250-0014</a></li>
+                        <li><a href="tel:+1-747-250-0014">+1-747-250-0014</a></li>
                         <li>Pulse Entertainment Services LTD</li>
                         <li><a href="mailto:info@example.com">info@early-trade-signals.com</a></li>
                     </ul>
-                </div>
-                <div class="social-links">
-                    <ul class="clearfix">
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                    <ul v-else>
+                        <li> Pimen Zogravski Nr. 14, 1000 Sofia, Bulgaria</li>
+                        <li><a href="tel:0800 589 5405">0800 589 5405</a></li>
+                        <li>MBX Productive Ltd.</li>
+                        <span><strong>Umsatzsteuer-Identifikationsnummer:</strong> BG206562674</span>
+                        <li><a href="mailto:info@example.com">info@early-trade-signals.com</a></li>
                     </ul>
                 </div>
             </nav>
@@ -145,7 +164,9 @@ import { useI18n } from 'vue-i18n'
 import { storeToRefs } from 'pinia'
 
 import { useAuthStore } from '@/stores/auth'
+import { formatTranslation } from '@/utils/i18'
 
+const { t } = useI18n()
 const router = useRouter()
 const auth = useAuthStore()
 const { loggedIn } = storeToRefs(auth)

@@ -1,44 +1,44 @@
 <template>
     <div class="signals-page">
         <div class="glass-header">
-            <h1>Live Trading Signals</h1>
-            <p>Real-time trading recommendations powered by market data analysis</p>
+            <h1>{{ formatTranslation(t, 'signals.title') }}</h1>
+            <p>{{ formatTranslation(t, 'signals.subtitle') }}</p>
             <div class="last-updated" v-if="!loading && signals.length > 0">
                 <img class="update-icon" src="/images/refresh.webp" alt="refresh">
-                Last updated: {{ formatDate(lastUpdated) }}
-                <span class="auto-refresh">• Auto-refreshes every 30s</span>
+                {{ formatTranslation(t, 'signals.last_updated') }}: {{ formatDate(lastUpdated) }}
+                <span class="auto-refresh">{{ formatTranslation(t, 'signals.auto_refresh') }}</span>
             </div>
         </div>
 
         <div v-if="loading" class="loading-container">
             <div class="spinner"></div>
-            <p>Loading latest signals...</p>
+            <p>{{ formatTranslation(t, 'signals.loading') }}</p>
         </div>
 
         <div v-else-if="error" class="error-container glass-card">
             <div class="error-icon">⚠️</div>
-            <h3>Unable to Load Signals</h3>
+            <h3>{{ formatTranslation(t, 'signals.error_title') }}</h3>
             <p>{{ error }}</p>
-            <button @click="loadSignals" class="retry-btn">Retry</button>
+            <button @click="loadSignals" class="retry-btn">{{ formatTranslation(t, 'signals.retry') }}</button>
         </div>
 
         <template v-else>
             <div class="signals-stats">
                 <div class="stat-card">
                     <div class="stat-value">{{ buyCount }}</div>
-                    <div class="stat-label">Buy Signals</div>
+                    <div class="stat-label">{{ formatTranslation(t, 'signals.stats.buy') }}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">{{ holdCount }}</div>
-                    <div class="stat-label">Hold Signals</div>
+                    <div class="stat-label">{{ formatTranslation(t, 'signals.stats.hold') }}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">{{ sellCount }}</div>
-                    <div class="stat-label">Sell Signals</div>
+                    <div class="stat-label">{{ formatTranslation(t, 'signals.stats.sell') }}</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">{{ signals.length }}</div>
-                    <div class="stat-label">Total Tracked</div>
+                    <div class="stat-label">{{ formatTranslation(t, 'signals.stats.total') }}</div>
                 </div>
             </div>
 
@@ -58,12 +58,14 @@
 
                     <div class="signal-metrics">
                         <div class="metric">
-                            <span class="metric-label">Current Price</span>
+                            <span class="metric-label">{{ formatTranslation(t, 'signals.metrics.current_price')
+                                }}</span>
                             <span class="metric-value price">${{ signal.price }}</span>
                         </div>
 
                         <div class="metric">
-                            <span class="metric-label">Signal Strength</span>
+                            <span class="metric-label">{{ formatTranslation(t, 'signals.metrics.signal_strength')
+                                }}</span>
                             <span class="metric-value" :class="getStrengthClass(signal.recommendation)">
                                 {{ getSignalStrength(signal.recommendation) }}
                             </span>
@@ -72,47 +74,37 @@
 
                     <div class="signal-footer">
                         <div class="updated-time">
-                            Updated {{ getTimeAgo(signal.updated_at) }}
+                            {{ formatTranslation(t, 'signals.last_updated') }} {{ getTimeAgo(signal.updated_at) }}
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="api-info glass-card">
-                <h3>About These Signals</h3>
-                <p>
-                    Trading signals are automatically updated every minute using real-time market data from Alpha
-                    Vantage API.
-                    Recommendations are based on:
-                </p>
+                <h3>{{ formatTranslation(t, 'signals.about_title') }}</h3>
+                <p>{{ formatTranslation(t, 'signals.about_description') }}</p>
                 <ul>
-                    <li>Price momentum and trends</li>
-                    <li>Intraday price range analysis</li>
-                    <li>Technical indicators and market sentiment</li>
+                    <li>{{ formatTranslation(t, 'signals.about_list.momentum') }}</li>
+                    <li>{{ formatTranslation(t, 'signals.about_list.intraday') }}</li>
+                    <li>{{ formatTranslation(t, 'signals.about_list.technical') }}</li>
                 </ul>
 
                 <div class="signal-legend">
                     <div class="legend-item">
-                        <span class="badge buy">Buy</span>
-                        <span>Strong upward momentum (>3% gain + trading near highs)</span>
+                        <span class="badge buy">{{ formatTranslation(t, 'signals.legend.buy') }}</span>
                     </div>
 
                     <div class="legend-item">
-                        <span class="badge hold">Hold</span>
-                        <span>Stable or moderate movement</span>
+                        <span class="badge hold">{{ formatTranslation(t, 'signals.legend.hold') }}</span>
                     </div>
 
                     <div class="legend-item">
-                        <span class="badge sell">Sell</span>
-                        <span>Downward momentum (&lt;-3% loss or trading near lows)</span>
+                        <span class="badge sell">{{ formatTranslation(t, 'signals.legend.sell') }}</span>
                     </div>
                 </div>
 
                 <div class="disclaimer">
-                    <strong>Risk Disclaimer:</strong> Trading financial instruments involves significant risk.
-                    These signals are for informational purposes only and should not be considered as financial advice.
-                    Always conduct your own research and consult with a financial advisor before making investment
-                    decisions.
+                    {{ formatTranslation(t, 'signals.disclaimer') }}
                 </div>
             </div>
         </template>
@@ -120,8 +112,14 @@
 </template>
 
 <script setup>
+import { formatTranslation } from '@/utils/i18'
+
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 
+import { useI18n } from 'vue-i18n'
+
+
+const { t } = useI18n()
 const API_URL = 'https://back.early-trade-signals.com'
 
 const signals = ref([])

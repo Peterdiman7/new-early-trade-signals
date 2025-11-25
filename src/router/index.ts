@@ -41,7 +41,7 @@ const createRouter = () => {
 				path: "/market-analysis",
 				name: "market-analysis",
 				component: MarketAnalysisView,
-				meta: { requiresAuth: true, requiresSubscription: true },
+				// meta: { requiresAuth: true, requiresSubscription: true },
 			},
 			{
 				path: "/checkout",
