@@ -1,7 +1,6 @@
 <template>
     <section class="phone-number-container">
         <h2>{{ formatTranslation(t, 'home.subscribe_days') }}</h2>
-        <p>{{ formatTranslation(t, 'home.enter_phone_number') }}</p>
         <div class="phone-form">
             <label for="phone">{{ formatTranslation(t, 'home.phone_number') }}</label>
             <input type="tel" id="phone" name="phone" v-model="phone" placeholder="e.g. +1 555 123 4567" required

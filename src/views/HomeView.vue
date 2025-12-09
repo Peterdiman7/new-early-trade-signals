@@ -1,418 +1,18 @@
 <template>
 	<div class="boxed_wrapper home_5 ltr">
-		<section class="trading-style-three pt_20 pb_20 alternat-2">
+		<section class="trading-style-three pt_20 pb_20">
 			<div class="outer-container">
 				<ul class="trading-list">
-					<li class="upper">
+					<li v-for="item in tickerItems" :key="item.symbol">
 						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>#US30</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>Gold</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>BTCUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="lower">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-24"></i></div>
-								<h6>USDJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPJPY</h6>
-								<span>3125.71 / 3117.68</span>
-
-							</div>
-						</div>
-					</li>
-					<li class="upper">
-						<div class="trading-block-three">
-							<div class="inner-box">
-								<div class="icon-box"><i class="icon-25"></i></div>
-								<h6>GBPUSD</h6>
-								<span>3125.71 / 3117.68</span>
-
+							<div style="display: flex; height: 40px; width: auto;">
+								<img style="padding: 0 20px; max-width: 140px !important;" :src="item.img_url" :alt="item.symbol">
+								<div style="position: relative; padding: 0 20px;">
+									<h6>{{ item.symbol }}</h6>
+									<span>
+										{{ item.price }} / {{ item.recommendation }}
+									</span>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -434,8 +34,10 @@
 										<h2>{{ formatTranslation(t, 'home.a_z') }}</h2>
 										<p>{{ formatTranslation(t, 'home.day_to_day') }}</p>
 										<div class="btn-box">
-											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t, 'home.start_trading') }}</a>
-											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t, 'home.try_demo_trading') }}</a>
+											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t,
+												'home.start_trading') }}</a>
+											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t,
+												'home.try_demo_trading') }}</a>
 										</div>
 									</div>
 								</div>
@@ -462,8 +64,10 @@
 										<h2>{{ formatTranslation(t, 'home.a_z') }}</h2>
 										<p>{{ formatTranslation(t, 'home.day_to_day') }}</p>
 										<div class="btn-box">
-											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t, 'home.start_trading') }}</a>
-											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t, 'home.try_demo_trading') }}</a>
+											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t,
+												'home.start_trading') }}</a>
+											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t,
+												'home.try_demo_trading') }}</a>
 										</div>
 									</div>
 								</div>
@@ -490,8 +94,10 @@
 										<h2>{{ formatTranslation(t, 'home.a_z') }}</h2>
 										<p>{{ formatTranslation(t, 'home.day_to_day') }}</p>
 										<div class="btn-box">
-											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t, 'home.start_trading') }}</a>
-											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t, 'home.try_demo_trading') }}</a>
+											<a href="/login" class="theme-btn btn-one mr_15">{{ formatTranslation(t,
+												'home.start_trading') }}</a>
+											<a href="/login" class="theme-btn btn-two">{{ formatTranslation(t,
+												'home.try_demo_trading') }}</a>
 										</div>
 									</div>
 								</div>
@@ -541,7 +147,8 @@
 									<div class="content_block_one">
 										<div class="content-box mr_80">
 											<div class="sec-title pb_30">
-												<span class="sub-title mb_14">{{ formatTranslation(t, 'home.account') }}</span>
+												<span class="sub-title mb_14">{{ formatTranslation(t, 'home.account')
+												}}</span>
 												<h2>{{ formatTranslation(t, 'home.trading_accounts') }}</h2>
 											</div>
 											<ul class="accordion-box">
@@ -552,7 +159,8 @@
 													</div>
 													<div class="acc-content current">
 														<div class="content">
-															<p>{{ formatTranslation(t, 'home.early_trade_signals') }}</p>
+															<p>{{ formatTranslation(t, 'home.early_trade_signals') }}
+															</p>
 														</div>
 													</div>
 												</li>
@@ -610,7 +218,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -716,7 +325,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -822,7 +432,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -928,7 +539,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1034,7 +646,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1140,7 +753,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1246,7 +860,8 @@
 								<ul class="table-content">
 									<li class="table-title">
 										<p>instrument</p>
-										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{ formatTranslation(t, 'home.buyers') }}</span></p>
+										<p><span class="mr_80">{{ formatTranslation(t, 'home.sellers') }}</span><span>{{
+											formatTranslation(t, 'home.buyers') }}</span></p>
 										<p></p>
 									</li>
 									<li class="table-data">
@@ -1365,7 +980,8 @@
 								<div class="icon-box"><i class="icon-16"></i></div>
 								<h3><a href="/login">{{ formatTranslation(t, 'home.professional_account') }}</a></h3>
 								<p>{{ formatTranslation(t, 'home.professional_account') }}</p>
-								<div class="btn-box"><a href="/register" class="theme-btn btn-one">{{ formatTranslation(t, 'home.create_account') }}</a></div>
+								<div class="btn-box"><a href="/register" class="theme-btn btn-one">{{
+									formatTranslation(t, 'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1376,7 +992,8 @@
 								<div class="icon-box"><i class="icon-17"></i></div>
 								<h3><a href="/login">{{ formatTranslation(t, 'home.overview_account') }}</a></h3>
 								<p>{{ formatTranslation(t, 'home.overview_account_info') }}</p>
-								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t, 'home.create_account') }}</a></div>
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+									'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1387,7 +1004,8 @@
 								<div class="icon-box"><i class="icon-18"></i></div>
 								<h3><a href="/login">{{ formatTranslation(t, 'home.demo_account') }}</a></h3>
 								<p>{{ formatTranslation(t, 'home.demo_account_info') }}</p>
-								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t, 'home.create_account') }}</a></div>
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+									'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1398,7 +1016,8 @@
 								<div class="icon-box"><i class="icon-19"></i></div>
 								<h3><a href="/login">{{ formatTranslation(t, 'home.islamic_account') }}</a></h3>
 								<p>{{ formatTranslation(t, 'home.islamic_account_info') }}</p>
-								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t, 'home.create_account') }}</a></div>
+								<div class="btn-box"><a href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+									'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>
@@ -1517,7 +1136,8 @@
 							<div class="col-lg-6 col-md-12 col-sm-12 text-column">
 								<div class="text-box">
 									<p>{{ formatTranslation(t, 'home.cookies') }}</p>
-									<a v-if="!loggedIn" href="/login" class="theme-btn btn-one">{{ formatTranslation(t, 'home.start_trading') }}</a>
+									<a v-if="!loggedIn" href="/login" class="theme-btn btn-one">{{ formatTranslation(t,
+										'home.start_trading') }}</a>
 								</div>
 							</div>
 						</div>
@@ -1577,7 +1197,8 @@
 											alt="">
 									</figure>
 									<h4>Brooklyn Simmons</h4>
-									<span class="designation">{{ formatTranslation(t, 'home.nursing_assistant') }}</span>
+									<span class="designation">{{ formatTranslation(t, 'home.nursing_assistant')
+									}}</span>
 								</div>
 							</div>
 						</div>
@@ -1645,8 +1266,8 @@
 								<form method="post" action="/contact">
 									<div class="form-group">
 										<input type="email" name="email" placeholder="Email Address" required>
-										<button type="submit" class="theme-btn btn-one">{{ formatTranslation(t, 'home.subscribe_latest_news') }}<i
-												class="icon-26"></i></button>
+										<button type="submit" class="theme-btn btn-one">{{ formatTranslation(t,
+											'home.subscribe_latest_news') }}<i class="icon-26"></i></button>
 									</div>
 								</form>
 							</div>
@@ -1659,7 +1280,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { computed } from 'vue'
 
 import { useI18n } from 'vue-i18n'
@@ -1673,6 +1294,24 @@ import { formatTranslation } from '@/utils/i18'
 const { t } = useI18n()
 const auth = useAuthStore()
 const { loggedIn, subscriptionActive } = storeToRefs(auth)
+
+const API_URL = 'https://back.early-trade-signals.com'
+const tickerItems = ref([])
+
+async function loadTicker() {
+	try {
+		const response = await fetch(`${API_URL}/signals`, {
+			credentials: 'include'
+		})
+
+		if (!response.ok) throw new Error('Failed to fetch ticker')
+
+		const data = await response.json()
+		tickerItems.value = data.signals || []
+	} catch (err) {
+		console.error('Ticker fetch failed:', err)
+	}
+}
 
 declare global {
 	interface Window {
@@ -1692,6 +1331,8 @@ onMounted(async () => {
 	setTimeout(() => {
 		initializeComponents()
 	}, 150)
+
+	loadTicker()
 })
 
 onBeforeUnmount(() => {

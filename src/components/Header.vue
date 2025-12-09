@@ -45,7 +45,7 @@
                                                 }}</a>
                                             <ul>
                                                 <li><a href="/contact">{{ formatTranslation(t, 'header.contact_us')
-                                                        }}</a></li>
+                                                }}</a></li>
                                                 <li><a href="/cancel-subscription">{{
                                                     formatTranslation(t, 'header.cancel_subscription') }}</a></li>
                                             </ul>
@@ -60,11 +60,11 @@
                                             </ul>
                                         </li>
                                         <li><a href="/market-analysis">{{ formatTranslation(t, 'header.market_analysis')
-                                                }}</a></li>
+                                        }}</a></li>
                                         <li><a v-if="subdomain !== 'de'" href="/pricing">{{
                                             formatTranslation(t, 'header.pricing') }}</a></li>
                                         <li v-if="!loggedIn"><a href="/login">{{ formatTranslation(t, 'header.login')
-                                                }}</a></li>
+                                        }}</a></li>
                                         <li v-else @click.prevent="handleLogout"><a href="#">{{
                                             formatTranslation(t, 'header.logout') }}</a></li>
                                     </ul>
@@ -101,11 +101,11 @@
                         <li><a href="/signals">{{ formatTranslation(t, 'header.signals') }}</a></li>
                         <li class="dropdown" :class="{ 'open': openDropdowns.about }">
                             <a href="javascript:void(0)" @click="toggleDropdown('about')">{{
-                                formatTranslation(t,'header.support') }}</a>
+                                formatTranslation(t, 'header.support') }}</a>
                             <ul>
                                 <li><a href="/contact">{{ formatTranslation(t, 'header.contact_us') }}</a></li>
                                 <li><a href="/cancel-subscription">{{ formatTranslation(t, 'header.cancel_subscription')
-                                        }}</a></li>
+                                }}</a></li>
                             </ul>
                             <div class="dropdown-btn" @click.stop="toggleDropdown('about')">
                                 <span class="fas fa-angle-down"></span>
@@ -116,7 +116,7 @@
                                 'header.legal') }}</a>
                             <ul>
                                 <li><a href="/terms-conditions">{{ formatTranslation(t, 'header.terms_conditions')
-                                        }}</a>
+                                }}</a>
                                 </li>
                                 <li><a href="/privacy-policy">{{ formatTranslation(t, 'header.privacy_policy') }}</a>
                                 </li>
@@ -127,11 +127,11 @@
                         </li>
                         <li><a href="/market-analysis">{{ formatTranslation(t, 'header.market_analysis') }}</a></li>
                         <li><a v-if="subdomain !== 'de'" href="/pricing">{{ formatTranslation(t, 'header.pricing')
-                        }}</a>
+                                }}</a>
                         </li>
                         <li v-if="!loggedIn"><a href="/login">{{ formatTranslation(t, 'header.login') }}</a></li>
                         <li v-else @click.prevent="handleLogout"><a href="#">{{ formatTranslation(t, 'header.logout')
-                                }}</a></li>
+                        }}</a></li>
                     </ul>
                 </div>
                 <div class="contact-info">
@@ -147,7 +147,7 @@
                         <li><a href="tel:0800 589 5405">0800 589 5405</a></li>
                         <li>MBX Productive Ltd.</li>
                         <span><strong>Umsatzsteuer-Identifikationsnummer:</strong> BG206562674</span>
-                        <li><a href="mailto:info@example.com">info@early-trade-signals.com</a></li>
+                        <li><a href="mailto:ets.de@silverlines.info"><strong>E-Mail:</strong> ets.de@silverlines.info</a></li>
                     </ul>
                 </div>
             </nav>
@@ -156,7 +156,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted, onBeforeMount } from 'vue'
 
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
@@ -165,11 +165,15 @@ import { storeToRefs } from 'pinia'
 
 import { useAuthStore } from '@/stores/auth'
 import { formatTranslation } from '@/utils/i18'
+import { useGlobalStore } from '@/stores/GlobalStore'
 
 const { t } = useI18n()
 const router = useRouter()
 const auth = useAuthStore()
 const { loggedIn } = storeToRefs(auth)
+const i18n = useI18n()
+const { locale } = storeToRefs(useGlobalStore())
+const { setLocale } = useGlobalStore()
 
 const isMobileMenuOpen = ref(false)
 const openDropdowns = ref({
@@ -195,17 +199,6 @@ const toggleDropdown = (name: string) => {
     openDropdowns.value[name] = !openDropdowns.value[name]
 }
 
-const { locale } = useI18n()
-
-const setLocale = (lang: string) => {
-    locale.value = lang
-    localStorage.setItem("locale", lang) // optional persistence
-}
-
-const switchLanguage = () => {
-    locale.value === 'en' ? setLocale('de') : setLocale('en')
-}
-
 watch(isMobileMenuOpen, (isOpen) => {
     if (isOpen) {
         document.body.classList.add('mobile-menu-visible')
@@ -222,6 +215,11 @@ const logout = async () => {
 const handleLogout = async () => {
     await logout()
 }
+
+onBeforeMount(() => {
+    i18n.locale.value = locale.value
+})
+
 onMounted(() => {
     auth.checkLogin()
 })

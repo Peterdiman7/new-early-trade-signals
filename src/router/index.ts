@@ -29,25 +29,25 @@ const createRouter = () => {
 				path: "/signals",
 				name: "signals",
 				component: SignalsView,
-				// meta: { requiresAuth: true, requiresSubscription: true },
+				meta: { requiresAuth: true, requiresSubscription: true },
 			},
 			{
 				path: "/pricing",
 				name: "pricing",
 				component: PricingPlansView,
-				// meta: { requiresAuth: true, requiresNotGermany: true },
+				meta: { requiresAuth: true, requiresNotGermany: true },
 			},
 			{
 				path: "/market-analysis",
 				name: "market-analysis",
 				component: MarketAnalysisView,
-				// meta: { requiresAuth: true, requiresSubscription: true },
+				meta: { requiresAuth: true, requiresSubscription: true },
 			},
 			{
 				path: "/checkout",
 				name: "checkout",
 				component: CheckoutView,
-				// meta: { requiresAuth: true },
+				meta: { requiresAuth: true },
 			},
 			{
 				path: "/contact",
@@ -79,7 +79,7 @@ const createRouter = () => {
 				path: "/register",
 				name: "register",
 				component: RegisterView,
-				meta: { requiresGuest: true },
+				meta: { requiresGuest: true, requiresNotGermany: true },
 			},
 		],
 	})
@@ -101,17 +101,17 @@ const createRouter = () => {
 		const subscriptionActive = authStore.subscriptionActive
 
 		if (requiresAuth && !loggedIn) {
-			next({ name: "login" })
+			next({ path: "/login" })
 		}
 		else if (requiresSubscription && !subscriptionActive) {
-			if (isGermany) next({ name: "home" })
-			else next({ name: "pricing" })
+			if (isGermany) next({ path: "/" })
+			else next({ path: "/pricing" })
 		}
 		else if (requiresNotGermany && isGermany) {
-			next({ name: "home" })
+			next({ path: "/" })
 		}
 		else if (requiresGuest && loggedIn) {
-			next({ name: "home" })
+			next({ path: "/" })
 		}
 		else {
 			next()

@@ -45,7 +45,7 @@
                         <div class="footer-lower">
                             <figure class="footer-logo"><a href="/"><img src="/images/logo.png" alt=""></a>
                             </figure>
-                            <ul class="footer-card clearfix">
+                            <ul v-if="subdomain !== 'de'" class="footer-card clearfix">
                                 <li>
                                     <h4>{{formatTranslation(t, 'footer.we_accept')}}</h4>
                                 </li>
@@ -64,7 +64,7 @@
         <div class="footer-bottom">
             <div class="auto-container">
                 <div class="bottom-inner">
-                    <p>Copyright &copy; 2007-2024 <a href="/">Early Trade Signals</a>. All rights reserved.</p>
+                    <p>Copyright &copy; 2007-2025 <a href="/">Early Trade Signals</a>. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -73,8 +73,8 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-
 import { formatTranslation } from '@/utils/i18'
 
+const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
 const { t } = useI18n()
 </script>

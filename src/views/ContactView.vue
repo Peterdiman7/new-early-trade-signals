@@ -65,8 +65,7 @@
                             <div class="single-info">
                                 <div class="icon-box"><i class="icon-46"></i></div>
                                 <h4>Email Address</h4>
-                                <p><a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a><a
-                                        href="mailto:help@early-trade-signals.com">help@early-trade-signals.com</a></p>
+                                <li><strong>E-Mail:</strong> ets.de@silverlines.info</li>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-12 info-column">
@@ -147,7 +146,7 @@
             <div class="footer-bottom">
                 <div class="auto-container">
                     <div class="bottom-inner">
-                        <p>Copyright &copy; 2007-2024 <a href="/">Early Trade Signals</a>. All rights reserved.</p>
+                        <p>Copyright &copy; 2007-2025 <a href="/">Early Trade Signals</a>. All rights reserved.</p>
                     </div>
                 </div>
             </div>

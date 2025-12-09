@@ -1,16 +1,25 @@
 <template>
-    <div v-html="content"></div>
+    <div>
+        <div v-if="subdomain !== 'de'">
+            <div v-if="locale === 'de'" v-html="tcGlobalDE"></div>
+            <div v-else v-html="tcGlobalEN"></div>
+        </div>
+        <div v-else>
+            <div v-if="locale === 'de'" v-html="tcDE"></div>
+            <div v-else v-html="tcEN"></div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-import tcEN from '../assets/documents/tcEN.html?raw'
-import tcDE from '../assets/documents/tcDE.html?raw'
+import tcGlobalDE from '@/assets/documents/tcGlobalDE.html?raw'
+import tcGlobalEN from '@/assets/documents/tcGlobalEN.html?raw'
+import tcDE from '@/assets/documents/tcDE.html?raw'
+import tcEN from '@/assets/documents/tcEN.html?raw'
 
-const content = computed(() =>
-  subdomain === 'de' ? tcDE : tcEN
-)
+const { locale } = useI18n()
 
 const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
 </script>

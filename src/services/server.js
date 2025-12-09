@@ -298,7 +298,7 @@ updateAllSignals().catch(err => {
 app.get("/signals", async (req, res) => {
     try {
         const [rows] = await pool.execute(
-            `SELECT symbol, recommendation, price, type, updated_at 
+            `SELECT symbol, recommendation, price, type, updated_at, img_url 
              FROM signals 
              ORDER BY 
                 type DESC,

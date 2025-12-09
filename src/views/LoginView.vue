@@ -19,7 +19,8 @@
 
             <p class="register-link">
                 {{ formatTranslation(t, 'login.no_account') }}
-                <router-link to="/register">{{ formatTranslation(t, 'login.register_here') }}</router-link>
+                <a style="color: green; cursor: pointer;" v-if="subdomain === 'de'" href="https://delp1.early-trade-signals.com/">{{ formatTranslation(t, 'login.register_here') }}</a>
+                <router-link v-else to="/register">{{ formatTranslation(t, 'login.register_here') }}</router-link>
             </p>
         </div>
     </div>
@@ -42,6 +43,8 @@ const error = ref("")
 const success = ref("")
 const router = useRouter()
 const authStore = useAuthStore()
+
+const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
 
 const login = async () => {
     error.value = ""

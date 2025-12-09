@@ -1,5 +1,31 @@
 {
   "en": {
+    "cancel_subscription": {
+      "page_title": "Cancel Subscription",
+      "breadcrumb_home": "Home",
+      "breadcrumb_cancel": "Cancel Subscription",
+      "sorry_to_see_you_go": "We're Sorry to See You Go",
+      "description": "Please fill out the form below to confirm your subscription cancellation.",
+      "form": {
+        "reason_label": "Reason for cancellation",
+        "reason_placeholder": "-- Select a reason --",
+        "reason_options": {
+          "too_expensive": "Too expensive",
+          "not_enough_content": "Not enough content",
+          "better_alternative": "Found a better alternative",
+          "technical_issues": "Technical issues",
+          "other": "Other"
+        },
+        "full_name_label": "Full name",
+        "full_name_placeholder": "Enter your full name",
+        "email_label": "Email address",
+        "email_placeholder": "Enter your email",
+        "comments_label": "Additional comments (optional)",
+        "comments_placeholder": "Tell us more...",
+        "submit_btn": "Submit & Cancel",
+        "success_message": "Your cancellation request has been submitted. Thank you, {{name}}."
+      }
+    },
     "checkout": {
       "complete_purchase": "Complete Your Purchase",
       "payment_method": "Payment Method",
@@ -88,7 +114,7 @@
       "account": "Account",
       "trading_accounts": "Trading Accounts",
       "who": "Who we are",
-      "early_trade_signals": "Early Trade Signals provides curated market insights, real-time trading alerts, and educational resources to empower traders. All content is for informational purposes only and not financial advice. Contact us at info@early-trade-signals.com.",
+      "early_trade_signals": "Early Trade Signals provides curated market insights, real-time trading alerts, and educational resources to empower traders. All content is for informational purposes only and not financial advice.",
       "what_we_do": "What we do",
       "what_we_deliver": "We deliver early market insight signals by analyzing price movements, market trends, and key indicators across different asset classes.",
       "how_it_works": "How it works",
@@ -131,8 +157,7 @@
       "excellence": "Awards Interior Excellence",
       "technology_trade": "Advance HighTechnology Trade",
       "subscribe_days": "Subscribe for 7 Days",
-      "phone_number": "Phone Number",
-      "enter_phone_number": "Enter your phone number below to start your free 7-day subscription trial."
+      "phone_number": "Phone Number"
     },
     "login": {
       "title": "Login",
@@ -412,6 +437,32 @@
     }
   },
   "de": {
+    "cancel_subscription": {
+      "page_title": "Abonnement kündigen",
+      "breadcrumb_home": "Startseite",
+      "breadcrumb_cancel": "Abonnement kündigen",
+      "sorry_to_see_you_go": "Es tut uns leid, dass Sie gehen",
+      "description": "Bitte füllen Sie das folgende Formular aus, um Ihre Kündigung zu bestätigen.",
+      "form": {
+        "reason_label": "Grund für die Kündigung",
+        "reason_placeholder": "-- Grund auswählen --",
+        "reason_options": {
+          "too_expensive": "Zu teuer",
+          "not_enough_content": "Nicht genug Inhalte",
+          "better_alternative": "Bessere Alternative gefunden",
+          "technical_issues": "Technische Probleme",
+          "other": "Sonstiges"
+        },
+        "full_name_label": "Vollständiger Name",
+        "full_name_placeholder": "Geben Sie Ihren vollständigen Namen ein",
+        "email_label": "E-Mail-Adresse",
+        "email_placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+        "comments_label": "Weitere Kommentare (optional)",
+        "comments_placeholder": "Erzählen Sie uns mehr...",
+        "submit_btn": "Absenden & kündigen",
+        "success_message": "Ihre Kündigungsanfrage wurde eingereicht. Vielen Dank, {{name}}."
+      }
+    },
     "checkout": {
       "complete_purchase": "Kauf abschließen",
       "payment_method": "Zahlungsmethode",
@@ -450,7 +501,7 @@
       }
     },
     "contacts": {
-      "corporate_office": "Unternehmenszentrale",
+      "corporate_office": "Zentrale",
       "main_warehouse": "Hauptlager",
       "your_name": "Ihr Name",
       "phone": "Telefon ",
@@ -500,7 +551,7 @@
       "account": "Konto",
       "trading_accounts": "Handelskonten",
       "who": "Wer wir sind",
-      "early_trade_signals": "Early Trade Signals bietet kuratierte Marktanalysen, Echtzeit-Handelssignale und Schulungsmaterialien, um Händler zu unterstützen. Alle Inhalte dienen ausschließlich Informationszwecken und stellen keine Finanzberatung dar. Kontaktieren Sie uns unter: info@early-trade-signals.com.",
+      "early_trade_signals": "Early Trade Signals bietet kuratierte Marktanalysen, Echtzeit-Handelssignale und Schulungsmaterialien, um Händler zu unterstützen. Alle Inhalte dienen ausschließlich Informationszwecken und stellen keine Finanzberatung dar.",
       "what_we_do": "Was wir tun",
       "what_we_deliver": "Wir liefern frühzeitige Markteinblicke durch die Analyse von Preisbewegungen, Markttrends und wichtigen Indikatoren über verschiedene Anlageklassen hinweg.",
       "how_it_works": "Wie es funktioniert",

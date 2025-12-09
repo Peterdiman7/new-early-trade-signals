@@ -1,18 +1,28 @@
 <template>
-    <div v-html="content"></div>
+    <div>
+        <div v-if="subdomain !== 'de'">
+            <div v-if="locale === 'de'" v-html="privacyGlobalDE"></div>
+            <div v-else v-html="privacyGlobalEN"></div>
+        </div>
+        <div v-else>
+            <div v-if="locale === 'de'" v-html="privacyDE"></div>
+            <div v-else v-html="privacyEN"></div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-import tcEN from '../assets/documents/privacyEN.html?raw'
-import tcDE from '../assets/documents/privacyDE.html?raw'
+import privacyDE from '@/assets/documents/privacyPolicyDE.html?raw'
+import privacyEN from '@/assets/documents/privacyPolicyEN.html?raw'
+import privacyGlobalDE from '@/assets/documents/privacyPolicyGlobalDE.html?raw'
+import privacyGlobalEN from '@/assets/documents/privacyPolicyGlobalEN.html?raw'
 
-const content = computed(() =>
-  subdomain === 'de' ? tcDE : tcEN
-)
+const { locale } = useI18n()
 
-const subdomain = typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
+const subdomain =
+    typeof window !== 'undefined' ? window.location.hostname.split('.')[0] : ''
 </script>
 
 
