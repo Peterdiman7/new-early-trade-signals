@@ -15,6 +15,13 @@ import Footer from './components/Footer.vue'
 import Preloader from './components/Preloader.vue'
 
 const route = useRoute()
+
+const params = new URLSearchParams(window.location.search);
+const clickId = params.get('click_id');
+const email = params.get('email');
+
+if (clickId) document.cookie = `click_id=${clickId}; path=/; max-age=2592000`;
+if (email) document.cookie = `email=${email}; path=/; max-age=2592000`;
 </script>
 
 
