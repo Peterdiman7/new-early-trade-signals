@@ -6,7 +6,7 @@ import MarketAnalysisView from "@/views/MarketAnalysisView.vue"
 import PricingPlansView from "@/views/PricingPlansView.vue"
 import CheckoutView from "@/views/CheckoutView.vue"
 import PrivacyPolicyView from "@/views/PrivacyPolicyView.vue"
-import TestView from "@/views/TestView.vue"
+import LandingPageStart from "@/views/LandingPageStart.vue"
 import TermsAndConditionsView from "@/views/TermsAndConditionsView.vue"
 import { createRouter as createVueRouter, createWebHistory } from "vue-router"
 
@@ -89,9 +89,9 @@ const createRouter = () => {
 				meta: { requiresGuest: true, requiresNotGermany: true },
 			},
 			{
-				path: "/test",
-				name: "test",
-				component: TestView,
+				path: "/lpstart",
+				name: "lpstart",
+				component: LandingPageStart,
 			},
 		],
 	})
