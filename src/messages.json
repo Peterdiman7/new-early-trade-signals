@@ -161,13 +161,19 @@
     },
     "login": {
       "title": "Login",
+      "email": "Email",
       "username": "Username",
       "password": "Password",
+      "new_password": "New Password",
+      "confirm_password": "Confirm Password",
       "button": "Login",
+      "continue": "Continue",
+      "set_password": "Set Password",
+      "setup_password": "Setup Your Password",
       "no_account": "No account?",
       "register_here": "Register here",
       "success": "Logged in successfully!",
-      "error": "Please enter both username and password."
+      "error": "Please enter both email and password."
     },
     "market_analysis": {
       "title": "Market Analysis",
@@ -598,13 +604,19 @@
     },
     "login": {
       "title": "Anmelden",
+      "email": "E-Mail",
       "username": "Benutzername",
       "password": "Passwort",
+      "new_password": "Neues Passwort",
+      "confirm_password": "Passwort bestätigen",
       "button": "Anmelden",
+      "continue": "Weiter",
+      "set_password": "Passwort festlegen",
+      "setup_password": "Passwort einrichten",
       "no_account": "Kein Konto?",
       "register_here": "Hier registrieren",
       "success": "Erfolgreich angemeldet!",
-      "error": "Bitte Benutzername und Passwort eingeben."
+      "error": "Bitte E-Mail und Passwort eingeben."
     },
     "market_analysis": {
       "title": "Marktanalyse",

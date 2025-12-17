@@ -1,16 +1,10 @@
 <template>
   <div class="container">
-    <div
-      v-if="successMessage"
-      class="status success"
-    >
+    <div v-if="successMessage" class="status success">
       {{ successMessage }}
     </div>
 
-    <div
-      v-if="errorMessage"
-      class="status error"
-    >
+    <div v-if="errorMessage" class="status error">
       {{ errorMessage }}
     </div>
 
@@ -20,10 +14,14 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const successMessage = ref('')
 const errorMessage = ref('')
 let widgetInstance = null
+
+const API_URL = 'https://back.early-trade-signals.com'
 
 function loadPaysightSDK() {
   return new Promise((resolve, reject) => {
@@ -51,15 +49,15 @@ onMounted(async () => {
         productId: 9990,
         sessionId: Date.now().toString(),
         environment: 'production',
-        amount: 0,
+        amount: 1.95,
 
         theme: {
           css: {
             '.ps-submit': {
-              'background-color': '#000'
+              'background-color': '#22823A'
             },
             '.ps-submit:hover': {
-              'background-color': '#2d2d2d'
+              'background-color': '#2eb951'
             },
             '.ps-submit:disabled': {
               'background-color': '#999'
@@ -68,16 +66,23 @@ onMounted(async () => {
         },
 
         customer: {
-          email: 'customer@example.com',
-          state: 'CA',
-          country: 'US'
+          email: '',
+          state: '',
+          country: ''
         },
 
         fields: [
           {
-            label: 'Name',
-            placeholder: 'Full Name',
+            label: 'Full Name',
+            placeholder: 'Enter your full name',
             fieldType: 'name',
+            position: 'above',
+            size: 'full'
+          },
+          {
+            label: 'Email',
+            placeholder: 'Enter your email',
+            fieldType: 'email',
             position: 'above',
             size: 'full'
           }
@@ -85,7 +90,7 @@ onMounted(async () => {
 
         currency: 'USD',
         locale: 'en-US',
-        buttonText: 'Pay Now'
+        buttonText: 'Complete Payment'
       },
 
       onReady: () => {
@@ -96,10 +101,53 @@ onMounted(async () => {
         errorMessage.value = error.message || 'Payment error'
       },
 
-      onMessage: (message) => {
+      onMessage: async (message) => {
         if (message.type === 'PAYMENT_SUCCESS') {
-          successMessage.value =
-            `Payment successful! Transaction ID: ${message.payload.transactionId}`
+          const transactionId = message.payload.transactionId
+          const customerData = message.payload.customer
+
+          // Extract email and name from payment data
+          const email = customerData?.email || ''
+          const fullName = customerData?.name || ''
+
+          if (!email || !fullName) {
+            errorMessage.value = 'Missing customer information'
+            return
+          }
+
+          // Create account without password
+          try {
+            const response = await fetch(`${API_URL}/auth/register-from-payment`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              credentials: 'include',
+              body: JSON.stringify({
+                email,
+                transactionId
+              })
+            })
+
+            const data = await response.json()
+
+            if (!response.ok) {
+              errorMessage.value = data.error || 'Registration failed'
+              return
+            }
+
+            successMessage.value = 'Payment successful! Redirecting to setup password...'
+
+            // Redirect to login with email pre-filled
+            setTimeout(() => {
+              router.push({
+                path: '/login',
+                query: { email, setup: 'true' }
+              })
+            }, 2000)
+
+          } catch (err) {
+            errorMessage.value = 'Network error during registration'
+            console.error(err)
+          }
         }
 
         if (message.type === 'PAYMENT_ERROR') {

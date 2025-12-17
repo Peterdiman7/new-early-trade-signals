@@ -18,7 +18,8 @@ app.use(cors({
         if (!origin) return callback(null, true)
 
         const allowedOrigins = [
-            "https://www.early-trade-signals.com",
+            "early-trade-signals.com",
+            "www.early-trade-signals.com",
             "https://early-trade-signals.com",
             "https://ku.early-trade-signals.com",
             "https://ksa.early-trade-signals.com",
@@ -61,7 +62,7 @@ if (!JWT_SECRET) {
     process.exit(1)
 }
 
-const ALPHA_VANTAGE_KEY = process.env.ALPHA_VANTAGE_KEY || "91N8NQTHDKGZGV23"
+const ALPHA_VANTAGE_KEY = process.env.ALPHA_VANTAGE_KEY
 
 // Stock symbols
 const STOCK_SYMBOLS = [
@@ -462,6 +463,199 @@ app.post("/subscription/activate", async (req, res) => {
     }
 })
 
+
+// ---- REGISTER USER FROM PAYMENT (NO PASSWORD) ----
+app.post("/auth/register-from-payment", async (req, res) => {
+    const { email, transactionId } = req.body
+
+    if (!email || !transactionId) {
+        return res.status(400).json({ error: "Missing required fields" })
+    }
+
+    try {
+        // Check if user already exists
+        const [existing] = await pool.execute(
+            "SELECT id FROM users WHERE email = ?",
+            [email]
+        )
+
+        if (existing.length > 0) {
+            return res.status(409).json({ error: "User already exists" })
+        }
+
+        // Create user WITHOUT password, username = email
+        await pool.execute(
+            `INSERT INTO users (username, email, password, subscription_expires_at) 
+             VALUES (?, ?, NULL, DATE_ADD(NOW(), INTERVAL 7 DAY))`,
+            [email, email]
+        )
+
+        res.json({ message: "User created successfully" })
+
+    } catch (err) {
+        console.error("REGISTER FROM PAYMENT ERROR:", err)
+        res.status(500).json({ error: "Database error" })
+    }
+})
+
+// ---- CHECK IF EMAIL EXISTS AND HAS PASSWORD ----
+app.post("/auth/check-email", async (req, res) => {
+    const { email } = req.body
+
+    if (!email) {
+        return res.status(400).json({ error: "Email is required" })
+    }
+
+    try {
+        const [rows] = await pool.execute(
+            "SELECT id, password FROM users WHERE email = ?",
+            [email]
+        )
+
+        if (rows.length === 0) {
+            return res.status(404).json({ error: "Email not found" })
+        }
+
+        const user = rows[0]
+        const hasPassword = user.password !== null && user.password !== ''
+
+        res.json({
+            exists: true,
+            hasPassword
+        })
+
+    } catch (err) {
+        console.error("CHECK EMAIL ERROR:", err)
+        res.status(500).json({ error: "Database error" })
+    }
+})
+
+// ---- SET PASSWORD FOR USER WITHOUT PASSWORD ----
+app.post("/auth/set-password", async (req, res) => {
+    const { email, password } = req.body
+
+    if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required" })
+    }
+
+    if (password.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters" })
+    }
+
+    try {
+        // Check if user exists
+        const [users] = await pool.execute(
+            "SELECT id, password FROM users WHERE email = ?",
+            [email]
+        )
+
+        if (users.length === 0) {
+            return res.status(404).json({ error: "User not found" })
+        }
+
+        const user = users[0]
+
+        // Check if user already has a password
+        if (user.password !== null && user.password !== '') {
+            return res.status(400).json({ error: "Password already set" })
+        }
+
+        // Hash and set password
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        await pool.execute(
+            "UPDATE users SET password = ? WHERE id = ?",
+            [hashedPassword, user.id]
+        )
+
+        // Log user in
+        const token = jwt.sign(
+            {
+                id: user.id,
+                email: email
+            },
+            JWT_SECRET,
+            { expiresIn: "2h" }
+        )
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "lax",
+            maxAge: 2 * 60 * 60 * 1000
+        })
+
+        res.json({ message: "Password set successfully" })
+
+    } catch (err) {
+        console.error("SET PASSWORD ERROR:", err)
+        res.status(500).json({ error: "Database error" })
+    }
+})
+
+// ---- LOGIN ENDPOINT ----
+// Accepts both email and username (legacy support)
+app.post("/auth/login", async (req, res) => {
+    const { email, username, password } = req.body
+
+    // Use email if provided, otherwise fallback to username
+    const loginIdentifier = email || username
+
+    if (!loginIdentifier || !password) {
+        return res.status(400).json({ error: "Email/username and password are required" })
+    }
+
+    try {
+        // Check if identifier is email or username
+        const isEmail = loginIdentifier.includes('@')
+
+        const query = isEmail
+            ? "SELECT * FROM users WHERE email = ?"
+            : "SELECT * FROM users WHERE username = ?"
+
+        const [rows] = await pool.execute(query, [loginIdentifier])
+
+        if (rows.length === 0) {
+            return res.status(401).json({ error: "Invalid credentials" })
+        }
+
+        const user = rows[0]
+
+        // Check if user has no password (from payment)
+        if (!user.password) {
+            return res.status(401).json({ error: "Please set your password first" })
+        }
+
+        const match = await bcrypt.compare(password, user.password)
+
+        if (!match) {
+            return res.status(401).json({ error: "Invalid credentials" })
+        }
+
+        const token = jwt.sign(
+            {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                subscription_expires_at: user.subscription_expires_at
+            },
+            JWT_SECRET,
+            { expiresIn: "2h" }
+        )
+
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "lax",
+            maxAge: 2 * 60 * 60 * 1000
+        })
+
+        res.json({ message: "Login successful" })
+    } catch (err) {
+        console.error("LOGIN ERROR:", err)
+        res.status(500).json({ error: "Database error" })
+    }
+})
 
 // ---- LOGOUT ----
 app.post("/auth/logout", (req, res) => {

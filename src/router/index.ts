@@ -15,7 +15,6 @@ import LoginView from "@/views/LoginView.vue"
 import RegisterView from "@/views/RegisterView.vue"
 
 import { useAuthStore } from "@/stores/auth"
-import LandingPageView from "@/views/LandingPageView.vue"
 
 export const rootRoute: RouteLocationNamedRaw = { name: "home" }
 const createRouter = () => {
@@ -37,7 +36,7 @@ const createRouter = () => {
 				path: "/pricing",
 				name: "pricing",
 				component: PricingPlansView,
-				// meta: { requiresAuth: true, requiresNotGermany: true },
+				meta: { requiresAuth: true, requiresNotGermany: true },
 			},
 			{
 				path: "/market-analysis",
@@ -78,11 +77,6 @@ const createRouter = () => {
 				meta: { requiresGuest: true },
 			},
 			{
-				path: "/landing",
-				name: "landing",
-				component: LandingPageView,
-			},
-			{
 				path: "/register",
 				name: "register",
 				component: RegisterView,
@@ -92,6 +86,7 @@ const createRouter = () => {
 				path: "/lpstart",
 				name: "lpstart",
 				component: LandingPageStart,
+				meta: { requresGuest: true }
 			},
 		],
 	})
