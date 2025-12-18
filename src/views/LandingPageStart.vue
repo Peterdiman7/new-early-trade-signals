@@ -136,14 +136,14 @@ onMounted(async () => {
 				console.log('[PaySight] Message received:', message)
 
 				// Handle payment failure/error cases
-				if (message.type !== 'PAYMENT_SUCCESS') {
-					console.log('[PaySight] Payment failed — firing test postback')
-					errorMessage.value = message.payload?.message || 'Payment failed'
-					return
-				}
+				// if (message.type !== 'PAYMENT_SUCCESS') {
+				// 	console.log('[PaySight] Payment failed — firing test postback')
+				// 	errorMessage.value = message.payload?.message || 'Payment failed'
+				// 	return
+				// }
 
 				// Handle successful payment
-				if (message.type === 'PAYMENT_SUCCESS') {
+				if (message.type !== 'PAYMENT_SUCCESS') {
 					// Check if payload exists
 					if (!message.payload) {
 						console.error('[PaySight] Payload is null')

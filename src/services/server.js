@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser"
 import dotenv from "dotenv"
 import cron from "node-cron"
 import nodemailer from "nodemailer"
+import crypto from "crypto"
 
 dotenv.config({ path: path.resolve("/home/devalex/early-trade-signals.com/early-trade-signals/.env") })
 
@@ -101,7 +102,7 @@ const STOCK_SYMBOLS = [
 
 // Commodity symbols with their Alpha Vantage function names
 const COMMODITIES = [
-    { symbol: "GOLD", name: "Gold", function: "WTI" }, // Using WTI as proxy
+    { symbol: "GOLD", name: "Gold", function: "WTI" },
     { symbol: "SILVER", name: "Silver", function: "BRENT" },
     { symbol: "CRUDE_OIL", name: "Crude Oil (WTI)", function: "WTI" },
     { symbol: "BRENT_OIL", name: "Brent Oil", function: "BRENT" },
@@ -117,6 +118,11 @@ const COMMODITIES = [
 function toNum(v, fallback = 0) {
     const n = parseFloat(v)
     return Number.isFinite(n) ? n : fallback
+}
+
+// Generate random password
+function generateRandomPassword(length = 12) {
+    return crypto.randomBytes(length).toString('base64').slice(0, length)
 }
 
 // Fetch stock signal from Alpha Vantage
@@ -191,7 +197,6 @@ async function fetchCommoditySignal(commodity) {
             return null
         }
 
-        // Get the data series
         const dataKey = Object.keys(data).find(key => key.includes('data'))
         if (!dataKey || !data[dataKey] || data[dataKey].length < 2) {
             return null
@@ -257,9 +262,8 @@ async function updateAllSignals() {
     console.log("🔄 Starting signal update...")
 
     const batchSize = 5
-    const delayBetweenBatches = 12000 // 12 seconds
+    const delayBetweenBatches = 12000
 
-    // Process stocks
     for (let i = 0; i < STOCK_SYMBOLS.length; i += batchSize) {
         const batch = STOCK_SYMBOLS.slice(i, i + batchSize)
         console.log(`Processing stock batch: ${batch.join(', ')}`)
@@ -280,10 +284,8 @@ async function updateAllSignals() {
         }
     }
 
-    // Wait before processing commodities
     await new Promise(resolve => setTimeout(resolve, delayBetweenBatches))
 
-    // Process commodities
     for (let i = 0; i < COMMODITIES.length; i += batchSize) {
         const batch = COMMODITIES.slice(i, i + batchSize)
         console.log(`Processing commodity batch: ${batch.map(c => c.name).join(', ')}`)
@@ -307,11 +309,94 @@ async function updateAllSignals() {
     console.log("✅ Signal update completed")
 }
 
-// Run cron job every minute
+// Process pending email notifications
+async function processPendingEmails() {
+    if (!transporter) {
+        console.warn("Email transporter not configured, skipping email processing")
+        return
+    }
+
+    try {
+        // Get emails that are due to be sent (4 hours after creation)
+        const [pendingEmails] = await pool.execute(
+            `SELECT * FROM pending_emails 
+             WHERE send_at <= NOW() 
+             AND sent = FALSE 
+             LIMIT 10`
+        )
+
+        console.log(`[EMAIL] Processing ${pendingEmails.length} pending emails`)
+
+        for (const emailRecord of pendingEmails) {
+            try {
+                const mailOptions = {
+                    from: `"Early Trade Signals" <${process.env.MAIL_FROM}>`,
+                    to: emailRecord.email,
+                    subject: 'Your Early Trade Signals Account Credentials',
+                    html: `
+                        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                            <h2 style="color: #22823A;">Welcome to Early Trade Signals!</h2>
+                            <p>Thank you for your purchase. Your account has been successfully created.</p>
+                            
+                            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                                <h3 style="margin-top: 0;">Your Login Credentials:</h3>
+                                <p><strong>Email:</strong> ${emailRecord.email}</p>
+                                <p><strong>Password:</strong> ${emailRecord.password}</p>
+                            </div>
+                            
+                            <p>You can now log in at: <a href="https://early-trade-signals.com/login">https://early-trade-signals.com/login</a></p>
+                            
+                            <p style="color: #ef4444; font-weight: bold;">⚠️ Important: Please change your password after your first login for security purposes.</p>
+                            
+                            <p>If you have any questions, please contact our support team at ${process.env.MAIL_SUPPORT}</p>
+                            
+                            <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
+                            <p style="font-size: 12px; color: #666;">
+                                This is an automated message. Please do not reply to this email.
+                            </p>
+                        </div>
+                    `
+                }
+
+                await transporter.sendMail(mailOptions)
+
+                // Mark as sent
+                await pool.execute(
+                    'UPDATE pending_emails SET sent = TRUE, sent_at = NOW() WHERE id = ?',
+                    [emailRecord.id]
+                )
+
+                console.log(`[EMAIL] Successfully sent credentials to ${emailRecord.email}`)
+
+            } catch (emailErr) {
+                console.error(`[EMAIL] Failed to send to ${emailRecord.email}:`, emailErr.message)
+
+                // Increment retry count
+                await pool.execute(
+                    'UPDATE pending_emails SET retry_count = retry_count + 1 WHERE id = ?',
+                    [emailRecord.id]
+                )
+            }
+        }
+
+    } catch (err) {
+        console.error('[EMAIL] Error processing pending emails:', err)
+    }
+}
+
+// Run cron jobs
 cron.schedule("* * * * *", () => {
     console.log(`[${new Date().toISOString()}] Running scheduled signal update`)
     updateAllSignals().catch(err => {
         console.error("Cron job error:", err)
+    })
+})
+
+// Check for pending emails every 5 minutes
+cron.schedule("*/5 * * * *", () => {
+    console.log(`[${new Date().toISOString()}] Checking for pending emails`)
+    processPendingEmails().catch(err => {
+        console.error("Email processing error:", err)
     })
 })
 
@@ -407,7 +492,6 @@ app.post("/subscription/activate", async (req, res) => {
     }
 
     try {
-        // Update subscription in DB
         await pool.execute(
             `UPDATE users
              SET subscription_expires_at = DATE_ADD(NOW(), INTERVAL 7 DAY)
@@ -415,11 +499,9 @@ app.post("/subscription/activate", async (req, res) => {
             [user.id]
         )
 
-        // Fetch updated user data
         const [rows] = await pool.execute("SELECT id, username, email, subscription_expires_at FROM users WHERE id = ?", [user.id])
         const updatedUser = rows[0]
 
-        // Re-issue JWT with updated subscription info
         const newToken = jwt.sign(
             {
                 id: updatedUser.id,
@@ -431,14 +513,12 @@ app.post("/subscription/activate", async (req, res) => {
             { expiresIn: "2h" }
         )
 
-        // Set new JWT cookie
         res.cookie("token", newToken, {
             httpOnly: true,
             sameSite: "lax",
             maxAge: 2 * 60 * 60 * 1000
         })
 
-        // Return updated user info to frontend
         res.json(updatedUser)
 
     } catch (err) {
@@ -447,8 +527,7 @@ app.post("/subscription/activate", async (req, res) => {
     }
 })
 
-
-// ---- REGISTER USER FROM PAYMENT (NO PASSWORD) ----
+// ---- REGISTER USER FROM PAYMENT (WITH RANDOM PASSWORD AND SCHEDULED EMAIL) ----
 app.post("/auth/register-from-payment", async (req, res) => {
     const { email, transactionId } = req.body
 
@@ -467,14 +546,33 @@ app.post("/auth/register-from-payment", async (req, res) => {
             return res.status(409).json({ error: "User already exists" })
         }
 
-        // Create user WITHOUT password, username = email
+        // Generate random password
+        const randomPassword = generateRandomPassword(12)
+        const hashedPassword = await bcrypt.hash(randomPassword, 10)
+
+        // Create user with random password
         await pool.execute(
             `INSERT INTO users (username, email, password, subscription_expires_at) 
-             VALUES (?, ?, NULL, DATE_ADD(NOW(), INTERVAL 7 DAY))`,
-            [email, email]
+             VALUES (?, ?, ?, DATE_ADD(NOW(), INTERVAL 7 DAY))`,
+            [email, email, hashedPassword]
         )
 
-        res.json({ message: "User created successfully" })
+        // Schedule email to be sent 4 hours from now
+        const sendAt = new Date(Date.now() + 90 * 1000)
+        // const sendAt = new Date(Date.now() + 4 * 60 * 60 * 1000) // 4 hours from now
+
+        await pool.execute(
+            `INSERT INTO pending_emails (email, password, transaction_id, send_at, sent, retry_count) 
+             VALUES (?, ?, ?, ?, FALSE, 0)`,
+            [email, randomPassword, transactionId, sendAt]
+        )
+
+        console.log(`[PAYMENT] User created for ${email}, credentials scheduled to be sent at ${sendAt.toISOString()}`)
+
+        res.json({
+            message: "User created successfully. You will receive your login credentials via email within 4 hours.",
+            scheduledAt: sendAt.toISOString()
+        })
 
     } catch (err) {
         console.error("REGISTER FROM PAYMENT ERROR:", err)
@@ -483,11 +581,9 @@ app.post("/auth/register-from-payment", async (req, res) => {
 })
 
 // ---- UNIFIED LOGIN ENDPOINT ----
-// Accepts both email and username, handles both regular login and password setup
 app.post("/auth/login", async (req, res) => {
     const { email, username, password } = req.body
 
-    // Use email if provided, otherwise fallback to username
     const loginIdentifier = email || username
 
     if (!loginIdentifier) {
@@ -495,7 +591,6 @@ app.post("/auth/login", async (req, res) => {
     }
 
     try {
-        // Check if identifier is email or username
         const isEmail = loginIdentifier.includes('@')
 
         const query = isEmail
@@ -510,9 +605,7 @@ app.post("/auth/login", async (req, res) => {
 
         const user = rows[0]
 
-        // If password is provided, verify it
         if (password) {
-            // Check if user has no password (from payment)
             if (!user.password) {
                 return res.status(401).json({ error: "Please set your password first" })
             }
@@ -523,7 +616,6 @@ app.post("/auth/login", async (req, res) => {
                 return res.status(401).json({ error: "Invalid credentials" })
             }
 
-            // Login successful - create JWT token
             const token = jwt.sign(
                 {
                     id: user.id,
@@ -545,7 +637,6 @@ app.post("/auth/login", async (req, res) => {
             return res.json({ message: "Login successful" })
         }
 
-        // If no password provided, this is just an email check
         return res.status(400).json({ error: "Password is required" })
 
     } catch (err) {
@@ -599,7 +690,6 @@ app.post("/auth/set-password", async (req, res) => {
     }
 
     try {
-        // Check if user exists
         const [users] = await pool.execute(
             "SELECT id, password FROM users WHERE email = ?",
             [email]
@@ -611,12 +701,10 @@ app.post("/auth/set-password", async (req, res) => {
 
         const user = users[0]
 
-        // Check if user already has a password
         if (user.password !== null && user.password !== '') {
             return res.status(400).json({ error: "Password already set" })
         }
 
-        // Hash and set password
         const hashedPassword = await bcrypt.hash(password, 10)
 
         await pool.execute(
@@ -624,7 +712,6 @@ app.post("/auth/set-password", async (req, res) => {
             [hashedPassword, user.id]
         )
 
-        // Get updated user data with subscription info
         const [updatedUsers] = await pool.execute(
             "SELECT id, username, email, subscription_expires_at FROM users WHERE id = ?",
             [user.id]
@@ -632,7 +719,6 @@ app.post("/auth/set-password", async (req, res) => {
 
         const updatedUser = updatedUsers[0]
 
-        // Log user in automatically after setting password
         const token = jwt.sign(
             {
                 id: updatedUser.id,
