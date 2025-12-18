@@ -86,7 +86,7 @@ const createRouter = () => {
 				path: "/lpstart",
 				name: "lpstart",
 				component: LandingPageStart,
-				meta: { requresGuest: true }
+				meta: { requresGuest: true, requiresNotGermany: true }
 			},
 		],
 	})

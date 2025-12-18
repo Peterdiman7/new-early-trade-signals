@@ -21,6 +21,7 @@ app.use(cors({
             "early-trade-signals.com",
             "www.early-trade-signals.com",
             "https://early-trade-signals.com",
+            "https://www.early-trade-signals.com",
             "https://ku.early-trade-signals.com",
             "https://ksa.early-trade-signals.com",
             "https://iq.early-trade-signals.com",
@@ -323,47 +324,6 @@ app.get("/signals", async (req, res) => {
     }
 })
 
-// ---- LOGIN USER ----
-app.post("/auth/login", async (req, res) => {
-    const { username, password } = req.body
-
-    try {
-        const [rows] = await pool.execute(
-            "SELECT * FROM users WHERE username = ?",
-            [username]
-        )
-
-        if (rows.length === 0) {
-            return res.status(401).json({ error: "Invalid credentials" })
-        }
-
-        const user = rows[0]
-        const match = await bcrypt.compare(password, user.password)
-
-        if (!match) {
-            return res.status(401).json({ error: "Invalid credentials" })
-        }
-
-        const token = jwt.sign(
-            { id: user.id, username: user.username, email: user.email, subscription_expires_at: user.subscription_expires_at },
-            JWT_SECRET,
-            { expiresIn: "2h" }
-        )
-
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
-            maxAge: 2 * 60 * 60 * 1000
-        })
-
-        res.json({ message: "Login successful" })
-    } catch (err) {
-        console.error("LOGIN ERROR:", err)
-        res.status(500).json({ error: "Database error" })
-    }
-})
-
 // ---- PROTECTED ROUTE ----
 app.get("/auth/me", (req, res) => {
     const token = req.cookies.token
@@ -498,6 +458,78 @@ app.post("/auth/register-from-payment", async (req, res) => {
     }
 })
 
+// ---- UNIFIED LOGIN ENDPOINT ----
+// Accepts both email and username, handles both regular login and password setup
+app.post("/auth/login", async (req, res) => {
+    const { email, username, password } = req.body
+
+    // Use email if provided, otherwise fallback to username
+    const loginIdentifier = email || username
+
+    if (!loginIdentifier) {
+        return res.status(400).json({ error: "Email or username is required" })
+    }
+
+    try {
+        // Check if identifier is email or username
+        const isEmail = loginIdentifier.includes('@')
+
+        const query = isEmail
+            ? "SELECT * FROM users WHERE email = ?"
+            : "SELECT * FROM users WHERE username = ?"
+
+        const [rows] = await pool.execute(query, [loginIdentifier])
+
+        if (rows.length === 0) {
+            return res.status(401).json({ error: "Invalid credentials" })
+        }
+
+        const user = rows[0]
+
+        // If password is provided, verify it
+        if (password) {
+            // Check if user has no password (from payment)
+            if (!user.password) {
+                return res.status(401).json({ error: "Please set your password first" })
+            }
+
+            const match = await bcrypt.compare(password, user.password)
+
+            if (!match) {
+                return res.status(401).json({ error: "Invalid credentials" })
+            }
+
+            // Login successful - create JWT token
+            const token = jwt.sign(
+                {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                    subscription_expires_at: user.subscription_expires_at
+                },
+                JWT_SECRET,
+                { expiresIn: "2h" }
+            )
+
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax",
+                maxAge: 2 * 60 * 60 * 1000
+            })
+
+            return res.json({ message: "Login successful" })
+        }
+
+        // If no password provided, this is just an email check
+        return res.status(400).json({ error: "Password is required" })
+
+    } catch (err) {
+        console.error("LOGIN ERROR:", err)
+        res.status(500).json({ error: "Database error" })
+    }
+})
+
 // ---- CHECK IF EMAIL EXISTS AND HAS PASSWORD ----
 app.post("/auth/check-email", async (req, res) => {
     const { email } = req.body
@@ -568,11 +600,21 @@ app.post("/auth/set-password", async (req, res) => {
             [hashedPassword, user.id]
         )
 
-        // Log user in
+        // Get updated user data with subscription info
+        const [updatedUsers] = await pool.execute(
+            "SELECT id, username, email, subscription_expires_at FROM users WHERE id = ?",
+            [user.id]
+        )
+
+        const updatedUser = updatedUsers[0]
+
+        // Log user in automatically after setting password
         const token = jwt.sign(
             {
-                id: user.id,
-                email: email
+                id: updatedUser.id,
+                username: updatedUser.username,
+                email: updatedUser.email,
+                subscription_expires_at: updatedUser.subscription_expires_at
             },
             JWT_SECRET,
             { expiresIn: "2h" }
@@ -589,70 +631,6 @@ app.post("/auth/set-password", async (req, res) => {
 
     } catch (err) {
         console.error("SET PASSWORD ERROR:", err)
-        res.status(500).json({ error: "Database error" })
-    }
-})
-
-// ---- LOGIN ENDPOINT ----
-// Accepts both email and username (legacy support)
-app.post("/auth/login", async (req, res) => {
-    const { email, username, password } = req.body
-
-    // Use email if provided, otherwise fallback to username
-    const loginIdentifier = email || username
-
-    if (!loginIdentifier || !password) {
-        return res.status(400).json({ error: "Email/username and password are required" })
-    }
-
-    try {
-        // Check if identifier is email or username
-        const isEmail = loginIdentifier.includes('@')
-
-        const query = isEmail
-            ? "SELECT * FROM users WHERE email = ?"
-            : "SELECT * FROM users WHERE username = ?"
-
-        const [rows] = await pool.execute(query, [loginIdentifier])
-
-        if (rows.length === 0) {
-            return res.status(401).json({ error: "Invalid credentials" })
-        }
-
-        const user = rows[0]
-
-        // Check if user has no password (from payment)
-        if (!user.password) {
-            return res.status(401).json({ error: "Please set your password first" })
-        }
-
-        const match = await bcrypt.compare(password, user.password)
-
-        if (!match) {
-            return res.status(401).json({ error: "Invalid credentials" })
-        }
-
-        const token = jwt.sign(
-            {
-                id: user.id,
-                username: user.username,
-                email: user.email,
-                subscription_expires_at: user.subscription_expires_at
-            },
-            JWT_SECRET,
-            { expiresIn: "2h" }
-        )
-
-        res.cookie("token", token, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
-            maxAge: 2 * 60 * 60 * 1000
-        })
-
-        res.json({ message: "Login successful" })
-    } catch (err) {
-        console.error("LOGIN ERROR:", err)
         res.status(500).json({ error: "Database error" })
     }
 })
