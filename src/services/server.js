@@ -7,8 +7,32 @@ import jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser"
 import dotenv from "dotenv"
 import cron from "node-cron"
+import nodemailer from "nodemailer"
 
 dotenv.config({ path: path.resolve("/home/devalex/early-trade-signals.com/early-trade-signals/.env") })
+
+let transporter = null
+if (process.env.MAIL_HOST && process.env.MAIL_USER && process.env.MAIL_PASS) {
+    transporter = nodemailer.createTransport({
+        host: process.env.MAIL_HOST,
+        port: Number(process.env.MAIL_PORT) || 587,
+        secure: false,
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    })
+
+    transporter.verify((err, success) => {
+        if (err) {
+            console.error("SMTP verify error:", err)
+        } else {
+            console.log("SMTP server ready")
+        }
+    })
+} else {
+    console.warn("MAIL_HOST/MAIL_USER/MAIL_PASS not set — email routes will fail")
+}
 
 const app = express()
 
@@ -635,73 +659,56 @@ app.post("/auth/set-password", async (req, res) => {
     }
 })
 
-// ---- CANCEL SUBSCRIPTION ENDPOINT ----
-app.post("/subscription/cancel", async (req, res) => {
-    const { fullName, email, reason, comments } = req.body
-
-    if (!fullName || !email || !reason) {
-        return res.status(400).json({ error: "Missing required fields" })
-    }
+app.post("/test-email", async (req, res) => {
+    if (!transporter) return res.status(503).json({ error: "Email service not configured" })
 
     try {
-        // Send email to admin
+        await transporter.sendMail({
+            from: `"Early Trade Signals" <noreply@early-trade-signals.com>`,
+            to: 'peter.dim.an7@gmail.com',
+            subject: "Test Email",
+            html: "<p>Email is working!</p>"
+        })
+        res.json({ success: true, message: "Test email sent" })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: err.message })
+    }
+})
+
+// Subscription cancel
+app.post("/subscription/cancel", async (req, res) => {
+    if (!transporter) return res.status(503).json({ error: "Email service not configured" })
+
+    const { fullName, email, reason, comments } = req.body
+    if (!fullName || !email || !reason) return res.status(400).json({ error: "Missing required fields" })
+
+    try {
         const adminMailOptions = {
-            from: process.env.SMTP_USER,
-            to: process.env.ADMIN_EMAIL || "info@early-trade-signals.com",
+            from: `"Early Trade Signals" <noreply@early-trade-signals.com>`,
+            to: process.env.MAIL_SUPPORT,
             subject: "Subscription Cancellation Request",
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #ef4444;">Subscription Cancellation Request</h2>
-                    <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <p><strong>Name:</strong> ${fullName}</p>
-                        <p><strong>Email:</strong> ${email}</p>
-                        <p><strong>Reason:</strong> ${reason}</p>
-                        ${comments ? `<p><strong>Comments:</strong> ${comments}</p>` : ''}
-                    </div>
-                    <p style="color: #6b7280; font-size: 14px;">
-                        Received: ${new Date().toLocaleString()}
-                    </p>
-                </div>
-            `
+            html: `<p>Name: ${fullName}<br>Email: ${email}<br>Reason: ${reason}<br>Comments: ${comments || ''}</p>`
         }
 
-        // Send confirmation email to user
         const userMailOptions = {
-            from: process.env.SMTP_USER,
+            from: `"Early Trade Signals" <noreply@early-trade-signals.com>`,
             to: email,
             subject: "We've Received Your Cancellation Request",
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #22823A;">Cancellation Request Received</h2>
-                    <p>Dear ${fullName},</p>
-                    <p>We've received your request to cancel your subscription. We're sorry to see you go!</p>
-                    <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <p><strong>Request Details:</strong></p>
-                        <p>Reason: ${reason}</p>
-                        ${comments ? `<p>Your comments: ${comments}</p>` : ''}
-                    </div>
-                    <p>Our team will process your cancellation request within 24-48 hours. You will receive a confirmation email once your subscription has been cancelled.</p>
-                    <p>If you have any questions or if this was a mistake, please contact us at <a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a></p>
-                    <p>Best regards,<br>Early Trade Signals Team</p>
-                </div>
-            `
+            html: `<p>Dear ${fullName}, we've received your cancellation request.</p>`
         }
 
-        // Send both emails
         await Promise.all([
             transporter.sendMail(adminMailOptions),
             transporter.sendMail(userMailOptions)
         ])
 
-        res.json({
-            success: true,
-            message: "Your cancellation request has been submitted successfully"
-        })
-
+        res.json({ success: true, message: "Your cancellation request has been submitted successfully" })
     } catch (err) {
         console.error("Email sending error:", err)
         res.status(500).json({
-            error: "Failed to process cancellation request. Please try again later."
+            error: "Failed to process cancellation request",
+            smtp: err.message
         })
     }
 })
