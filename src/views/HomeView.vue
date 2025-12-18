@@ -7,7 +7,8 @@
 					<li v-for="item in tickerItems" :key="item.symbol">
 						<div class="trading-block-three">
 							<div style="display: flex; height: 40px; width: auto;">
-								<img style="padding: 0 20px; max-width: 140px !important;" :src="item.img_url" :alt="item.symbol">
+								<img style="padding: 0 20px; max-width: 140px !important;" :src="item.img_url"
+									:alt="item.symbol">
 								<div style="position: relative; padding: 0 20px;">
 									<h6>{{ item.symbol }}</h6>
 									<span>
@@ -981,8 +982,6 @@
 								<div class="icon-box"><i class="icon-16"></i></div>
 								<h3><a href="/login">{{ formatTranslation(t, 'home.professional_account') }}</a></h3>
 								<p>{{ formatTranslation(t, 'home.professional_account') }}</p>
-								<div class="btn-box"><a href="/register" class="theme-btn btn-one">{{
-									formatTranslation(t, 'home.create_account') }}</a></div>
 							</div>
 						</div>
 					</div>

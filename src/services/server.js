@@ -635,6 +635,77 @@ app.post("/auth/set-password", async (req, res) => {
     }
 })
 
+// ---- CANCEL SUBSCRIPTION ENDPOINT ----
+app.post("/subscription/cancel", async (req, res) => {
+    const { fullName, email, reason, comments } = req.body
+
+    if (!fullName || !email || !reason) {
+        return res.status(400).json({ error: "Missing required fields" })
+    }
+
+    try {
+        // Send email to admin
+        const adminMailOptions = {
+            from: process.env.SMTP_USER,
+            to: process.env.ADMIN_EMAIL || "info@early-trade-signals.com",
+            subject: "Subscription Cancellation Request",
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #ef4444;">Subscription Cancellation Request</h2>
+                    <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p><strong>Name:</strong> ${fullName}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Reason:</strong> ${reason}</p>
+                        ${comments ? `<p><strong>Comments:</strong> ${comments}</p>` : ''}
+                    </div>
+                    <p style="color: #6b7280; font-size: 14px;">
+                        Received: ${new Date().toLocaleString()}
+                    </p>
+                </div>
+            `
+        }
+
+        // Send confirmation email to user
+        const userMailOptions = {
+            from: process.env.SMTP_USER,
+            to: email,
+            subject: "We've Received Your Cancellation Request",
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #22823A;">Cancellation Request Received</h2>
+                    <p>Dear ${fullName},</p>
+                    <p>We've received your request to cancel your subscription. We're sorry to see you go!</p>
+                    <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p><strong>Request Details:</strong></p>
+                        <p>Reason: ${reason}</p>
+                        ${comments ? `<p>Your comments: ${comments}</p>` : ''}
+                    </div>
+                    <p>Our team will process your cancellation request within 24-48 hours. You will receive a confirmation email once your subscription has been cancelled.</p>
+                    <p>If you have any questions or if this was a mistake, please contact us at <a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a></p>
+                    <p>Best regards,<br>Early Trade Signals Team</p>
+                </div>
+            `
+        }
+
+        // Send both emails
+        await Promise.all([
+            transporter.sendMail(adminMailOptions),
+            transporter.sendMail(userMailOptions)
+        ])
+
+        res.json({
+            success: true,
+            message: "Your cancellation request has been submitted successfully"
+        })
+
+    } catch (err) {
+        console.error("Email sending error:", err)
+        res.status(500).json({
+            error: "Failed to process cancellation request. Please try again later."
+        })
+    }
+})
+
 // ---- LOGOUT ----
 app.post("/auth/logout", (req, res) => {
     res.clearCookie("token", { httpOnly: true, sameSite: "lax" })

@@ -63,14 +63,10 @@
             <p v-if="success" class="success">{{ success }}</p>
 
             <p v-if="!setupMode" class="register-link">
-                {{ formatTranslation(t, 'login.no_account') }}
                 <a style="color: green; cursor: pointer;" v-if="subdomain === 'de'"
                     href="https://delp1.early-trade-signals.com/">
                     {{ formatTranslation(t, 'login.register_here') }}
                 </a>
-                <router-link v-else to="/register">
-                    {{ formatTranslation(t, 'login.register_here') }}
-                </router-link>
             </p>
         </div>
     </div>

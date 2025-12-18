@@ -12,7 +12,6 @@ import { createRouter as createVueRouter, createWebHistory } from "vue-router"
 
 import type { RouteLocationNamedRaw } from "vue-router"
 import LoginView from "@/views/LoginView.vue"
-import RegisterView from "@/views/RegisterView.vue"
 
 import { useAuthStore } from "@/stores/auth"
 
@@ -30,25 +29,25 @@ const createRouter = () => {
 				path: "/signals",
 				name: "signals",
 				component: SignalsView,
-				meta: { requiresAuth: true, requiresSubscription: true },
+				meta: { requiresAuth: true },
 			},
 			{
 				path: "/pricing",
 				name: "pricing",
 				component: PricingPlansView,
-				meta: { requiresAuth: true, requiresNotGermany: true },
+				meta: { requiresGuest: true, requiresNotGermany: true },
 			},
 			{
 				path: "/market-analysis",
 				name: "market-analysis",
 				component: MarketAnalysisView,
-				meta: { requiresAuth: true, requiresSubscription: true },
+				meta: { requiresAuth: true },
 			},
 			{
 				path: "/checkout",
 				name: "checkout",
 				component: CheckoutView,
-				meta: { requiresAuth: true },
+				meta: { requiresGuest: true },
 			},
 			{
 				path: "/contact",
@@ -75,12 +74,6 @@ const createRouter = () => {
 				name: "login",
 				component: LoginView,
 				meta: { requiresGuest: true },
-			},
-			{
-				path: "/register",
-				name: "register",
-				component: RegisterView,
-				meta: { requiresGuest: true, requiresNotGermany: true },
 			},
 			{
 				path: "/lpstart",

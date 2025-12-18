@@ -50,29 +50,6 @@
                 </div>
             </div>
         </div>
-        <div v-if="!isLocalPricing" class="glass-card comparison-table">
-            <h2>{{ formatTranslation(t, 'pricing.feature_comparison') }}</h2>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>{{ formatTranslation(t, 'pricing.feature') }}</th>
-                            <th>{{ formatTranslation(t, 'pricing.starter') }}</th>
-                            <th>{{ formatTranslation(t, 'pricing.pro') }}</th>
-                            <th>{{ formatTranslation(t, 'pricing.enterprise') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="feature in comparisonFeatures" :key="feature.name">
-                            <td class="feature-name">{{ feature.name }}</td>
-                            <td class="feature-value">{{ feature.starter }}</td>
-                            <td class="feature-value">{{ feature.pro }}</td>
-                            <td class="feature-value">{{ feature.enterprise }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -222,7 +199,7 @@ const defaultPlans = computed(() => [
         id: 1,
         name: formatTranslation(t, 'pricing.plans.default.basic.name'),
         description: formatTranslation(t, 'pricing.plans.default.basic.description'),
-        priceMonthly: 9,
+        priceMonthly: 1.95,
         priceAnnual: 89,
         features: [
             formatTranslation(t, 'pricing.plans.default.basic.features.signals'),
@@ -236,7 +213,7 @@ const defaultPlans = computed(() => [
         id: 2,
         name: formatTranslation(t, 'pricing.plans.default.starter.name'),
         description: formatTranslation(t, 'pricing.plans.default.starter.description'),
-        priceMonthly: 29,
+        priceMonthly: 9.95,
         priceAnnual: 279,
         features: [
             formatTranslation(t, 'pricing.plans.default.starter.features.signals'),
@@ -252,7 +229,7 @@ const defaultPlans = computed(() => [
         id: 3,
         name: formatTranslation(t, 'pricing.plans.default.pro.name'),
         description: formatTranslation(t, 'pricing.plans.default.pro.description'),
-        priceMonthly: 79,
+        priceMonthly: 19.95,
         priceAnnual: 759,
         features: [
             formatTranslation(t, 'pricing.plans.default.pro.features.unlimited_signals'),
@@ -271,7 +248,7 @@ const defaultPlans = computed(() => [
         id: 4,
         name: formatTranslation(t, 'pricing.plans.default.enterprise.name'),
         description: formatTranslation(t, 'pricing.plans.default.enterprise.description'),
-        priceMonthly: 199,
+        priceMonthly: 29.95,
         priceAnnual: 1909,
         features: [
             formatTranslation(t, 'pricing.plans.default.enterprise.features.all_pro'),
@@ -290,7 +267,7 @@ const defaultPlans = computed(() => [
         id: 5,
         name: formatTranslation(t, 'pricing.plans.default.ultimate.name'),
         description: formatTranslation(t, 'pricing.plans.default.ultimate.description'),
-        priceMonthly: 499,
+        priceMonthly: 49.95,
         priceAnnual: 4799,
         features: [
             formatTranslation(t, 'pricing.plans.default.ultimate.features.all_enterprise'),
@@ -319,7 +296,7 @@ const faqs = ref([
     {
         id: 2,
         question: 'What payment methods do you accept?',
-        answer: 'We accept all major credit cards, PayPal, and cryptocurrency payments for your convenience.',
+        answer: 'We accept all major credit cards.',
         isOpen: false
     },
     {
@@ -328,22 +305,6 @@ const faqs = ref([
         answer: 'Our signals maintain a 90% accuracy rate based on historical performance. However, past performance does not guarantee future results.',
         isOpen: false
     },
-    {
-        id: 4,
-        question: 'Can I upgrade or downgrade my plan?',
-        answer: 'Absolutely! You can change your plan at any time. Upgrades take effect immediately, while downgrades apply at the next billing cycle.',
-        isOpen: false
-    }
-])
-
-const comparisonFeatures = ref([
-    { name: 'Daily Signals', starter: '10', pro: 'Unlimited', enterprise: 'Unlimited' },
-    { name: 'Market Analysis', starter: 'Basic', pro: 'Advanced', enterprise: 'Advanced + Custom' },
-    { name: 'Notifications', starter: 'Email', pro: 'Email + Push', enterprise: 'All Channels' },
-    { name: 'Support', starter: 'Email', pro: 'Priority', enterprise: 'Dedicated Manager' },
-    { name: 'API Access', starter: '—', pro: '—', enterprise: '✓' },
-    { name: 'Custom Alerts', starter: '—', pro: '✓', enterprise: '✓' },
-    { name: 'Team Features', starter: '—', pro: '—', enterprise: '✓' }
 ])
 
 function toggleFaq(id) {

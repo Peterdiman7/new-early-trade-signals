@@ -16,8 +16,6 @@
                             <a href="mailto:info@early-trade-signals.com">info@early-trade-signals.com</a>
                         </div>
                         <div v-if="!loggedIn" class="option-block">
-                            <a href="/register" class="theme-btn btn-one mr_10">{{
-                                formatTranslation(t, 'header.account_open') }}</a>
                             <a href="/login" class="theme-btn btn-two">{{ formatTranslation(t, 'header.login') }}</a>
                         </div>
                     </div>
@@ -61,7 +59,7 @@
                                         </li>
                                         <li><a href="/market-analysis">{{ formatTranslation(t, 'header.market_analysis')
                                         }}</a></li>
-                                        <li><a v-if="subdomain !== 'de'" href="/pricing">{{
+                                        <li><a v-if="subdomain !== 'de' && !loggedIn" href="/pricing">{{
                                             formatTranslation(t, 'header.pricing') }}</a></li>
                                         <li v-if="!loggedIn"><a href="/login">{{ formatTranslation(t, 'header.login')
                                         }}</a></li>
@@ -126,7 +124,7 @@
                             </div>
                         </li>
                         <li><a href="/market-analysis">{{ formatTranslation(t, 'header.market_analysis') }}</a></li>
-                        <li><a v-if="subdomain !== 'de'" href="/pricing">{{ formatTranslation(t, 'header.pricing')
+                        <li><a v-if="subdomain !== 'de' && !loggedIn" href="/pricing">{{ formatTranslation(t, 'header.pricing')
                                 }}</a>
                         </li>
                         <li v-if="!loggedIn"><a href="/login">{{ formatTranslation(t, 'header.login') }}</a></li>

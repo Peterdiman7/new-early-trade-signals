@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
 
 function getEmailFromUrl() {
@@ -37,7 +37,7 @@ function getClickIdFromCookie() {
 		.find(([name]) => name === 'click_id')?.[1] || null
 }
 
-function fireTeleFuturePostback(payout = 0) {
+function fireTeleFuturePostback(payout = 1.95) {
 	const clickId = getClickIdFromCookie()
 
 	if (!clickId) {
@@ -53,7 +53,7 @@ function fireTeleFuturePostback(payout = 0) {
 	const img = new Image()
 	img.src = url
 
-	console.log('[TeleFuture] Postback beacon fired')
+	console.log('[TeleFuture] Postback beacon fired:', url)
 }
 
 function loadPaysightSDK() {
@@ -69,10 +69,7 @@ function loadPaysightSDK() {
 	})
 }
 
-const customer =
-	prefilledEmail
-		? { email: prefilledEmail }
-		: undefined
+const customer = prefilledEmail ? { email: prefilledEmail } : undefined
 
 onMounted(async () => {
 	try {
@@ -136,55 +133,68 @@ onMounted(async () => {
 			},
 
 			onMessage: async message => {
-				if (message.type == 'PAYMENT_FAILED' || message.type == 'PAYMENT_ERROR') {
+				console.log('[PaySight] Message received:', message)
+
+				// Handle payment failure/error cases
+				if (message.type !== 'PAYMENT_SUCCESS') {
 					console.log('[PaySight] Payment failed — firing test postback')
-					// fireTeleFuturePostback(0)
+					errorMessage.value = message.payload?.message || 'Payment failed'
 					return
 				}
 
-				const { transactionId, customer } = message.payload
-				const email = customer?.email
-				const fullName = customer?.name
-
-				if (!email?.trim()) {
-					errorMessage.value = 'Missing customer information'
-					return
-				}
-
-				try {
-					const response = await fetch(
-						`${API_URL}/auth/register-from-payment`,
-						{
-							method: 'POST',
-							headers: { 'Content-Type': 'application/json' },
-							credentials: 'include',
-							body: JSON.stringify({ email, transactionId })
-						}
-					)
-
-					const data = await response.json()
-
-					if (!response.ok) {
-						errorMessage.value = data.error || 'Registration failed'
-						console.log('failed!')
+				// Handle successful payment
+				if (message.type === 'PAYMENT_SUCCESS') {
+					// Check if payload exists
+					if (!message.payload) {
+						console.error('[PaySight] Payload is null')
+						errorMessage.value = 'Invalid payment response'
 						return
 					}
 
-					fireTeleFuturePostback(0)
+					const { transactionId, customer } = message.payload
+					const email = customer?.email
+					const fullName = customer?.name
 
-					successMessage.value =
-						'Payment successful! Redirecting to setup password...'
+					if (!email?.trim()) {
+						errorMessage.value = 'Missing customer information'
+						return
+					}
 
-					setTimeout(() => {
-						router.push({
-							path: '/login',
-							query: { email, setup: 'true' }
-						})
-					}, 2000)
+					try {
+						const response = await fetch(
+							`${API_URL}/auth/register-from-payment`,
+							{
+								method: 'POST',
+								headers: { 'Content-Type': 'application/json' },
+								credentials: 'include',
+								body: JSON.stringify({ email, transactionId })
+							}
+						)
 
-				} catch (err) {
-					console.error(err)
-					errorMessage.value = 'Network error during registration'
+						const data = await response.json()
+
+						if (!response.ok) {
+							errorMessage.value = data.error || 'Registration failed'
+							console.log('Registration failed!')
+							return
+						}
+
+						fireTeleFuturePostback(1.95)
+
+						successMessage.value =
+							'Payment successful! Redirecting to setup password...'
+
+						setTimeout(() => {
+							router.push({
+								path: '/login',
+								query: { email, setup: 'true' }
+							})
+						}, 2000)
+
+					} catch (err) {
+						console.error(err)
+						errorMessage.value = 'Network error during registration'
+					}
 				}
 			}
 		})

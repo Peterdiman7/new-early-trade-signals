@@ -16,149 +16,10 @@
                     <span>{{ formatTranslation(t, 'checkout.secure_checkout') }}</span>
                 </div>
             </div>
-
             <div class="checkout-grid">
                 <div class="payment-section">
-                    <!-- Payment Method -->
-                    <div class="glass-card">
-                        <h2>{{ formatTranslation(t, 'checkout.payment_method') }}</h2>
-                        <div class="payment-methods">
-                            <button v-for="method in paymentMethods" :key="method.id"
-                                :class="['payment-method-btn', { active: selectedPayment === method.id }]"
-                                @click="selectedPayment = method.id" type="button">
-                                <span class="method-icon">{{ method.icon }}</span>
-                                <span>{{ formatTranslation(t, `checkout.payment.${method.id}`) }}</span>
-                            </button>
-                        </div>
-
-                        <!-- Card Details -->
-                        <div v-if="selectedPayment === 'card'" class="card-details">
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.card_number') }}</label>
-                                <div class="card-input">
-                                    <input type="text" v-model="cardNumber" placeholder="1234 5678 9012 3456"
-                                        maxlength="19" @input="formatCardNumber" />
-                                    <div class="card-brands">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg"
-                                            alt="Visa" />
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                                            alt="Mastercard" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>{{ formatTranslation(t, 'checkout.expiry_date') }}</label>
-                                    <input type="text" v-model="expiryDate" placeholder="MM/YY" maxlength="5"
-                                        @input="formatExpiry" />
-                                </div>
-                                <div class="form-group">
-                                    <label>{{ formatTranslation(t, 'checkout.cvv') }}</label>
-                                    <input type="text" v-model="cvv" placeholder="123" maxlength="4" />
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.cardholder_name') }}</label>
-                                <input type="text" v-model="cardholderName" placeholder="John Doe" />
-                            </div>
-                        </div>
-
-                        <!-- PayPal Info -->
-                        <div v-if="selectedPayment === 'paypal'" class="paypal-info">
-                            <p>{{ formatTranslation(t, 'checkout.paypal_redirect') }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Billing Info -->
-                    <div class="glass-card">
-                        <h2>{{ formatTranslation(t, 'checkout.billing_info') }}</h2>
-                        <div class="form-group">
-                            <label>{{ formatTranslation(t, 'checkout.email_address') }}</label>
-                            <input type="email" v-model="billingInfo.email" placeholder="john@example.com" />
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.first_name') }}</label>
-                                <input type="text" v-model="billingInfo.firstName" placeholder="John" />
-                            </div>
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.last_name') }}</label>
-                                <input type="text" v-model="billingInfo.lastName" placeholder="Doe" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>{{ formatTranslation(t, 'checkout.address') }}</label>
-                            <input type="text" v-model="billingInfo.address" placeholder="123 Main Street" />
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.city') }}</label>
-                                <input type="text" v-model="billingInfo.city" placeholder="New York" />
-                            </div>
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.postal_code') }}</label>
-                                <input type="text" v-model="billingInfo.postalCode" placeholder="10001" />
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.country') }}</label>
-                                <select v-model="billingInfo.country">
-                                    <option value="">{{ formatTranslation(t, 'checkout.select_country') }}</option>
-                                    <option value="US">United States</option>
-                                    <option value="UK">United Kingdom</option>
-                                    <option value="CA">Canada</option>
-                                    <option value="AU">Australia</option>
-                                    <option value="DE">Germany</option>
-                                    <option value="FR">France</option>
-                                    <option value="other">{{ formatTranslation(t, 'checkout.other') }}</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>{{ formatTranslation(t, 'checkout.state') }}</label>
-                                <input type="text" v-model="billingInfo.state" placeholder="NY" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Terms & Submit -->
-                    <div class="glass-card submit-section">
-                        <label class="checkbox-label">
-                            <input type="checkbox" v-model="agreedToTerms" />
-                            <span>
-                                {{ formatTranslation(t, 'checkout.agree_terms') }}
-                                <a href="/terms-conditions" target="_blank">{{ formatTranslation(t,
-                                    'footer.terms_conditions') }}</a>
-                                {{ formatTranslation(t, 'checkout.and') }}
-                                <a href="#" @click.prevent>{{ formatTranslation(t, 'footer.privacy_policy') }}</a>
-                            </span>
-                        </label>
-
-                        <button class="submit-btn" :disabled="!canSubmit" @click="handleSubmit">
-                            <span v-if="!processing">{{ formatTranslation(t, 'checkout.complete_purchase') }}</span>
-                            <span v-else class="processing">
-                                <span class="spinner" />
-                                {{ formatTranslation(t, 'checkout.processing') }}
-                            </span>
-                        </button>
-
-                        <div class="security-info">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <span>{{ formatTranslation(t, 'checkout.payment_secure') }}</span>
-                        </div>
-                    </div>
+                    <LandingPageStart />
                 </div>
-
-                <!-- Summary Section -->
                 <div class="summary-section">
                     <div class="glass-card summary-card sticky">
                         <h2>{{ formatTranslation(t, 'checkout.order_summary') }}</h2>
@@ -226,6 +87,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 import { formatTranslation } from '@/utils/i18'
+import LandingPageStart from './LandingPageStart.vue'
 
 const { t } = useI18n()
 
@@ -256,16 +118,12 @@ const billingInfo = ref({
     state: ''
 })
 
-const paymentMethods = [
-    { id: 'card', name: 'Credit Card', icon: '💳' },
-]
-
 const pricingPlans = ref([
     {
         id: 1,
         name: 'Basic',
         description: 'Entry-level access for casual traders',
-        priceMonthly: 9,
+        priceMonthly: 1.95,
         priceAnnual: 89,
         features: ['3 signals per day', 'Basic chart insights', 'Community forum access'],
         buttonText: 'Choose This Plan',
@@ -275,7 +133,7 @@ const pricingPlans = ref([
         id: 2,
         name: 'Starter',
         description: 'Perfect for beginners exploring trading signals',
-        priceMonthly: 29,
+        priceMonthly: 1.95,
         priceAnnual: 279,
         features: [
             'Up to 10 signals per day',
@@ -291,7 +149,7 @@ const pricingPlans = ref([
         id: 3,
         name: 'Pro',
         description: 'For serious traders who need advanced tools',
-        priceMonthly: 79,
+        priceMonthly: 1.95,
         priceAnnual: 759,
         features: [
             'Unlimited signals',
@@ -310,7 +168,7 @@ const pricingPlans = ref([
         id: 4,
         name: 'Enterprise',
         description: 'Custom solutions for professional teams',
-        priceMonthly: 199,
+        priceMonthly: 1.95,
         priceAnnual: 1909,
         features: [
             'Everything in Pro',
@@ -329,7 +187,7 @@ const pricingPlans = ref([
         id: 5,
         name: 'Ultimate',
         description: 'All-in-one solution for institutions and hedge funds',
-        priceMonthly: 499,
+        priceMonthly: 1.95,
         priceAnnual: 4799,
         features: [
             'Everything in Enterprise',
@@ -501,52 +359,6 @@ const total = computed(() => {
     const t = Math.max(0, subtotal.value - discount.value)
     return t
 })
-
-const canSubmit = computed(() => {
-    if (!agreedToTerms.value) return false
-
-    const requiredBilling =
-        billingInfo.value.email &&
-        billingInfo.value.firstName &&
-        billingInfo.value.lastName
-
-    if (!requiredBilling) return false
-
-    if (selectedPayment.value === 'card') {
-        return (
-            cardNumber.value.trim().length > 0 &&
-            expiryDate.value.trim().length > 0 &&
-            cvv.value.trim().length > 0 &&
-            cardholderName.value.trim().length > 0
-        )
-    }
-
-    return true
-})
-
-function formatCardNumber(e: Event) {
-    const input = e.target as HTMLInputElement
-    const value = input.value.replace(/\D/g, '').slice(0, 16)
-    const groups = value.match(/.{1,4}/g) || []
-    cardNumber.value = groups.join(' ')
-}
-
-function formatExpiry(e: Event) {
-    const input = e.target as HTMLInputElement
-    let value = input.value.replace(/\D/g, '').slice(0, 4)
-    if (value.length > 2) value = value.slice(0, 2) + '/' + value.slice(2)
-    expiryDate.value = value
-}
-
-async function handleSubmit() {
-    if (!canSubmit.value) return
-    processing.value = true
-
-    setTimeout(() => {
-        processing.value = false
-        alert(`Payment successful! Welcome to ${selectedPlan.value.name} plan!`)
-    }, 1500)
-}
 </script>
 
 <style scoped>

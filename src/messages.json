@@ -91,7 +91,6 @@
       "privacy_policy": "Privacy Policy"
     },
     "header": {
-      "account_open": "Open Account",
       "login": "Login",
       "home": "Home",
       "signals": "Signals",
@@ -170,7 +169,6 @@
       "continue": "Continue",
       "set_password": "Set Password",
       "setup_password": "Setup Your Password",
-      "no_account": "No account?",
       "register_here": "Register here",
       "success": "Logged in successfully!",
       "error": "Please enter both email and password."
@@ -533,7 +531,6 @@
       "privacy_policy": "Datenschutzrichtlinie"
     },
     "header": {
-      "account_open": "Konto eröffnen",
       "login": "Einloggen",
       "home": "Home",
       "signals": "Signale",
@@ -613,7 +610,6 @@
       "continue": "Weiter",
       "set_password": "Passwort festlegen",
       "setup_password": "Passwort einrichten",
-      "no_account": "Kein Konto?",
       "register_here": "Hier registrieren",
       "success": "Erfolgreich angemeldet!",
       "error": "Bitte E-Mail und Passwort eingeben."
